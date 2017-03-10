@@ -1,11 +1,18 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { StudentsComponent } from './students.component';
+import { Students } from './students.component';
 
-const routes: Routes = [
+import { ModuleWithProviders } from '@angular/core';
+
+// noinspection TypeScriptValidateTypes
+export const routes: Routes = [
   {
     path: '',
-    component: StudentsComponent
+    component: Students,
+    children:[
+        //{}
+    ]
   }
 ];
 
-export const routing = RouterModule.forChild(routes);
+
+export const routing:ModuleWithProviders = RouterModule.forChild(routes);
