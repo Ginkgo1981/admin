@@ -1,5 +1,5 @@
-import {StudentsService} from '../../../../services/students.service'
-import { Component, OnInit, Input,ViewChild} from '@angular/core'
+import { StudentsService } from '../../../../services'
+import { Component, OnInit, Input,ViewChild, OnDestroy} from '@angular/core'
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
@@ -12,7 +12,7 @@ import { ModalDirective } from 'ng2-bootstrap';
   styleUrls: ['./student.scss'],
 
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild('lgModal') lgModal: ModalDirective;
 
   @Input()
@@ -58,5 +58,8 @@ export class StudentComponent implements OnInit {
     this.lgModal.hide();
   }
 
+  ngOnDestroy():void {
+    console.log("========== StudentComponent ngOnDestroy ======")
+  }
 
 }

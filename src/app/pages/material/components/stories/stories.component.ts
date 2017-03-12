@@ -10,7 +10,7 @@ import {StoriesService} from "../../../../services/stories.service";
   styleUrls: ['./stories.scss'],
 
 })
-export class Stories implements OnInit {
+export class StoriesComponent implements OnInit {
 
   stories:Array<any>
 

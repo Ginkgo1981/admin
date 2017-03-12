@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {StudentsService} from '../../../../services/students.service'
+import {StudentsService} from '../../../../services'
 
 @Component({
   selector: 'students',
@@ -8,7 +8,7 @@ import {StudentsService} from '../../../../services/students.service'
 export class StudentsComponent {
   peopleTableData:Array<any>;
 
-  constructor(private _service:StudentsService) {
+  constructor(private _service: StudentsService) {
     _service.getStudents().then(res => {
           console.log("===== res %o", res)
           this.peopleTableData = res['data']

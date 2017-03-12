@@ -12,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./story.scss'],
 
 })
-export class Story implements OnInit {
+export class StoryComponent implements OnInit {
 
 
 

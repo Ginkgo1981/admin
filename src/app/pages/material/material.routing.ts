@@ -1,18 +1,18 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { Material } from './material.component';
+import { MaterialComponent } from './material.component';
 import { ModuleWithProviders } from '@angular/core';
-import {Stories} from "./components/stories/stories.component";
-import {Story} from "./components/story/story.component";
+import { StoriesComponent } from "./components/stories/stories.component";
+import { StoryComponent } from "./components/story/story.component";
 
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
-    component: Material,
+    component: MaterialComponent,
     children:[
-      { path: 'stories', component: Stories  },
-      { path: 'stories/:id', component: Story },
-      { path: 'stories/create', component: Story },
+      { path: 'stories', component: StoriesComponent  },
+      { path: 'stories/:id', component: StoryComponent },
+      { path: 'stories/create', component: StoryComponent },
     ]
   }
 ];

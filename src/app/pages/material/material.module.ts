@@ -1,17 +1,16 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { Material } from './material.component';
+import { MaterialComponent } from './material.component';
 import { routing } from './material.routing';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
-import {GlobalDataService} from '../../services/globle-data.service'
+import { GlobalDataService} from '../../services/globle-data.service'
 import { DropdownModule, ModalModule } from 'ng2-bootstrap';
-import {Stories} from "./components/stories/stories.component";
-import {StoriesService} from "../../services/stories.service";
-import {Story} from "./components/story/story.component";
+import { StoriesComponent} from "./components/stories/stories.component";
+import { StoriesService} from "../../services/stories.service";
+import { StoryComponent} from "./components/story/story.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import {SelectModule} from 'ng-select';
-
 
 
 @NgModule({
@@ -22,13 +21,13 @@ import {SelectModule} from 'ng-select';
     FormsModule,
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
-      ReactiveFormsModule,
+    ReactiveFormsModule,
     SelectModule
   ],
   declarations: [
-    Stories,
-    Material,
-    Story
+    StoriesComponent,
+    MaterialComponent,
+    StoryComponent
   ],
   providers: [
     GlobalDataService,

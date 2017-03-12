@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'material',
   template: `<router-outlet></router-outlet>`
 })
-export class Material {
+export class MaterialComponent {
 
   constructor() {
   }
