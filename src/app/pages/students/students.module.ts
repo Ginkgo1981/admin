@@ -6,22 +6,35 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { Userslist } from './userslist/userslist.component'
 import {UserslistService} from "./userslist/userslist.service";
+import {UserService} from "./user/user.service";
+
+import {GlobalDataService} from '../../services/globle-data.service'
+import {User} from "./user/user.component";
+import { DropdownModule, ModalModule } from 'ng2-bootstrap';
+
 @NgModule({
   imports: [
     CommonModule,
     routing,
     NgaModule,
-    FormsModule
+    FormsModule,
+    DropdownModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   declarations: [
     Students,
-    Userslist
+    Userslist,
+    User
+
 
   ],
   providers: [
-    UserslistService
+    UserslistService,
+    UserService,
+    GlobalDataService
 
-      ]
+  ]
 
 })
-export class StudentsModule {}
+export class StudentsModule {
+}

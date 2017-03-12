@@ -1,0 +1,22 @@
+<div class="row">
+    <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+             title="story" baCardClass="with-scroll large-card">
+        <form [formGroup]="storyForm" (ngSubmit)="createStory($event)">
+            <div class="form-group">
+                <input formControlName="title" type="text"  class="form-control" placeholder="title">
+            </div>
+            <div class="form-group">
+                <input formControlName="content" type="text"  class="form-control" placeholder="content">
+            </div>
+            <button type="submit" class="btn btn-success">create story</button>
+            <!--<button type="submit">Log in</button>-->
+
+        </form>
+
+
+        <ng-select
+                [options]="characters">
+        </ng-select>
+
+    </ba-card>
+</div>

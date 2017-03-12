@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import {SelectModule} from 'ng-select';
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -46,7 +48,8 @@ export type StoreType = {
     ReactiveFormsModule,
     NgaModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    SelectModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
@@ -56,10 +59,10 @@ export type StoreType = {
 
 export class AppModule {
 
-  constructor(public appRef: ApplicationRef, public appState: AppState) {
+  constructor(public appRef:ApplicationRef, public appState:AppState) {
   }
 
-  hmrOnInit(store: StoreType) {
+  hmrOnInit(store:StoreType) {
     if (!store || !store.state) return;
     console.log('HMR store', JSON.stringify(store, null, 2));
     // set state
@@ -74,7 +77,7 @@ export class AppModule {
     delete store.restoreInputValues;
   }
 
-  hmrOnDestroy(store: StoreType) {
+  hmrOnDestroy(store:StoreType) {
     const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
     // save state
     const state = this.appState._state;
@@ -87,7 +90,7 @@ export class AppModule {
     removeNgStyles();
   }
 
-  hmrAfterDestroy(store: StoreType) {
+  hmrAfterDestroy(store:StoreType) {
     // display new elements
     store.disposeOldHosts();
     delete store.disposeOldHosts;

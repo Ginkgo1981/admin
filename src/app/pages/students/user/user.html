@@ -1,0 +1,84 @@
+<div *ngIf="user">
+    <div class="row">
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
+                 title="用户基本信息" baCardClass="traffic-panel medium-card">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" value="{{user.name}}" id="inputFirstName">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputLastName">cell</label>
+                        <input type="text" class="form-control" id="inputLastName" value="{{user.cell}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputFirstName">identity_type</label>
+                        <input type="email" class="form-control" id="inputEmail" value="{{user.identity_type}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputWebsite">id</label>
+                        <input type="text" class="form-control" id="inputWebsite" value="{{user.id}}">
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" (click)="lgModal.show()" >发送消息</button>
+        </ba-card>
+
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
+                 title="消息列表" baCardClass="medium-card">
+        </ba-card>
+    </div>
+
+
+
+
+    <!-- Large modal -->
+    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Large modal</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Recipients">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]="message" name="message" placeholder="Subject">
+                        </div>
+                        <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <!--<button class="btn btn-primary confirm-btn" (click)="lgModal.hide()">发送信息 changes</button>-->
+                    <button class="btn btn-primary confirm-btn" (click)="hideChildModal()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+

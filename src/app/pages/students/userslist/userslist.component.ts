@@ -7,8 +7,13 @@ import {UserslistService} from './userslist.service'
 })
 export class Userslist {
   peopleTableData:Array<any>;
-  constructor(private _service: UserslistService){
-    this.peopleTableData = _service.peopleTableData;
+
+  constructor(private _service:UserslistService) {
+    _service.getData().then(res => {
+          console.log("===== res %o", res)
+          this.peopleTableData = res['data']
+        }
+    );
   }
 
 }

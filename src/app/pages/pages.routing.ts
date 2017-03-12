@@ -4,16 +4,25 @@ import { ModuleWithProviders } from '@angular/core';
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
-
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
+
+  //{
+  //  path: 'login',
+  //  loadChildren: 'app/pages/login/login.module#LoginModule'
+  //},
+  //{
+  //  path: 'register',
+  //  loadChildren: 'app/pages/register/register.module#RegisterModule'
+  //},
   {
     path: 'pages',
     component: Pages,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
-      { path: 'students',  loadChildren: 'app/pages/students/students.module#StudentsModule' }
+      { path: 'students',  loadChildren: 'app/pages/students/students.module#StudentsModule' },
+      { path: 'materials',  loadChildren: 'app/pages/material/material.module#MaterialModule' }
 
     ]
   }

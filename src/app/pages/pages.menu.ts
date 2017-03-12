@@ -26,7 +26,30 @@ export const PAGES_MENU = [
             order: 0
           }
         }
+      },
+      {
+        path: 'materials',
+        data: {
+          menu: {
+            title: '素材库',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'stories',
+            data: {
+              menu: {
+                title: 'stories',
+              }
+            }
+          }
+        ]
       }
+
     ]
   }
 ];
