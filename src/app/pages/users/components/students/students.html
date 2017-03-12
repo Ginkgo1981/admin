@@ -1,5 +1,5 @@
 <div class="row">
-    <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
+    <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
              title="注册学生列表" baCardClass="with-scroll large-card">
 
         <div class="horizontal-scroll">
@@ -7,11 +7,11 @@
                 <thead>
                 <tr>
                     <th class="table-id">#</th>
-                    <th>手机号</th>
-                    <th></th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Status</th>
+                    <th>cell</th>
+                    <th>token</th>
+                    <th>name</th>
+                    <th>identity_type</th>
+                    <th>detail</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,6 +21,7 @@
                     <td>{{ item.token }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.identity_type }}</td>
+                    <td><a  [routerLink]="['./', item.id]"> 详情</a></td>
                     <!--<td><a class="email-link" href="mailto:{{ item.email }}">{{ item.email }}</a></td>-->
                     <!--<td>-->
                     <!--<button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>-->

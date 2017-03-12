@@ -3,11 +3,11 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class UserslistService {
+export class StudentsService {
 
   constructor(private http:Http) { }
 
-  getData() {
+  getStudents() {
     //noinspection TypeScriptUnresolvedFunction
     return this.http.get('http://localhost:3000/users/user_list')
         .toPromise()
@@ -15,4 +15,13 @@ export class UserslistService {
           return response.json();
         });
   }
+
+  getStudent(id:Number) {
+    return this.http.get(`http://localhost:3000/users/${id}`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
 }

@@ -1,4 +1,4 @@
-import {UserService} from "./user.service";
+import {StudentsService} from '../../../../services/students.service'
 import { Component, OnInit, Input,ViewChild} from '@angular/core'
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
@@ -7,12 +7,12 @@ import { ModalDirective } from 'ng2-bootstrap';
 
 
 @Component({
-  selector: 'user',
-  templateUrl: './user.html',
-  styleUrls: ['./user.scss'],
+  selector: 'student',
+  templateUrl: './student.html',
+  styleUrls: ['./student.scss'],
 
 })
-export class User implements OnInit {
+export class StudentComponent implements OnInit {
   @ViewChild('lgModal') lgModal: ModalDirective;
 
   @Input()
@@ -23,7 +23,7 @@ export class User implements OnInit {
 
   constructor(private route:ActivatedRoute,
               private location:Location,
-              private _service:UserService) {
+              private _service:StudentsService) {
   }
 
   ngOnInit():void {
@@ -33,7 +33,7 @@ export class User implements OnInit {
       let id = +params['id'];
       console.log("====== user id: " + id)
 
-      this._service.getUser(id).then(res => {
+      this._service.getStudent(id).then(res => {
             this.user = res['data']['user']
         console.log(" ===user info ==== %o", this.user)
           }
@@ -43,7 +43,7 @@ export class User implements OnInit {
 
   sendMessage(e): void {
     console.log("======= e ======%o", e)
-    this._service.sendMessage(this.user.id, this.message)
+    //this._service.sendMessage(this.user.id, this.message)
     this.lgModal.hide();
   }
 

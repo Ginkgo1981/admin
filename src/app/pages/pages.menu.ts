@@ -3,17 +3,24 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
-        path: 'students',  // path for our page
+        path: 'users',  // path for our page
         data: { // custom menu declaration
           menu: {
-            title: '学生列表', // menu title
+            title: '用户列表', // menu title
             icon: 'ion-android-home', // menu icon
-            pathMatch: 'prefix', // use it if item children not displayed in menu
-            selected: false,
-            expanded: false,
             order: 0
           }
-        }
+        },
+        children: [
+          {
+            path: 'students',
+            data: {
+              menu: {
+                title: 'students',
+              }
+            }
+          }
+        ]
       },
       {
         path: 'dashboard',
