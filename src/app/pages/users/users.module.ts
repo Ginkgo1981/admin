@@ -6,6 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
 import { StudentsComponent } from "./components/students/students.component"
+import { PointMessageComponent } from "./components/student/pointMessage/pointMessage.component"
 import { UsersComponent } from "./users.component"
 import { StudentsService } from "../../services";
 import { routing } from './users.routing';
@@ -22,7 +23,8 @@ import { routing } from './users.routing';
   declarations: [
     StudentComponent,
     StudentsComponent,
-    UsersComponent
+    UsersComponent,
+    PointMessageComponent
   ],
   providers: [
     StudentsService,

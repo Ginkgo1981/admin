@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,ViewChild, OnDestroy} from '@angular/core'
+import { Component, OnInit, Input,ViewChild,ViewChildren, OnDestroy} from '@angular/core'
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
@@ -12,7 +12,10 @@ import { StudentsService } from '../../../../services'
 
 })
 export class StudentComponent implements OnInit, OnDestroy {
-  @ViewChild('lgModal') lgModal: ModalDirective;
+  @ViewChild('pointmessage') pointmessage;
+      //: ModalDirective;
+
+
 
   @Input()
   student:Student
@@ -48,7 +51,9 @@ export class StudentComponent implements OnInit, OnDestroy {
 
 
   showChildModal(): void {
-    this.lgModal.show();
+    console.info("===== showChildModal ===== %o", this.lgModal)
+    this.pointmessage.hello()
+    //this.lgModal.show();
   }
 
   hideChildModal(): void {
