@@ -1,13 +1,12 @@
-import {Injectable} from '@angular/core'
+import { Injectable } from '@angular/core'
 import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Story } from '../models'
 import 'rxjs/add/operator/toPromise';
-import {StoryModel} from '../models/story'
 
 @Injectable()
 export class StoriesService {
 
-  constructor(private http:Http) {
-  }
+  constructor(private http:Http) { }
 
   getStories() {
     //noinspection TypeScriptUnresolvedFunction
@@ -21,11 +20,10 @@ export class StoriesService {
 
   getStory(id:Number) {
 
-
   }
 
 
-  createStory(story:StoryModel) {
+  createStory(story:Story) {
     let headers = new Headers({'Content-Type': 'application/json'});
     let data = {
       title: story.title,

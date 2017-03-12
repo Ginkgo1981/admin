@@ -1,10 +1,9 @@
-import { StudentsService } from '../../../../services'
 import { Component, OnInit, Input,ViewChild, OnDestroy} from '@angular/core'
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
-
-
+import { Student } from '../../../../models'
+import { StudentsService } from '../../../../services'
 
 @Component({
   selector: 'student',
@@ -16,7 +15,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild('lgModal') lgModal: ModalDirective;
 
   @Input()
-  user:any
+  student:Student
 
   @Input()
   message: String
@@ -34,8 +33,8 @@ export class StudentComponent implements OnInit, OnDestroy {
       console.log("====== user id: " + id)
 
       this._service.getStudent(id).then(res => {
-            this.user = res['data']['user']
-        console.log(" ===user info ==== %o", this.user)
+            this.student = res['data']['user']
+        console.log(" ===user info ==== %o", this.student)
           }
       )
     });
@@ -43,7 +42,7 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   sendMessage(e): void {
     console.log("======= e ======%o", e)
-    //this._service.sendMessage(this.user.id, this.message)
+    //this._service.sendMessage(this.student.id, this.message)
     this.lgModal.hide();
   }
 
@@ -53,7 +52,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   hideChildModal(): void {
-    console.log('===== hideChildModal ===== %o', this.user)
+    console.log('===== hideChildModal ===== %o', this.student)
 
     this.lgModal.hide();
   }

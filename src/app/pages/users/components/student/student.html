@@ -1,4 +1,4 @@
-<div *ngIf="user">
+<div *ngIf="student">
     <div class="row">
         <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
                  title="用户基本信息" baCardClass="traffic-panel medium-card">
@@ -6,13 +6,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputFirstName">First Name</label>
-                        <input type="text" class="form-control" value="{{user.name}}" id="inputFirstName">
+                        <input type="text" class="form-control" value="{{student.name}}" id="inputFirstName">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputLastName">cell</label>
-                        <input type="text" class="form-control" id="inputLastName" value="{{user.cell}}">
+                        <input type="text" class="form-control" id="inputLastName" value="{{student.cell}}">
                     </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputFirstName">identity_type</label>
-                        <input type="email" class="form-control" id="inputEmail" value="{{user.identity_type}}">
+                        <input type="email" class="form-control" id="inputEmail" value="{{student.identity_type}}">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputWebsite">id</label>
-                        <input type="text" class="form-control" id="inputWebsite" value="{{user.id}}">
+                        <input type="text" class="form-control" id="inputWebsite" value="{{student.id}}">
                     </div>
                 </div>
             </div>
