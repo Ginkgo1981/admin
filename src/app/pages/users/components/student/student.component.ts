@@ -13,15 +13,10 @@ import { StudentsService } from '../../../../services'
 })
 export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild('pointmessage') pointmessage;
-      //: ModalDirective;
-
-
 
   @Input()
   student:Student
 
-  @Input()
-  message: String
 
   constructor(private route:ActivatedRoute,
               private location:Location,
@@ -30,7 +25,6 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
 
-    this.message = '';
     this.route.params.forEach((params:Params) => {
       let id = +params['id'];
       console.log("====== user id: " + id)
@@ -43,23 +37,10 @@ export class StudentComponent implements OnInit, OnDestroy {
     });
   }
 
-  sendMessage(e): void {
-    console.log("======= e ======%o", e)
-    //this._service.sendMessage(this.student.id, this.message)
-    this.lgModal.hide();
-  }
 
 
   showChildModal(): void {
-    console.info("===== showChildModal ===== %o", this.lgModal)
-    this.pointmessage.hello()
-    //this.lgModal.show();
-  }
-
-  hideChildModal(): void {
-    console.log('===== hideChildModal ===== %o', this.student)
-
-    this.lgModal.hide();
+    this.pointmessage.showChildModal()
   }
 
   ngOnDestroy():void {

@@ -1,31 +1,49 @@
 <!-- Large modal -->
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" (click)="lgModal.hide()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Large modal</h4>
+                <h4 class="modal-title">发送信息</h4>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Recipients">
+
+
+                    <div class="col-xl-6 col-lg-6">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="{{ student.id }}" placeholder="receiver_id">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="{{ student.name }}" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" [(ngModel)]="messageBody" name="messageBody"
+                                      placeholder="message here"> </textarea>
+                        </div>
+
+
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
+                    <div class="col-xl-6 col-lg-6">
+                        <ng-select
+                                [options]="storyOptions"
+                                (selected)="attachment.attachment_id=$event.value">
+                        </ng-select>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]="message" name="message" placeholder="Subject">
+                    <div class="row col-xl-9">
+
+                        <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
+
                     </div>
-                    <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
+
                 </form>
 
             </div>
             <div class="modal-footer">
-                <!--<button class="btn btn-primary confirm-btn" (click)="lgModal.hide()">发送信息 changes</button>-->
-                <button class="btn btn-primary confirm-btn" (click)="hideChildModal()">Save changes</button>
             </div>
         </div>
     </div>
