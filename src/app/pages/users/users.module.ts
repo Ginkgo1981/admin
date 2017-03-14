@@ -8,9 +8,11 @@ import { StudentComponent } from "./components/student/student.component"
 import { StudentsComponent } from "./components/students/students.component"
 import { PointMessageComponent } from "./components/student/pointMessage/pointMessage.component"
 import { UsersComponent } from "./users.component"
-import { StudentsService, StoriesService, MessagesService} from "../../services";
+import { UsersService, StoriesService, MessagesService} from "../../services";
 import { routing } from './users.routing';
 import {SelectModule} from 'ng-select';
+
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import {SelectModule} from 'ng-select';
     FormsModule,
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
-    SelectModule
+    SelectModule,
+    SimpleNotificationsModule
   ],
   declarations: [
     StudentComponent,
@@ -29,7 +32,7 @@ import {SelectModule} from 'ng-select';
     PointMessageComponent
   ],
   providers: [
-    StudentsService,
+    UsersService,
     StoriesService,
     MessagesService,
     GlobalDataService

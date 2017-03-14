@@ -50,7 +50,7 @@ export const PAGES_MENU = [
             path: 'stories',
             data: {
               menu: {
-                title: 'stories',
+                title: '图文列表',
               }
             }
           }

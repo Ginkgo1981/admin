@@ -3,7 +3,7 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class StudentsService {
+export class UsersService {
 
   constructor(private http:Http) { }
 

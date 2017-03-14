@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {StudentsService} from '../../../../services'
+import {UsersService} from '../../../../services'
 import { Student } from '../../../../models'
 
 @Component({
@@ -9,12 +9,13 @@ import { Student } from '../../../../models'
 export class StudentsComponent {
   students:Array<Student>;
 
-  constructor(private _service: StudentsService) {
+  constructor(private _service: UsersService) {
     _service.getStudents().then(res => {
           console.log("===== res %o", res)
           this.students = res['data']
         }
     );
+
   }
 
 }

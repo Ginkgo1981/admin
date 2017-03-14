@@ -30,14 +30,16 @@
                     </div>
                     <div class="col-xl-6 col-lg-6">
                         <ng-select
+                                label="stories"
                                 [options]="storyOptions"
+                                highlightColor="#B39DDB"
+                                highlightTextColor="#4527A0"
                                 (selected)="attachment.attachment_id=$event.value">
                         </ng-select>
                     </div>
                     <div class="row col-xl-9">
 
                         <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
-
                     </div>
 
                 </form>

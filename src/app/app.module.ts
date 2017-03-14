@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-import {SelectModule} from 'ng-select';
+import { SelectModule } from 'ng-select';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 
 /*
@@ -42,6 +43,7 @@ export type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    SimpleNotificationsModule.forRoot(),
     HttpModule,
     RouterModule,
     FormsModule,
@@ -49,7 +51,8 @@ export type StoreType = {
     NgaModule.forRoot(),
     PagesModule,
     routing,
-    SelectModule
+    SelectModule,
+
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

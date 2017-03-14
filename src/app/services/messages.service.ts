@@ -20,10 +20,20 @@ export class MessagesService {
       attachment_type: attachment.attachment_type
     }
     console.log("send_message: data: %o", data)
-    return this.http.post(`http://localhost:3000/users/send_point_message`, JSON.stringify(data), {headers: headers})
+    return this.http.post(`http://localhost:3000/messages/send_point_message`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
         });
   }
+
+  getMessages() {
+    //noinspection TypeScriptUnresolvedFunction
+    return this.http.get('http://localhost:3000/messages/list')
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
 }

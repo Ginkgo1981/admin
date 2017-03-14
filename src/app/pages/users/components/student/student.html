@@ -30,23 +30,51 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="showChildModal()" >发送消息</button>
+            <button class="btn btn-primary" (click)="showChildModal()">发送消息</button>
         </ba-card>
 
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
-                 title="消息列表" baCardClass="medium-card">
+    </div>
+    <div class="row">
+        <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                 title="消息列表" baCardClass="large-card">
+
+            <div class="horizontal-scroll">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th class="table-id">#</th>
+                        <th>user_id</th>
+                        <th>receiver_id</th>
+                        <th>content</th>
+                        <th>type</th>
+                        <th>att_id</th>
+                        <th>att_type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of messages">
+                        <td class="table-id">{{ item.id }}</td>
+                        <td>{{ item.user_id }}</td>
+                        <td>{{ item.receiver_id }}</td>
+                        <td>{{ item.content }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.attachment_id }}</td>
+                        <td>{{ item.attachment_type }}</td>
+                        <td><a [routerLink]="['./', item.id]"> 详情</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
         </ba-card>
     </div>
 
     <div>
-        <point-message [student]="student" #pointmessage></point-message>
+        <point-message [student]="student" (sendMessageOut)="receiveChild($event)" #pointmessage></point-message>
+        <simple-notifications></simple-notifications>
 
     </div>
-
-
-
-
-
 
 
 </div>

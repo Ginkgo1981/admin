@@ -1,3 +1,3 @@
 export {StoriesService} from './stories.service'
-export {StudentsService} from './students.service'
+export {UsersService} from './users.service.ts'
 export {MessagesService} from './messages.service'
