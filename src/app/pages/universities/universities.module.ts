@@ -10,8 +10,9 @@ import { SelectModule } from 'ng-select';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import {UniversityListComponent} from "./components/universityList.component";
-import {UniversitiesService} from "../../services/universities";
+import { UniversityListComponent} from "./components/universityList/universityList.component";
+import {UniversitiesService} from "../../services/universities.service";
+import {UniversityComponent} from "./components/university/university.component";
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {UniversitiesService} from "../../services/universities";
   ],
   declarations: [
     UniversitiesComponent,
-    UniversityListComponent
+    UniversityListComponent,
+    UniversityComponent
   ],
   providers: [
     UniversitiesService

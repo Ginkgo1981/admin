@@ -16,4 +16,12 @@ export class UniversitiesService {
         });
   }
 
+  getUniversity(id: Number){
+    return this.http.get('http://localhost:3000/universities/' + id)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
 }

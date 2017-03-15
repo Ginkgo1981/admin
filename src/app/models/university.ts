@@ -1,3 +1,4 @@
+import {Major} from "./majoys";
 export class University {
   id: Number;
   name: String;
@@ -6,4 +7,7 @@ export class University {
   address: String;
   website: String;
   tel: String;
+  brief: String;
+  majors: Array<Major>
+
 }

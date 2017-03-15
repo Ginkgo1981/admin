@@ -1,0 +1,65 @@
+<div *ngIf="university">
+    <div class="row">
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
+                 title="学校基本信息" baCardClass="traffic-panel medium-card">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputFirstName"> Name</label>
+                        <input type="text" class="form-control" value="{{university.name}}" id="inputFirstName">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputLastName">code</label>
+                        <input type="text" class="form-control" id="inputLastName" value="{{university.code}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputFirstName">city</label>
+                        <input type="email" class="form-control" id="inputEmail" value="{{university.city}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="inputWebsite">address</label>
+                        <input type="text" class="form-control" id="inputWebsite" value="{{university.address}}">
+                    </div>
+                </div>
+            </div>
+        </ba-card>
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-xs-12"
+                 title="专业列表" baCardClass="medium-card">
+            <input
+                    type='text'
+                    placeholder='输入专业名称'
+                    (keyup)='updateFilter($event)'
+            />
+            <ngx-datatable
+                    class='material'
+                    [columns]="columns"
+                    [columnMode]="'force'"
+                    [footerHeight]="50"
+                    [rowHeight]="'auto'"
+                    [limit]="10"
+                    [selected]="selected"
+                    [selectionType]="'single'"
+                    (activate)="onActivate($event)"
+                    (select)='onSelect($event)'
+                    [rows]='rows'>
+            </ngx-datatable>
+
+        </ba-card>
+
+    </div>
+    <div class="row">
+    </div>
+    <div>
+        <!--<simple-notifications></simple-notifications>-->
+
+    </div>
+</div>
+

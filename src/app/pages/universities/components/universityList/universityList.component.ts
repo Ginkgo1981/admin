@@ -2,8 +2,8 @@ import { Component, OnInit, Input,ViewChild} from '@angular/core'
 import { Router,ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
-import {UniversitiesService } from "../../../services/universities";
-import {University} from "../../../models/university";
+import {UniversitiesService } from "../../../../services/universities.service";
+import {University} from "../../../../models/university";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 
 
@@ -60,6 +60,7 @@ export class UniversityListComponent implements OnInit {
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
+    this.router.navigate(['/pages/universities/university-list/', selected[0]['id']]);
   }
 
   onActivate(event) {
