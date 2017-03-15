@@ -1,0 +1,30 @@
+<div class="row">
+    <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+             title="消息列表" baCardClass="large-card">
+
+        <input
+                type='text'
+                style='padding:8px;margin:15px auto;width:30%;'
+                placeholder='输入学校名称'
+                (keyup)='updateFilter($event)'
+        />
+        <ngx-datatable
+                class='material'
+                [columns]="columns"
+                [columnMode]="'force'"
+                [headerHeight]="50"
+                [footerHeight]="50"
+                [rowHeight]="'auto'"
+                [limit]="30"
+                [selected]="selected"
+                [selectionType]="'single'"
+                (activate)="onActivate($event)"
+                (select)='onSelect($event)'
+                [rows]='rows'>
+        </ngx-datatable>
+
+    </ba-card>
+
+</div>
+
+

@@ -35,6 +35,26 @@ export const PAGES_MENU = [
         ]
       } ,
       {
+        path: 'universities',  // path for our page
+        data: { // custom menu declaration
+          menu: {
+            title: '高校列表', // menu title
+            icon: 'ion-android-home', // menu icon
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'university-list',
+            data: {
+              menu: {
+                title: '高校列表',
+              }
+            }
+          }
+        ]
+      } ,
+      {
         path: 'materials',
         data: {
           menu: {
