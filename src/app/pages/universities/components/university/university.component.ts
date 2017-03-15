@@ -7,6 +7,7 @@ import {University} from "../../../../models/university";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {Major} from "../../../../models/majoys";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
+import {UsersService} from "../../../../services/users.service";
 
 @Component({
   selector: 'university',
@@ -18,10 +19,14 @@ export class UniversityComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,
               private location:Location,
-              private _service:UniversitiesService) {
+              private _university_service:UniversitiesService,
+              private _users_service: UsersService
+
+  ) {
   }
 
   university:University
+  students:Array<Student>;
 
   rows = [];
   temp = [];
@@ -38,11 +43,12 @@ export class UniversityComponent implements OnInit {
     this.route.params.forEach((params:Params) => {
       let id = +params['id'];
       this.load_university(id)
+      this.load_students()
     })
   }
 
   load_university(id:Number) {
-    this._service.getUniversity(id).then(
+    this._university_service.getUniversity(id).then(
         res => {
           this.university = res.data
           this.rows = [...res.data.majors]
@@ -50,6 +56,16 @@ export class UniversityComponent implements OnInit {
           console.log("===== university: %o", this.university)
         }
     )
+  }
+
+  load_students(){
+    this._users_service.getStudents().then(res => {
+          console.log("===== res %o", res)
+          this.students = res['data']
+        }
+    );
+
+
   }
 
   updateFilter(event) {

@@ -13,6 +13,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { UniversityListComponent} from "./components/universityList/universityList.component";
 import {UniversitiesService} from "../../services/universities.service";
 import {UniversityComponent} from "./components/university/university.component";
+import {UsersService} from "../../services/users.service";
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {UniversityComponent} from "./components/university/university.component"
     UniversityComponent
   ],
   providers: [
-    UniversitiesService
+    UniversitiesService,
+      UsersService
   ]
 
 })
