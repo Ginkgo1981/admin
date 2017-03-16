@@ -1,4 +1,3 @@
-<!-- Large modal -->
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -13,37 +12,42 @@
                 <form>
 
 
-                    <div class="col-xl-6 col-lg-6">
+                    <div class="row">
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ student.id }}" placeholder="receiver_id">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="{{ student.name }}" placeholder="name">
-                        </div>
-                        <div class="form-group">
+
+                        <div class="col-xl-6 col-lg-6">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ student.id }}" placeholder="receiver_id">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{ student.name }}" placeholder="name">
+                            </div>
+                            <div class="form-group">
                             <textarea class="form-control" [(ngModel)]="messageBody" name="messageBody"
                                       placeholder="message here"> </textarea>
+                            </div>
+
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <ng-select
+                                    [options]="options"
+                                    highlightColor="#B39DDB"
+                                    highlightTextColor="#4527A0" >
+                                    (selected)="attachment.attachment_id=$event.value">
+                            </ng-select>
                         </div>
 
+                    </div>
 
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <ng-select
-                                label="stories"
-                                [options]="storyOptions"
-                                highlightColor="#B39DDB"
-                                highlightTextColor="#4527A0"
-                                (selected)="attachment.attachment_id=$event.value">
-                        </ng-select>
-                    </div>
+
                     <div class="row col-xl-9">
 
                         <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
                     </div>
 
                 </form>
-
             </div>
             <div class="modal-footer">
             </div>

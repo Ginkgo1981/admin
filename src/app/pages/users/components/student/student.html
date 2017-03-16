@@ -43,7 +43,9 @@
     </div>
 
     <div>
-        <point-message [student]="student" (sendMessageOut)="receiveChild($event)" #pointmessage></point-message>
+        <!--<point-message [student]="student" (sendMessageOut)="receiveChild($event)" #pointmessage></point-message>-->
+
+        <ba-send-point-messages [student]="student" [options]="options" (sendMessageOut)="receiveChild($event)" #pointmessage></ba-send-point-messages>
         <simple-notifications></simple-notifications>
 
     </div>

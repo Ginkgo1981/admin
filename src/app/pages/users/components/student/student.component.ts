@@ -6,6 +6,7 @@ import { Student } from '../../../../models'
 import { UsersService } from '../../../../services/users.service'
 import { MessagesService } from "../../../../services/messages.service";
 import { NotificationsService } from 'angular2-notifications';
+import {StoriesService} from "../../../../services/stories.service";
 
 @Component({
   selector: 'student',
@@ -19,18 +20,26 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   messages:Array<Message>
 
+
+  @Input() options: Array<any>
+
   constructor(private route:ActivatedRoute,
               private location:Location,
               private _users_service:UsersService,
               private _notificationsService:NotificationsService,
-              private _messages_service:MessagesService) {
+              private _messages_service:MessagesService,
+              private _story_service: StoriesService
+
+  ) {
   }
 
   ngOnInit():void {
     this.route.params.forEach((params:Params) => {
       let id = +params['id'];
+      this.load_options();
       this.load_student(id);
       this.load_messages();
+      //this.options = this.storyOptions
     });
   }
 
@@ -47,7 +56,18 @@ export class StudentComponent implements OnInit, OnDestroy {
     })
   }
 
+
+  load_options(){
+
+    this._story_service.getStories().then(res => {
+      this.options = res.data.map(s => ({value: s.id, label: s.title}))
+    })
+
+  }
+
   showChildModal():void {
+
+    console.log(" ======options: %o", this.storyOptions)
     this.pointmessage.showChildModal()
   }
 

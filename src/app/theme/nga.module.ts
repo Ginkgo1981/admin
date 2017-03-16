@@ -3,7 +3,9 @@ import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
-
+import {MessagesService} from "../services/messages.service";
+import {SelectModule} from 'ng-select';
+import { ModalModule } from 'ng2-bootstrap';
 import {
   BaThemeConfig
 } from './theme.config';
@@ -28,7 +30,8 @@ import {
   BaPictureUploader,
   BaSidebar,
   BaStudents,
-  BaMessages
+  BaMessages,
+  BaSendPointMessages
 } from './components';
 
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
@@ -73,14 +76,16 @@ const NGA_COMPONENTS = [
   BaPictureUploader,
   BaSidebar,
   BaStudents,
-  BaMessages
+  BaMessages,
+  BaSendPointMessages
 ];
 
 const NGA_DIRECTIVES = [
   BaScrollPosition,
   BaSlimScroll,
   BaThemeRun,
-  BaCardBlur
+  BaCardBlur,
+  //ModalDirective
 ];
 
 const NGA_PIPES = [
@@ -93,7 +98,8 @@ const NGA_SERVICES = [
   BaImageLoaderService,
   BaThemePreloader,
   BaThemeSpinner,
-  BaMenuService
+  BaMenuService,
+  MessagesService
 ];
 
 const NGA_VALIDATORS = [
@@ -113,6 +119,9 @@ const NGA_VALIDATORS = [
     FormsModule,
     ReactiveFormsModule,
     NgUploaderModule,
+    SelectModule,
+    ModalModule
+
   ],
   exports: [
     ...NGA_PIPES,
