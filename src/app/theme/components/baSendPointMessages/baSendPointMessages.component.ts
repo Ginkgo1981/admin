@@ -9,19 +9,18 @@ import {Attachment} from "../../../models/attachment";
   templateUrl: './baSendPointMessages.html'
 })
 export class BaSendPointMessages implements OnInit{
-
-
   @ViewChild('lgModal') lgModal:ModalDirective;
   @Input() student:Student;
-  @Output() sendMessageOut = new EventEmitter();
   @Input() options: Array<any>
+  @Input() attachment_type: String
+  @Output() sendMessageOut = new EventEmitter();
   attachment:Attachment;
   messageBody:String;
   constructor(private _message_service: MessagesService){}
 
   ngOnInit():void {
     this.attachment = new Attachment();
-    this.attachment.attachment_type = 'Story'
+    this.attachment.attachment_type = this.attachment_type
   }
 
   showChildModal() {
@@ -35,10 +34,4 @@ export class BaSendPointMessages implements OnInit{
         }
     )
   }
-
-
-
-
-
-
 }

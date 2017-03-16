@@ -10,15 +10,11 @@
             </div>
             <div class="modal-body">
                 <form>
-
-
                     <div class="row">
-
-
                         <div class="col-xl-6 col-lg-6">
-
                             <div class="form-group">
-                                <input type="text" class="form-control" value="{{ student.id }}" placeholder="receiver_id">
+                                <input type="text" class="form-control" value="{{ student.id }}"
+                                       placeholder="receiver_id">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" value="{{ student.name }}" placeholder="name">
@@ -27,23 +23,17 @@
                             <textarea class="form-control" [(ngModel)]="messageBody" name="messageBody"
                                       placeholder="message here"> </textarea>
                             </div>
-
-
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <ng-select
                                     [options]="options"
                                     highlightColor="#B39DDB"
-                                    highlightTextColor="#4527A0" >
-                                    (selected)="attachment.attachment_id=$event.value">
+                                    highlightTextColor="#4527A0"
+                                (selected)="attachment.attachment_id=$event.value">
                             </ng-select>
                         </div>
-
                     </div>
-
-
                     <div class="row col-xl-9">
-
                         <button type="submit" class="btn btn-success" (click)="sendMessage($event)">Send</button>
                     </div>
 
