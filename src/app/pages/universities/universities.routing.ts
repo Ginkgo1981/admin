@@ -10,8 +10,8 @@ export const routes: Routes = [
     path: '',
     component: UniversitiesComponent,
     children:[
-      { path: 'university-list', component: UniversityListComponent },
-      { path: 'university-list/:id', component: UniversityComponent },
+      { path: 'list', component: UniversityListComponent },
+      { path: ':id', component: UniversityComponent },
     ]
   }
 ];

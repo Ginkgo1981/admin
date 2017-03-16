@@ -60,7 +60,7 @@ export class UniversityListComponent implements OnInit {
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
-    this.router.navigate(['/pages/universities/university-list/', selected[0]['id']]);
+    this.router.navigate(['/pages/universities/', selected[0]['id']]);
   }
 
   onActivate(event) {

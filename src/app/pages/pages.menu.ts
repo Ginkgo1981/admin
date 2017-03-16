@@ -15,11 +15,47 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'users',  // path for our page
-        data: { // custom menu declaration
+        path: 'messages',
+        data: {
           menu: {
-            title: '用户列表', // menu title
-            icon: 'ion-android-home', // menu icon
+            title: '消息',
+            icon: 'ion-android-home',
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'point_messages',
+            data: {
+              menu: {
+                title: '点对点消息',
+              }
+            }
+          },
+          {
+            path: 'subscription_messages',
+            data: {
+              menu: {
+                title: '订阅消息',
+              }
+            }
+          },
+          {
+            path: 'notification_messages',
+            data: {
+              menu: {
+                title: '群发消息',
+              }
+            }
+          }
+        ]
+      } ,
+      {
+        path: 'users',
+        data: {
+          menu: {
+            title: '用户',
+            icon: 'ion-android-home',
             order: 0
           }
         },
@@ -28,24 +64,24 @@ export const PAGES_MENU = [
             path: 'students',
             data: {
               menu: {
-                title: '学生列表',
+                title: '考生列表',
               }
             }
           }
         ]
       } ,
       {
-        path: 'universities',  // path for our page
-        data: { // custom menu declaration
+        path: 'universities',
+        data: {
           menu: {
-            title: '高校列表', // menu title
-            icon: 'ion-android-home', // menu icon
+            title: '高校',
+            icon: 'ion-android-home',
             order: 0
           }
         },
         children: [
           {
-            path: 'university-list',
+            path: 'list',
             data: {
               menu: {
                 title: '高校列表',
