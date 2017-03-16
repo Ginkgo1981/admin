@@ -111,6 +111,28 @@ export const PAGES_MENU = [
             }
           }
         ]
+      },
+      {
+        path: 'campaigns',
+        data: {
+          menu: {
+            title: '活动',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'list',
+            data: {
+              menu: {
+                title: '活动列表',
+              }
+            }
+          }
+        ]
       }
 
     ]
