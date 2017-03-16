@@ -12,6 +12,7 @@ import {MessagesComponent} from "./messages.component";
 import {NotificationMessagesComponent} from "./components/notificationMessages/notificationMessages.component";
 import {PointMessagesComponent} from "./components/pointMessages/pointMessages.component";
 import {SubscriptionMessagesComponent} from "./components/subscriptionMessages/subscriptionMessages.component";
+import {MessagesService} from "../../services/messages.service";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import {SubscriptionMessagesComponent} from "./components/subscriptionMessages/s
       SubscriptionMessagesComponent
   ],
   providers: [
+      MessagesService
   ]
 
 })

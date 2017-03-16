@@ -1,10 +1,10 @@
 {
-  "name": "ng2-admin",
+  "name": "Gaokao 2017",
   "version": "0.9.0",
-  "description": "Angular 2 and Bootstrap 4 Admin Template.",
-  "author": "akveo",
-  "homepage": "http://akveo.github.io/ng2-admin/",
-  "license": "MIT",
+  "description": "gaokao 2017",
+  "author": "chenjian",
+  "homepage": "",
+  "license": "",
   "dependencies": {
     "@angular/common": "2.4.9",
     "@angular/compiler": "2.4.9",
@@ -175,10 +175,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akveo/ng2-admin.git"
+    "url": ""
   },
   "bugs": {
-    "url": "https://github.com/akveo/ng2-admin/issues"
   },
   "engines": {
     "node": ">= 5.4.1 < 7"
