@@ -1,2 +1,2 @@
 export { Story } from './story'
-export { Student } from './student'
+export { User } from './user'

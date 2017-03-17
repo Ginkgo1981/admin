@@ -2,7 +2,7 @@ import { Component, OnInit, Input,ViewChild,ViewChildren, OnDestroy} from '@angu
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
-import { Student } from '../../../../models'
+import { User } from '../../../../models'
 import { UsersService } from '../../../../services/users.service'
 import { MessagesService } from "../../../../services/messages.service";
 import { NotificationsService } from 'angular2-notifications';
@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   @ViewChild('story_message') story_message;
   @ViewChild('university_message') university_message;
 
-  @Input() student:Student
+  @Input() user:User
 
   messages:Array<Message>;
   @Input() storyOptions: Array<any>;
@@ -46,8 +46,8 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   load_student(id: Number){
-    this._users_service.getStudent(id).then(res => {
-          this.student = res['data']['user']
+    this._users_service.getUser(id).then(res => {
+          this.user = res['data']['user']
         }
     );
   }

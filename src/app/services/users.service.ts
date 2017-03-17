@@ -7,16 +7,15 @@ export class UsersService {
 
   constructor(private http:Http) { }
 
-  getStudents() {
+  getUsers(identity_type) {
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.get('http://localhost:3000/users/user_list')
+    return this.http.get(`http://localhost:3000/users/list/${identity_type}`)
         .toPromise()
         .then((response) => {
           return response.json();
         });
   }
-
-  getStudent(id:Number) {
+  getUser(id:Number) {
     return this.http.get(`http://localhost:3000/users/${id}`)
         .toPromise()
         .then((response) => {

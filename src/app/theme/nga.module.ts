@@ -31,7 +31,7 @@ import {
   BaSidebar,
   BaStudents,
   BaMessages,
-  BaSendPointMessages
+  BaSendMessages
 } from './components';
 
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
@@ -77,7 +77,7 @@ const NGA_COMPONENTS = [
   BaSidebar,
   BaStudents,
   BaMessages,
-  BaSendPointMessages
+  BaSendMessages
 ];
 
 const NGA_DIRECTIVES = [

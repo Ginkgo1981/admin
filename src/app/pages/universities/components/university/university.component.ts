@@ -26,7 +26,7 @@ export class UniversityComponent implements OnInit {
   }
 
   university:University
-  students:Array<Student>;
+  students:Array<User>;
 
   rows = [];
   temp = [];
@@ -59,7 +59,7 @@ export class UniversityComponent implements OnInit {
   }
 
   load_students(){
-    this._users_service.getStudents().then(res => {
+    this._users_service.getUsers('User').then(res => {
           console.log("===== res %o", res)
           this.students = res['data']
         }

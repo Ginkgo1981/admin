@@ -2,23 +2,33 @@ import {Component, ViewChild, Input, Output, ElementRef, EventEmitter, OnInit} f
 import {MessagesService} from "../../../services/messages.service";
 import { ModalDirective } from 'ng2-bootstrap';
 import {Attachment} from "../../../models/attachment";
+import {User} from "../../../models/user";
 
 @Component({
-  selector: 'ba-send-point-messages',
-  styleUrls: ['./baSendPointMessages.scss'],
-  templateUrl: './baSendPointMessages.html'
+  selector: 'ba-send-messages',
+  styleUrls: ['./baSendMessages.scss'],
+  templateUrl: './baSendMessages.html'
 })
-export class BaSendPointMessages implements OnInit{
+export class BaSendMessages implements OnInit{
   @ViewChild('lgModal') lgModal:ModalDirective;
-  @Input() student:Student;
+  @Input() receiver:User;
+  @Input() message_type: String;
   @Input() options: Array<any>
   @Input() attachment_type: String
   @Output() sendMessageOut = new EventEmitter();
+
+
+  sender: User;
   attachment:Attachment;
-  messageBody:String;
+  content:String;
   constructor(private _message_service: MessagesService){}
 
   ngOnInit():void {
+
+    //todo
+    this.sender = new User();
+    this.sender.id = 50;
+
     this.attachment = new Attachment();
     this.attachment.attachment_type = this.attachment_type
   }
@@ -28,10 +38,11 @@ export class BaSendPointMessages implements OnInit{
   }
 
   sendMessage(e):void {
-    this._message_service.sendMessage(this.student.id, this.messageBody, this.attachment).then(res => {
-          this.lgModal.hide();
-          this.sendMessageOut.emit("succ");
-        }
-    )
+    console.log("====== sendMessage ========")
+    //this._message_service.sendMessage(this.sender.id, this.receiver.id, this.message_type, this.content, this.attachment).then(res => {
+    //      this.lgModal.hide();
+    //      this.sendMessageOut.emit("succ");
+    //    }
+    //)
   }
 }

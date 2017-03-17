@@ -15,25 +15,15 @@ import {MessagesService} from "../../../../services/messages.service";
 })
 export class PointMessagesComponent implements OnInit {
 
-
   messages:Array<Message>
-
-  constructor(private _service:MessagesService) {
-
-
-  }
-
-
+  constructor(private _service:MessagesService) {}
   ngOnInit():void {
-
-    this._service.getMessages().then(res => {
+    this._service.getMessages('PointMessage').then(res => {
           let messages = res.data
           console.log("===== messages ==== %o", messages)
           this.messages = messages;
         }
     )
-
-
   }
 
 }
