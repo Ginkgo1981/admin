@@ -30,11 +30,13 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="showChildModal()">发送消息</button>
+            <button class="btn btn-primary" (click)="show_story_message_modal()">发送图文消息</button>
+            <button class="btn btn-primary" (click)="show_university_message_modal()">发送学校推荐</button>
         </ba-card>
 
     </div>
     <div class="row">
+
         <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
                  title="消息列表" baCardClass="large-card">
             <ba-messages-list [messages]="messages"></ba-messages-list>
@@ -43,9 +45,8 @@
     </div>
 
     <div>
-        <!--<point-message [student]="student" (sendMessageOut)="receiveChild($event)" #pointmessage></point-message>-->
-
-        <ba-send-point-messages [student]="student" [options]="options" (sendMessageOut)="receiveChild($event)" #pointmessage></ba-send-point-messages>
+        <ba-send-point-messages [student]="student" [options]="storyOptions" [attachment_type]="'Story'" (sendMessageOut)="receiveChild($event)" #story_message></ba-send-point-messages>
+        <ba-send-point-messages [student]="student" [options]="universityOptions" [attachment_type]="'University'" (sendMessageOut)="receiveChild($event)" #university_message></ba-send-point-messages>
         <simple-notifications></simple-notifications>
 
     </div>
