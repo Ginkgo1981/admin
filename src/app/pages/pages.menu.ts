@@ -44,7 +44,7 @@ export const PAGES_MENU = [
             path: 'notification_messages',
             data: {
               menu: {
-                title: '群发消息',
+                title: '广播消息',
               }
             }
           }

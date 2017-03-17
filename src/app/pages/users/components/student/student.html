@@ -30,8 +30,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="show_story_message_modal()">发送图文消息</button>
-            <button class="btn btn-primary" (click)="show_university_message_modal()">发送学校推荐</button>
+            <button class="btn btn-primary" (click)="show_message_modal()">发送消息</button>
+            <!--<button class="btn btn-primary" (click)="show_university_message_modal()">发送学校推荐</button>-->
         </ba-card>
 
     </div>
@@ -45,19 +45,11 @@
     </div>
 
     <div>
-        <ba-send-messages [receiver]="user"
+        <ba-send-messages [receiver_id]="user.id"
                           [message_type]="'PointMessage'"
-                          [options]="storyOptions"
-                          [attachment_type]="'Story'"
                           (sendMessageOut)="receiveChild($event)"
-                          #story_message>
+                          #message_component>
         </ba-send-messages>
-        <ba-send-messages [receiver]="user"
-                          [message_type]="'PointMessage'"
-                          [options]="universityOptions"
-                          [attachment_type]="'University'"
-                          (sendMessageOut)="receiveChild($event)"
-                          #university_message></ba-send-messages>
         <simple-notifications></simple-notifications>
 
     </div>

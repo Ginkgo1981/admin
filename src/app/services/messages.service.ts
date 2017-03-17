@@ -37,4 +37,12 @@ export class MessagesService {
         });
   }
 
+
+  getOptions() {
+    return this.http.get(`http://localhost:3000/messages/load_options`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
 }

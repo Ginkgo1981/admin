@@ -20,9 +20,7 @@ export class UniversityComponent implements OnInit {
   constructor(private route:ActivatedRoute,
               private location:Location,
               private _university_service:UniversitiesService,
-              private _users_service: UsersService
-
-  ) {
+              private _users_service: UsersService ) {
   }
 
   university:University
@@ -59,13 +57,11 @@ export class UniversityComponent implements OnInit {
   }
 
   load_students(){
-    this._users_service.getUsers('User').then(res => {
+    this._users_service.getUsers('Student').then(res => {
           console.log("===== res %o", res)
           this.students = res['data']
         }
     );
-
-
   }
 
   updateFilter(event) {
@@ -81,8 +77,6 @@ export class UniversityComponent implements OnInit {
     this.rows = temp;
   }
 
-
-
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
     //this.router.navigate(['/pages/universities/university-list/', selected[0]['id']]);
@@ -91,10 +85,5 @@ export class UniversityComponent implements OnInit {
   onActivate(event) {
     console.log('Activate Event', event);
   }
-
-
-
-
-
 
 }

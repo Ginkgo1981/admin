@@ -9,40 +9,53 @@ import {User} from "../../../models/user";
   styleUrls: ['./baSendMessages.scss'],
   templateUrl: './baSendMessages.html'
 })
-export class BaSendMessages implements OnInit{
+export class BaSendMessages implements OnInit {
   @ViewChild('lgModal') lgModal:ModalDirective;
-  @Input() receiver:User;
-  @Input() message_type: String;
-  @Input() options: Array<any>
-  @Input() attachment_type: String
+  @Input() receiver_id:Number;
+  @Input() message_type:String;
   @Output() sendMessageOut = new EventEmitter();
 
-
-  sender: User;
+  attachment_type:String
+  attachment_id:Number
+  sender_id:Number;
   attachment:Attachment;
   content:String;
-  constructor(private _message_service: MessagesService){}
+  options:Array<any>
+  temp_options:Array<any>;
+  option_groups:Array<String>;
+
+  constructor(private _message_service:MessagesService) { }
 
   ngOnInit():void {
+    this.sender_id = 86;
+    this.load_options();
+  }
 
-    //todo
-    this.sender = new User();
-    this.sender.id = 50;
 
-    this.attachment = new Attachment();
-    this.attachment.attachment_type = this.attachment_type
+  load_options() {
+    this._message_service.getOptions()
+        .then(res => {
+          this.temp_options = res.data;
+          this.option_groups = Object.keys(this.temp_options)
+        }
+    )
   }
 
   showChildModal() {
     this.lgModal.show();
   }
 
+  option_group_change(e) {
+    this.attachment_type = e.value
+    this.options = this.temp_options[e.value]
+  }
+
   sendMessage(e):void {
-    console.log("====== sendMessage ========")
-    //this._message_service.sendMessage(this.sender.id, this.receiver.id, this.message_type, this.content, this.attachment).then(res => {
-    //      this.lgModal.hide();
-    //      this.sendMessageOut.emit("succ");
-    //    }
-    //)
+    this.attachment = new Attachment(this.attachment_id, this.attachment_type)
+    this._message_service.sendMessage(this.sender_id, this.receiver_id, this.message_type, this.content, this.attachment).then(res => {
+          this.lgModal.hide();
+          this.sendMessageOut.emit("succ");
+        }
+    )
   }
 }

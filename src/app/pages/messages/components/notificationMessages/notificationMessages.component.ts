@@ -14,27 +14,30 @@ import {MessagesService} from "../../../../services/messages.service";
 })
 export class NotificationMessagesComponent implements OnInit {
 
-  @ViewChild('story_message') story_message;
+  @ViewChild('message_component') message_component;
 
   messages:Array<Message>
   constructor(private _service:MessagesService) {}
+
   ngOnInit():void {
-    this._service.getMessages('NotificationMessage').then(res => {
-          let messages = res.data
-          console.log("===== messages ==== %o", messages)
-          this.messages = messages;
+    this.load_messages()
+  }
+
+  load_messages(){
+    this._service.getMessages('NotificationMessage')
+        .then(res => {
+          this.messages = res.data;
         }
     )
   }
 
-
-  sendMessage(e){
-
-
-    console.log("====== e: %o", e)
-    this.story_message.showChildModal();
-
+  showChildModal(e){
+    this.message_component.showChildModal();
   }
 
-
+  receiveChild(e) {
+    if (e === "succ") {
+      this.load_messages();
+    }
+  }
 }

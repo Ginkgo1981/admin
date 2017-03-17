@@ -6,6 +6,7 @@ import { NgUploaderModule } from 'ngx-uploader';
 import {MessagesService} from "../services/messages.service";
 import {SelectModule} from 'ng-select';
 import { ModalModule } from 'ng2-bootstrap';
+import { MaterialModule } from '@angular/material';
 import {
   BaThemeConfig
 } from './theme.config';
@@ -120,7 +121,8 @@ const NGA_VALIDATORS = [
     ReactiveFormsModule,
     NgUploaderModule,
     SelectModule,
-    ModalModule
+    ModalModule,
+    MaterialModule
 
   ],
   exports: [

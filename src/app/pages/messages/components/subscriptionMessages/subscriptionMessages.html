@@ -1,12 +1,27 @@
 <div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-success btn-icon"
+                (click)="showChildModal($event)">
+            <i class="ion-android-checkmark-circle"></i> 发布信息
+        </button>
+    </div>
+</div>
+<div class="row">
     <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
              title="消息列表" baCardClass="large-card">
+
         <ba-messages-list [messages]="messages"></ba-messages-list>
 
     </ba-card>
 </div>
 
-
+<div>
+    <ba-send-messages
+            [message_type]="'SubscriptionMessage'"
+            (sendMessageOut)="receiveChild($event)"
+            #message_component >
+    </ba-send-messages>
+</div>
 
 
 

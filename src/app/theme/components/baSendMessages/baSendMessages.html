@@ -30,12 +30,25 @@
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6">
-                            <ng-select
-                                    [options]="options"
-                                    highlightColor="#B39DDB"
-                                    highlightTextColor="#4527A0"
-                                    (selected)="attachment.attachment_id=$event.value">
-                            </ng-select>
+                            <div class="row">
+                                <md-radio-group class="example-radio-group" (change)="option_group_change($event)" >
+                                    <md-radio-button class="example-radio-button"
+                                            *ngFor="let group of option_groups"
+                                            [value]="group"> {{group}}
+                                    </md-radio-button>
+                                </md-radio-group>
+
+
+                            </div>
+                            <div class="row">
+                                <ng-select
+                                        [options]="options"
+                                        highlightColor="#B39DDB"
+                                        highlightTextColor="#4527A0"
+                                        (selected)="attachment_id=$event.value">
+                                </ng-select>
+
+                            </div>
                         </div>
                     </div>
                     <div class="row col-xl-9">

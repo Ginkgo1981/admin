@@ -10,7 +10,7 @@ import { UsersComponent } from "./users.component"
 import { UsersService, StoriesService, MessagesService} from "../../services";
 import { routing } from './users.routing';
 import {SelectModule} from 'ng-select';
-
+import { MaterialModule } from '@angular/material';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
@@ -22,7 +22,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
     SelectModule,
-    SimpleNotificationsModule
+    SimpleNotificationsModule,
+    MaterialModule
   ],
   declarations: [
     StudentComponent,

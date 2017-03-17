@@ -15,14 +15,11 @@ import {StoriesService} from "../../../../services/stories.service";
 
 })
 export class StudentComponent implements OnInit, OnDestroy {
-  @ViewChild('story_message') story_message;
+  @ViewChild('message_component') message_component;
   @ViewChild('university_message') university_message;
 
   @Input() user:User
-
   messages:Array<Message>;
-  @Input() storyOptions: Array<any>;
-  @Input() universityOptions: ArrAY<any>;
 
   constructor(private route:ActivatedRoute,
               private location:Location,
@@ -37,8 +34,6 @@ export class StudentComponent implements OnInit, OnDestroy {
   ngOnInit():void {
     this.route.params.forEach((params:Params) => {
       let id = +params['id'];
-      this.load_story_options();
-      this.load_university_options();
       this.load_student(id);
       this.load_messages();
       //this.options = this.storyOptions
@@ -53,36 +48,20 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   load_messages(){
-    this._messages_service.getMessages().then(res => {
+    this._messages_service.getMessages('PointMessage').then(res => {
       this.messages = res['data']
     })
   }
 
 
-  load_story_options(){
 
-    this._story_service.getStories().then(res => {
-      this.storyOptions = res.data.map(s => ({value: s.id, label: s.title}))
-    })
-
+  show_message_modal():void {
+    this.message_component.showChildModal();
   }
 
-  load_university_options(){
-    this.universityOptions = [
-      {value: 1, label: '南京大学'},
-      {value: 2, label: '南京林业大学'},
-      {value: 3, label: '南京工业大学'}
-
-    ]
-  }
-
-  show_story_message_modal():void {
-    this.story_message.showChildModal();
-  }
-
-  show_university_message_modal():void {
-    this.university_message.showChildModal();
-  }
+  //show_university_message_modal():void {
+  //  this.university_message.showChildModal();
+  //}
 
   receiveChild(e) {
     if (e === "succ") {

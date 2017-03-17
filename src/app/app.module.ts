@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { SelectModule } from 'ng-select';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { MaterialModule } from '@angular/material';
+
 
 
 /*
@@ -52,6 +54,7 @@ export type StoreType = {
     PagesModule,
     routing,
     SelectModule,
+    MaterialModule
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
