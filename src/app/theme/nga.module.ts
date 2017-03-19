@@ -3,11 +3,12 @@ import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
-import {MessagesService} from "../services/messages.service";
-import {SelectModule} from 'ng-select';
+import { MessagesService} from "../services/messages.service";
+import { SelectModule} from 'ng-select';
 import { ModalModule } from 'ng2-bootstrap';
 import { MaterialModule } from '@angular/material';
-import {NgxDatatableModule} from '@swimlane/ngx-datatable'
+import { NgxDatatableModule} from '@swimlane/ngx-datatable'
+import { NgxUIModule } from '@swimlane/ngx-ui'
 import { BaThemeConfig } from './theme.config';
 import { BaThemeConfigProvider } from './theme.configProvider';
 
@@ -119,7 +120,9 @@ const NGA_VALIDATORS = [
     SelectModule,
     ModalModule,
     MaterialModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    NgxUIModule,
+
 
   ],
   exports: [
