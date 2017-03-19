@@ -1,1 +1,1 @@
-export * from './baSendMessages.component.ts';
+export * from './baSendMessages.component';

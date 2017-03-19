@@ -4,6 +4,7 @@ import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {MessagesService} from "../../../../services/messages.service";
+import {Message} from "../../../../models/message";
 
 
 @Component({

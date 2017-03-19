@@ -2,11 +2,12 @@ import { Component, OnInit, Input,ViewChild,ViewChildren, OnDestroy} from '@angu
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
-import { User } from '../../../../models'
 import { UsersService } from '../../../../services/users.service'
 import { MessagesService } from "../../../../services/messages.service";
 import { NotificationsService } from 'angular2-notifications';
 import {StoriesService} from "../../../../services/stories.service";
+import {User} from "../../../../models/user";
+import {Message} from "../../../../models/message";
 
 @Component({
   selector: 'student',

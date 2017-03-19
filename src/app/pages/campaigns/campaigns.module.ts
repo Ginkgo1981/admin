@@ -1,6 +1,5 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { MaterialComponent } from './material.component';
 import { routing } from './campaigns.routing';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';

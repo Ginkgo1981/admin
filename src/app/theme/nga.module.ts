@@ -7,13 +7,9 @@ import {MessagesService} from "../services/messages.service";
 import {SelectModule} from 'ng-select';
 import { ModalModule } from 'ng2-bootstrap';
 import { MaterialModule } from '@angular/material';
-import {
-  BaThemeConfig
-} from './theme.config';
-
-import {
-  BaThemeConfigProvider
-} from './theme.configProvider';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable'
+import { BaThemeConfig } from './theme.config';
+import { BaThemeConfigProvider } from './theme.configProvider';
 
 import {
   BaAmChart,
@@ -122,7 +118,8 @@ const NGA_VALIDATORS = [
     NgUploaderModule,
     SelectModule,
     ModalModule,
-    MaterialModule
+    MaterialModule,
+    NgxDatatableModule
 
   ],
   exports: [
