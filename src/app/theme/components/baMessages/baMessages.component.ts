@@ -7,7 +7,7 @@ import {MessagesService} from "../../../services/messages.service";
 @Component({
   selector: 'ba-messages-list',
   templateUrl: './baMessages.html',
-  styleUrls: ['./baMessages.scss']
+  //styleUrls: ['./baMessages.scss']
 })
 export class BaMessages implements OnInit {
 

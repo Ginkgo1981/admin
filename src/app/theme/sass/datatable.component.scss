@@ -60,7 +60,7 @@
   &.fixed-row {
     .datatable-scroll{
       white-space: nowrap;
-
+      
       .datatable-body-row {
         white-space: nowrap;
 
@@ -103,7 +103,7 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-
+    
     &:focus {
       outline: none;
     }
