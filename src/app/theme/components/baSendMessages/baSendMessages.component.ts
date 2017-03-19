@@ -22,7 +22,6 @@ export class BaSendMessages implements OnInit {
   content:String;
   options:Array<any>
   temp_options:Array<any>;
-  option_groups:Array<String>;
 
   constructor(private _message_service:MessagesService) { }
 
@@ -32,11 +31,15 @@ export class BaSendMessages implements OnInit {
   }
 
 
+  ngx_change(event){
+    console.log("===== ngx_change %o", event[0])
+    this.attachment_id = event[0]
+  }
+
   load_options() {
     this._message_service.getOptions()
         .then(res => {
           this.temp_options = res.data;
-          this.option_groups = Object.keys(this.temp_options)
         }
     )
   }
@@ -45,9 +48,10 @@ export class BaSendMessages implements OnInit {
     this.lgModal.show();
   }
 
-  option_group_change(e) {
-    this.attachment_type = e.value
-    this.options = this.temp_options[e.value]
+  chooseAttachmentType(attachment_type: String){
+    console.log("===== attachment_type: %o", attachment_type)
+    this.attachment_type = attachment_type
+    this.options = this.temp_options[this.attachment_type]
   }
 
   sendMessage(e):void {

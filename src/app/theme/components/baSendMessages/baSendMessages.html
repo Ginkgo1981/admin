@@ -14,7 +14,6 @@
                         <div class="col-xl-6 col-lg-6">
 
                             <div *ngIf="receiver">
-
                                 <div class="form-group">
                                     <input type="text" class="form-control" value="{{ receiver.id }}"
                                            placeholder="receiver_id">
@@ -31,23 +30,29 @@
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="row">
-                                <md-radio-group class="example-radio-group" (change)="option_group_change($event)" >
-                                    <md-radio-button class="example-radio-button"
-                                            *ngFor="let group of option_groups"
-                                            [value]="group"> {{group}}
-                                    </md-radio-button>
-                                </md-radio-group>
 
-
+                                <ngx-dropdown>
+                                    <ngx-dropdown-toggle>
+                                        <button type="button" class="btn btn-primary"> 选择附件类型</button>
+                                    </ngx-dropdown-toggle>
+                                    <ngx-dropdown-menu>
+                                        <ul class="vertical-list">
+                                            <li>
+                                                <button type="button" (click)="chooseAttachmentType('Story')">图文信息</button>
+                                            </li>
+                                            <li>
+                                                <button type="button" (click)="chooseAttachmentType('University')">高校简介</button>
+                                            </li>
+                                        </ul>
+                                    </ngx-dropdown-menu>
+                                </ngx-dropdown>
                             </div>
                             <div class="row">
-                                <ng-select
-                                        [options]="options"
-                                        highlightColor="#B39DDB"
-                                        highlightTextColor="#4527A0"
-                                        (selected)="attachment_id=$event.value">
-                                </ng-select>
-
+                                <ngx-select [filterable]="false"
+                                            [label]="'附件'"
+                                            [options]="options"
+                                            (change)="ngx_change($event)" >
+                                </ngx-select>
                             </div>
                         </div>
                     </div>

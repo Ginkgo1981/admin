@@ -13,6 +13,8 @@ import {NotificationMessagesComponent} from "./components/notificationMessages/n
 import {PointMessagesComponent} from "./components/pointMessages/pointMessages.component";
 import {SubscriptionMessagesComponent} from "./components/subscriptionMessages/subscriptionMessages.component";
 import {MessagesService} from "../../services/messages.service";
+import { NgxUIModule } from '@swimlane/ngx-ui'
+import { DrawerService } from '@swimlane/ngx-ui'
 
 @NgModule({
   imports: [
@@ -24,7 +26,8 @@ import {MessagesService} from "../../services/messages.service";
     ModalModule.forRoot(),
     SelectModule,
     SimpleNotificationsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    NgxUIModule
   ],
   declarations: [
       MessagesComponent,
@@ -33,7 +36,8 @@ import {MessagesService} from "../../services/messages.service";
       SubscriptionMessagesComponent
   ],
   providers: [
-      MessagesService
+      MessagesService,
+    DrawerService
   ]
 
 })

@@ -15,7 +15,9 @@
            收信人
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            <a [routerLink]="['./', row['receiver_id']]"> 详情</a>
+            <div *ngIf="row['receiver_id']">
+                <a [routerLink]="['./', row['receiver_id']]"> 详情</a>
+            </div>
         </template>
     </ngx-datatable-column>
 
