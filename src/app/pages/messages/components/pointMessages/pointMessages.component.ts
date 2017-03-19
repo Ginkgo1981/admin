@@ -15,6 +15,7 @@ import {MessagesService} from "../../../../services/messages.service";
 })
 export class PointMessagesComponent implements OnInit {
 
+  message_type: String = 'PointMessage'
   constructor(private _service:MessagesService) {}
   ngOnInit():void { }
 

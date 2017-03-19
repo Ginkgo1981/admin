@@ -16,6 +16,7 @@ export class NotificationMessagesComponent implements OnInit {
 
   @ViewChild('send_message_component') send_message_component;
   @ViewChild('message_list_component') message_list_component;
+  message_type: String = 'NotificationMessage';
 
   ngOnInit():void {}
 
