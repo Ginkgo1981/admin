@@ -15,3 +15,4 @@ export * from './baMultiCheckbox';
 export * from './baStudents';
 export * from './baMessages';
 export * from './baSendMessages';
+export * from './baStudentInfo';

@@ -24,36 +24,18 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   toolbarMenu = [
     {
-      label: '下发图文消息',
+      label: '下发消息',
       click: () => {
         this.message_component.showChildModal();
-        console.log('File clicked');
       }
     },
     {
-      label: '给学生打标签',
+      label: '打标签',
       click: () => {
         this.message_component.showChildModal();
-        console.log('File clicked');
-      }
-    },
-    {
-      label: '打标签   ',
-      click: () => {
-        this.message_component.showChildModal();
-        console.log('File clicked');
-      }
-    },
-    {
-      label: '打标签2',
-      click: () => {
-        this.message_component.showChildModal();
-        console.log('File clicked');
       }
     }
   ];
-
-
 
   constructor(private route:ActivatedRoute,
               private location:Location,
@@ -70,7 +52,6 @@ export class StudentComponent implements OnInit, OnDestroy {
       let id = +params['id'];
       this.load_student(id);
       this.load_messages();
-      //this.options = this.storyOptions
     });
   }
 
