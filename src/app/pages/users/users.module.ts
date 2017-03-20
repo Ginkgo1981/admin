@@ -9,10 +9,10 @@ import { StudentsComponent } from "./components/students/students.component"
 import { UsersComponent } from "./users.component"
 import { UsersService, StoriesService, MessagesService} from "../../services";
 import { routing } from './users.routing';
-import {SelectModule} from 'ng-select';
+import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
 import { SimpleNotificationsModule } from 'angular2-notifications';
-
+import { NgxUIModule } from '@swimlane/ngx-ui'
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +23,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     ModalModule.forRoot(),
     SelectModule,
     SimpleNotificationsModule,
-    MaterialModule
+    MaterialModule,
+    NgxUIModule
   ],
   declarations: [
     StudentComponent,

@@ -22,6 +22,39 @@ export class StudentComponent implements OnInit, OnDestroy {
   @Input() user:User
   messages:Array<Message>;
 
+  toolbarMenu = [
+    {
+      label: '下发图文消息',
+      click: () => {
+        this.message_component.showChildModal();
+        console.log('File clicked');
+      }
+    },
+    {
+      label: '给学生打标签',
+      click: () => {
+        this.message_component.showChildModal();
+        console.log('File clicked');
+      }
+    },
+    {
+      label: '打标签   ',
+      click: () => {
+        this.message_component.showChildModal();
+        console.log('File clicked');
+      }
+    },
+    {
+      label: '打标签2',
+      click: () => {
+        this.message_component.showChildModal();
+        console.log('File clicked');
+      }
+    }
+  ];
+
+
+
   constructor(private route:ActivatedRoute,
               private location:Location,
               private _users_service:UsersService,
@@ -60,10 +93,6 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.message_component.showChildModal();
   }
 
-  //show_university_message_modal():void {
-  //  this.university_message.showChildModal();
-  //}
-
   receiveChild(e) {
     if (e === "succ") {
       this.load_messages();
@@ -72,6 +101,13 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy():void {
+  }
+
+
+
+  menuClicked(e){
+
+    console.log("==== e")
   }
 
 }

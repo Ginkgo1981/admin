@@ -7,15 +7,7 @@ import { User } from '../../../../models'
   templateUrl: './students.html'
 })
 export class StudentsComponent {
-  students:Array<User>;
 
-  constructor(private _service: UsersService) {
-    _service.getUsers('Student').then(res => {
-          console.log("===== res %o", res)
-          this.students = res['data']
-        }
-    );
-
-  }
+  constructor(private _service: UsersService) {}
 
 }

@@ -1,6 +1,7 @@
 <div *ngIf="user">
+
     <div class="row">
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12"
+        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-xs-6"
                  title="用户基本信息" baCardClass="traffic-panel medium-card">
             <div class="row">
                 <div class="col-sm-6">
@@ -30,17 +31,30 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" (click)="show_message_modal()">发送消息</button>
-            <!--<button class="btn btn-primary" (click)="show_university_message_modal()">发送学校推荐</button>-->
         </ba-card>
 
     </div>
-    <div class="row">
 
+    <div class="row">
+        <div class="col-xlg-4 col-lg-4">
+            <ngx-toolbar style=""
+                    [menu]="toolbarMenu"
+                    (menuClick)="menuClicked($event)">
+                <ngx-toolbar-title>
+                    <span class="tag">操作</span>
+                </ngx-toolbar-title>
+            </ngx-toolbar>
+            <!--<button class="btn btn-primary" (click)="show_message_modal()">发送消息</button>-->
+        </div>
+    </div>
+
+    <div class="row">   </div>
+
+
+    <div class="row">
         <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
                  title="消息列表" baCardClass="large-card">
-            <ba-messages-list [messages]="messages"></ba-messages-list>
-
+            <ba-messages-list [message_type]="'PointMessage'"></ba-messages-list>
         </ba-card>
     </div>
 
@@ -51,7 +65,6 @@
                           #message_component>
         </ba-send-messages>
         <simple-notifications></simple-notifications>
-
     </div>
 
 
