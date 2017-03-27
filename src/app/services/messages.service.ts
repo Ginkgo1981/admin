@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core'
 import { Headers, Http, URLSearchParams } from '@angular/http';
-//import {GlobalDataService} from '../../../services/globle-data.service'
+import {GlobalDataService} from "./globle-data.service";
 import 'rxjs/add/operator/toPromise';
 import {Attachment} from "../models/attachment";
 
 @Injectable()
 export class MessagesService {
-  base_api:String;
+
+  base_api = `${GlobalDataService.getCable_api()}/messages`;
+
   constructor(private http:Http ) {
-    //this.base_api = `${globalDataService.cable_api}/users`
   }
 
   sendMessage(sender_id, receiver_id, message_type: String, content:String, attachment: Attachment) {
@@ -22,7 +23,7 @@ export class MessagesService {
       attachment_type: attachment.attachment_type
     }
     console.log("send_message: data: %o", data)
-    return this.http.post(`http://localhost:3000/messages/send_message`, JSON.stringify(data), {headers: headers})
+    return this.http.post(`${this.base_api}/send_message`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
@@ -30,7 +31,7 @@ export class MessagesService {
   }
 
   getMessages(type: String) {
-    return this.http.get(`http://localhost:3000/messages/list/${type}`)
+    return this.http.get(`${this.base_api}/list/${type}`)
         .toPromise()
         .then((response) => {
           return response.json();
@@ -39,7 +40,7 @@ export class MessagesService {
 
 
   getOptions() {
-    return this.http.get(`http://localhost:3000/messages/load_options`)
+    return this.http.get(`${this.base_api}/load_options`)
         .toPromise()
         .then((response) => {
           return response.json();

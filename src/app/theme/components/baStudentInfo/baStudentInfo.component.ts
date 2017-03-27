@@ -14,11 +14,29 @@ import {UsersService} from "../../../services/users.service";
 export class BaStudentInfo implements OnInit {
 
   @Input()user: User;
+
+  itemsAsObjects = [{value: 0, display: 'Angular'}, {value: 1, display: 'React'}];
+
+
   constructor(private _service: UsersService){
 
   }
 
   ngOnInit():void {
+
+  }
+
+
+  onTagAdd(event){
+
+    console.log("===== onTagAdd ==== %o", event)
+
+  }
+
+
+  onTagRemove(event){
+
+    console.log("=====onTagRemove ==== %o", event)
 
   }
 

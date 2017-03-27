@@ -8,6 +8,7 @@ import { SelectModule} from 'ng-select';
 import { ModalModule } from 'ng2-bootstrap';
 import { MaterialModule } from '@angular/material';
 import { NgxDatatableModule} from '@swimlane/ngx-datatable'
+import { TagInputModule } from 'ng2-tag-input';
 import { NgxUIModule } from '@swimlane/ngx-ui'
 import { BaThemeConfig } from './theme.config';
 import { BaThemeConfigProvider } from './theme.configProvider';
@@ -124,6 +125,7 @@ const NGA_VALIDATORS = [
     MaterialModule,
     NgxDatatableModule,
     NgxUIModule,
+    TagInputModule
 
 
   ],
