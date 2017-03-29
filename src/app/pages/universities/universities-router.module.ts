@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 import { NgaModule } from '../../theme/nga.module';
 import { GlobalDataService } from '../../services/globle-data.service'
-import { UniversitiesComponent } from "./universities.component"
-import { routing } from './universities.routing';
+import { UniversitiesRouterComponent } from "./universities-router.component.ts"
+import { routing } from './universities-router.routing.ts';
 import { SelectModule } from 'ng-select';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable'
 
@@ -28,7 +28,7 @@ import {UsersService} from "../../services/users.service";
     NgxDatatableModule
   ],
   declarations: [
-    UniversitiesComponent,
+    UniversitiesRouterComponent,
     UniversityListComponent,
     UniversityComponent
   ],
@@ -38,5 +38,5 @@ import {UsersService} from "../../services/users.service";
   ]
 
 })
-export class UniversitiesModule {
+export class UniversitiesRouterModule {
 }

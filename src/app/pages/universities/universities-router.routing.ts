@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
-import { UniversitiesComponent } from './universities.component'
+import { UniversitiesRouterComponent } from './universities-router.component.ts'
 import {UniversityListComponent} from "./components/universityList/universityList.component";
 import {UniversityComponent} from "./components/university/university.component";
 
@@ -8,7 +8,7 @@ import {UniversityComponent} from "./components/university/university.component"
 export const routes: Routes = [
   {
     path: '',
-    component: UniversitiesComponent,
+    component: UniversitiesRouterComponent,
     children:[
       { path: 'list', component: UniversityListComponent },
       { path: ':id', component: UniversityComponent },

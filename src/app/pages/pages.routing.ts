@@ -24,7 +24,7 @@ export const routes: Routes = [
       { path: 'messages',  loadChildren: 'app/pages/messages/messages.module#MessagesModule' },
       { path: 'users',  loadChildren: 'app/pages/users/users-router.module#UsersRouterModule' },
       { path: 'materials',  loadChildren: 'app/pages/material/material.module#MaterialModule' },
-      { path: 'universities',  loadChildren: 'app/pages/universities/universities.module#UniversitiesModule' },
+      { path: 'universities',  loadChildren: 'app/pages/universities/universities-router.module#UniversitiesRouterModule' },
       { path: 'campaigns',  loadChildren: 'app/pages/campaigns/campaigns.module#CampaignsModule' },
 
     ]
