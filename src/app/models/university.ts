@@ -1,4 +1,4 @@
-import {Major} from "./majoys";
+import {Major} from "./majors";
 export class University {
   id: Number;
   name: String;

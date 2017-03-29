@@ -4,7 +4,7 @@ import {Component} from '@angular/core';
   selector: 'campaigns',
   template: `<router-outlet></router-outlet>`
 })
-export class CampaignsComponent {
+export class CampaignsRouterComponent {
 
   constructor() {
   }

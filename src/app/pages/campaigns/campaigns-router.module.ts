@@ -1,13 +1,13 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { routing } from './campaigns.routing';
+import { routing } from './campaigns-router.routing.ts';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { GlobalDataService} from '../../services/globle-data.service'
 import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import {SelectModule} from 'ng-select';
-import {CampaignsComponent} from "./campaigns.component";
+import {CampaignsRouterComponent} from "./campaigns-router.component.ts";
 import {CampaignListComponent} from "./components/campaignList/campaignList.component";
 import {CampaignComponent} from "./components/campaign/campaign.component";
 
@@ -25,7 +25,7 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
   ],
   declarations: [
 
-      CampaignsComponent,
+      CampaignsRouterComponent,
       CampaignListComponent,
       CampaignComponent
   ],
@@ -34,5 +34,5 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
   ]
 
 })
-export class CampaignsModule {
+export class CampaignsRouterModule {
 }

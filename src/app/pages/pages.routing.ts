@@ -25,7 +25,7 @@ export const routes: Routes = [
       { path: 'users',  loadChildren: 'app/pages/users/users-router.module#UsersRouterModule' },
       { path: 'materials',  loadChildren: 'app/pages/material/material-router.module#MaterialRouterModule' },
       { path: 'universities',  loadChildren: 'app/pages/universities/universities-router.module#UniversitiesRouterModule' },
-      { path: 'campaigns',  loadChildren: 'app/pages/campaigns/campaigns.module#CampaignsModule' },
+      { path: 'campaigns',  loadChildren: 'app/pages/campaigns/campaigns-router.module#CampaignsRouterModule' },
 
     ]
   }

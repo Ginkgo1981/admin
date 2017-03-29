@@ -4,7 +4,7 @@ import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import {UniversitiesService } from "../../../../services/universities.service";
 import {University} from "../../../../models/university";
-import {Major} from "../../../../models/majoys";
+import {Major} from "../../../../models/majors";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {UsersService} from "../../../../services/users.service";
 import {User} from "../../../../models/user";
