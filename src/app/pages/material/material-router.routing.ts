@@ -1,5 +1,5 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { MaterialComponent } from './material.component';
+import { MaterialRouterComponent } from './material-router.component.ts';
 import { ModuleWithProviders } from '@angular/core';
 import { StoriesComponent } from "./components/stories/stories.component";
 import { StoryComponent } from "./components/story/story.component";
@@ -8,7 +8,7 @@ import { StoryComponent } from "./components/story/story.component";
 export const routes: Routes = [
   {
     path: '',
-    component: MaterialComponent,
+    component: MaterialRouterComponent,
     children:[
       { path: 'stories', component: StoriesComponent  },
       { path: 'stories/:id', component: StoryComponent },

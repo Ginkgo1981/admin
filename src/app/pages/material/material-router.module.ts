@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { MaterialComponent } from './material.component';
-import { routing } from './material.routing';
+import { MaterialRouterComponent } from './material-router.component.ts';
+import { routing } from './material-router.routing.ts';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { GlobalDataService} from '../../services/globle-data.service'
@@ -26,7 +26,7 @@ import {SelectModule} from 'ng-select';
   ],
   declarations: [
     StoriesComponent,
-    MaterialComponent,
+    MaterialRouterComponent,
     StoryComponent
   ],
   providers: [
@@ -36,5 +36,5 @@ import {SelectModule} from 'ng-select';
   ]
 
 })
-export class MaterialModule {
+export class MaterialRouterModule {
 }

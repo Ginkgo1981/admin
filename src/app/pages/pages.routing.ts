@@ -23,7 +23,7 @@ export const routes: Routes = [
       { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'messages',  loadChildren: 'app/pages/messages/messages-router.module#MessagesRouterModule' },
       { path: 'users',  loadChildren: 'app/pages/users/users-router.module#UsersRouterModule' },
-      { path: 'materials',  loadChildren: 'app/pages/material/material.module#MaterialModule' },
+      { path: 'materials',  loadChildren: 'app/pages/material/material-router.module#MaterialRouterModule' },
       { path: 'universities',  loadChildren: 'app/pages/universities/universities-router.module#UniversitiesRouterModule' },
       { path: 'campaigns',  loadChildren: 'app/pages/campaigns/campaigns.module#CampaignsModule' },
 
