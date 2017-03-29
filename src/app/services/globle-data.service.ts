@@ -23,4 +23,9 @@ export class GlobalDataService {
     return GlobalDataService.cable_api + '/messages'
   }
 
+  static
+  stories_api() {
+    return GlobalDataService.cable_api + '/stories'
+  }
+
 }

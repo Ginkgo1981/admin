@@ -6,9 +6,9 @@ import { NgaModule } from '../../theme/nga.module';
 import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
 import { StudentsComponent } from "./components/students/students.component"
-import { UsersComponent } from "./users.component"
+import { UsersRouterComponent } from "./users-router.component.ts"
 import { UsersService, StoriesService, MessagesService, DsinService} from "../../services";
-import { routing } from './users.routing';
+import { routing } from './users-router.routing.ts';
 import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
 import { SimpleNotificationsModule } from 'angular2-notifications';
@@ -29,7 +29,7 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
   declarations: [
     StudentComponent,
     StudentsComponent,
-    UsersComponent
+    UsersRouterComponent
   ],
   providers: [
     UsersService,
@@ -41,5 +41,5 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
   ]
 
 })
-export class UsersModule {
+export class UsersRouterModule {
 }

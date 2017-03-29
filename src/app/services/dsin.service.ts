@@ -12,7 +12,7 @@ export class DsinService {
   dsin_api = GlobalDataService.dsin_api();
 
   get_by_dsin(dsin:String) {
-    return this.http.get(`${this.dsin_api()}/${dsin}`)
+    return this.http.get(`${this.dsin_api}/${dsin}`)
         .toPromise()
         .then((response) => {
           return response.json();
