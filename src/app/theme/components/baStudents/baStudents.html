@@ -1,5 +1,5 @@
 <ngx-datatable
-        [rows]="rows"
+        [rows]="students"
         [columnMode]="'force'"
         [headerHeight]="50"
         [footerHeight]="50"
@@ -10,22 +10,21 @@
         [limit]="limit"
         (page)='onPage($event)' >
 
-    <ngx-datatable-column name="type">
+    <ngx-datatable-column name="index">
         <template let-column="column" ngx-datatable-header-template>
-            #
+            #序号
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            {{ row['id'] }}
+            {{ row['$$index'] }}
         </template>
     </ngx-datatable-column>
-
 
     <ngx-datatable-column name="cell">
         <template let-column="column" ngx-datatable-header-template>
             手机号
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{row['cell']}}
+            {{row.user && row.user.cell}}
         </template>
     </ngx-datatable-column>
 
@@ -34,22 +33,30 @@
            姓名
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{row['name']}}
+            {{ row.user && row.user.name }}
         </template>
     </ngx-datatable-column>
 
+
+    <ngx-datatable-column name="dsin">
+        <template let-column="column" ngx-datatable-header-template>
+            #dsin
+        </template>
+        <template let-value="value" let-row="row" ngx-datatable-cell-template>
+            {{ row.dsin }}
+        </template>
+    </ngx-datatable-column>
 
     <ngx-datatable-column name="detail">
         <template let-column="column" ngx-datatable-header-template>
-           详情
+            详情
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            <div *ngIf="row['id']">
-                <a [routerLink]="['./', row['id']]"> 详情</a>
+            <div *ngIf="row.dsin">
+                <a [routerLink]="['./', row.dsin]"> 详情</a>
             </div>
         </template>
     </ngx-datatable-column>
-
 
 </ngx-datatable>
 

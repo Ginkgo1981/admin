@@ -7,8 +7,7 @@ import {Attachment} from "../models/attachment";
 @Injectable()
 export class MessagesService {
 
-  base_api = `${GlobalDataService.getCable_api()}/messages`;
-
+  messages_api = GlobalDataService.messages_api();
   constructor(private http:Http ) {
   }
 
@@ -23,7 +22,7 @@ export class MessagesService {
       attachment_type: attachment.attachment_type
     }
     console.log("send_message: data: %o", data)
-    return this.http.post(`${this.base_api}/send_message`, JSON.stringify(data), {headers: headers})
+    return this.http.post(`${this.messages_api}/send_message`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
@@ -31,7 +30,7 @@ export class MessagesService {
   }
 
   getMessages(type: String) {
-    return this.http.get(`${this.base_api}/list/${type}`)
+    return this.http.get(`${this.messages_api}/list/${type}`)
         .toPromise()
         .then((response) => {
           return response.json();
@@ -40,7 +39,7 @@ export class MessagesService {
 
 
   getOptions() {
-    return this.http.get(`${this.base_api}/load_options`)
+    return this.http.get(`${this.messages_api}/load_options`)
         .toPromise()
         .then((response) => {
           return response.json();

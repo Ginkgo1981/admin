@@ -41,7 +41,6 @@ export class UniversityComponent implements OnInit {
     this.route.params.forEach((params:Params) => {
       let id = +params['id'];
       this.load_university(id)
-      this.load_students()
     })
   }
 
@@ -56,13 +55,13 @@ export class UniversityComponent implements OnInit {
     )
   }
 
-  load_students(){
-    this._users_service.getUsers('Student').then(res => {
-          console.log("===== res %o", res)
-          this.students = res['data']
-        }
-    );
-  }
+  //load_students(){
+  //  this._users_service.get_student_list().then(res => {
+  //        console.log("===== res %o", res)
+  //        this.students = res['data']
+  //      }
+  //  );
+  //}
 
   updateFilter(event) {
     const val = event.target.value;

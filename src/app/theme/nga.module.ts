@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
 import { MessagesService} from "../services/messages.service";
+import { DsinService} from "../services/dsin.service";
 import { SelectModule} from 'ng-select';
 import { ModalModule } from 'ng2-bootstrap';
 import { MaterialModule } from '@angular/material';
@@ -100,7 +101,8 @@ const NGA_SERVICES = [
   BaThemePreloader,
   BaThemeSpinner,
   BaMenuService,
-  MessagesService
+  MessagesService,
+  DsinService
 ];
 
 const NGA_VALIDATORS = [

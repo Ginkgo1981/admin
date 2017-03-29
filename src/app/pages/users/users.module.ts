@@ -7,7 +7,7 @@ import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
 import { StudentsComponent } from "./components/students/students.component"
 import { UsersComponent } from "./users.component"
-import { UsersService, StoriesService, MessagesService} from "../../services";
+import { UsersService, StoriesService, MessagesService, DsinService} from "../../services";
 import { routing } from './users.routing';
 import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
@@ -35,7 +35,8 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
     UsersService,
     StoriesService,
     MessagesService,
-    GlobalDataService
+    GlobalDataService,
+    DsinService
 
   ]
 

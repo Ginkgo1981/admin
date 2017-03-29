@@ -4,6 +4,7 @@ import { ModalDirective } from 'ng2-bootstrap';
 import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
 import {UsersService} from "../../../services/users.service";
+import {Student} from "../../../models/student";
 
 @Component({
   selector: 'ba-student-info',
@@ -13,17 +14,18 @@ import {UsersService} from "../../../services/users.service";
 
 export class BaStudentInfo implements OnInit {
 
-  @Input()user: User;
+  @Input()student: Student;
 
   itemsAsObjects = [{value: 0, display: 'Angular'}, {value: 1, display: 'React'}];
 
 
   constructor(private _service: UsersService){
-
+    console.log("===== student ==== %o", this.student)
   }
 
   ngOnInit():void {
 
+    console.log("===== student ==== %o", this.student)
   }
 
 

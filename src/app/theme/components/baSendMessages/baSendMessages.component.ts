@@ -11,7 +11,7 @@ import {User} from "../../../models/user";
 })
 export class BaSendMessages implements OnInit {
   @ViewChild('lgModal') lgModal:ModalDirective;
-  @Input() receiver_id:Number;
+  @Input() receiver: Student;
   @Input() message_type:String;
   @Output() sendMessageOut = new EventEmitter();
 
@@ -56,7 +56,7 @@ export class BaSendMessages implements OnInit {
 
   sendMessage(e):void {
     this.attachment = new Attachment(this.attachment_id, this.attachment_type)
-    this._message_service.sendMessage(this.sender_id, this.receiver_id, this.message_type, this.content, this.attachment).then(res => {
+    this._message_service.sendMessage(this.sender_id, this.receiver.dsin, this.message_type, this.content, this.attachment).then(res => {
           this.lgModal.hide();
           this.sendMessageOut.emit("succ");
         }

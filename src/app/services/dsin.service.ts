@@ -4,16 +4,15 @@ import 'rxjs/add/operator/toPromise';
 import {GlobalDataService} from "./globle-data.service";
 
 @Injectable()
-export class UsersService {
+export class DsinService {
 
   constructor(private http:Http) {
   }
 
+  dsin_api = GlobalDataService.dsin_api();
 
-  users_api = GlobalDataService.users_api();
-
-  get_student_list() {
-    return this.http.get(`${this.users_api}/student_list`)
+  get_by_dsin(dsin:String) {
+    return this.http.get(`${this.dsin_api()}/${dsin}`)
         .toPromise()
         .then((response) => {
           return response.json();

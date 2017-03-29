@@ -11,7 +11,7 @@ export const routes: Routes = [
     component: UsersComponent,
     children:[
       { path: 'students', component: StudentsComponent },
-      { path: 'students/:id', component: StudentComponent },
+      { path: 'students/:dsin', component: StudentComponent },
     ]
   }
 ];

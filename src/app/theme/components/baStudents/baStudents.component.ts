@@ -1,6 +1,7 @@
 import {Component, ViewChild, Input, Output, ElementRef, EventEmitter,OnInit} from '@angular/core';
 import {UsersService} from "../../../services/users.service";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
+import {Student} from "../../../models/student";
 @Component({
   selector: 'ba-students-list',
   templateUrl: './baStudents.html'
@@ -9,12 +10,11 @@ export class BaStudents implements OnInit{
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
 
-  rows = [];
+  students:Array<Student> = [];
   count: number = 0;
   offset: number = 0;
   @Input() limit: number;
   selected = [];
-
 
   constructor(private _service: UsersService) {
   }
@@ -32,18 +32,19 @@ export class BaStudents implements OnInit{
     console.log('Activate Event', event);
   }
 
-
   page(offset=0, limit=10) {
-    this._service.getUsers('Student').then(res => {
-          let results = res.data
+    this._service.get_student_list().then(res => {
+          let results = res.students;
+          console.log("===results %o", results);
           this.count = 1000;
           const start = offset * limit;
           const end = start + limit;
-          const rows = [...this.rows];
+          const students = [...this.students];
           for (let i = start; i < end; i++) {
-            rows[i] = results[i];
+            students[i] = results[i];
           }
-          this.rows = rows;
+          this.students = students;
+          console.log("===students %o", this.students);
         }
     )
     console.log("====offset: %o, limit: %o", offset, limit)

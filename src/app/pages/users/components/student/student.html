@@ -1,6 +1,6 @@
-<div *ngIf="user">
+<div *ngIf="student">
     <div class="row">
-        <ba-student-info [user]="user"></ba-student-info>
+        <ba-student-info [student]="student"></ba-student-info>
     </div>
     <div class="row col-xlg-4 col-lg-4">
         <ngx-toolbar
@@ -16,7 +16,7 @@
         </ba-card>
     </div>
     <div>
-        <ba-send-messages [receiver_id]="user.id"
+        <ba-send-messages [receiver]="student"
                           [message_type]="'PointMessage'"
                           (sendMessageOut)="receiveChild($event)"
                           #message_component>
