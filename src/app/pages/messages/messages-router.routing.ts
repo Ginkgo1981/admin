@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
-import {MessagesComponent} from "./messages.component";
+import {MessagesRouterComponent} from "./messages-router.component.ts";
 import {PointMessagesComponent} from "./components/pointMessages/pointMessages.component";
 import {SubscriptionMessagesComponent} from "./components/subscriptionMessages/subscriptionMessages.component";
 import {NotificationMessagesComponent} from "./components/notificationMessages/notificationMessages.component";
@@ -9,7 +9,7 @@ import {NotificationMessagesComponent} from "./components/notificationMessages/n
 export const routes: Routes = [
   {
     path: '',
-    component: MessagesComponent,
+    component: MessagesRouterComponent,
     children:[
       { path: 'point_messages', component: PointMessagesComponent },
       { path: 'subscription_messages', component: SubscriptionMessagesComponent },
