@@ -5,7 +5,7 @@ import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 import { NgaModule } from '../../theme/nga.module';
 import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
-import { StudentsComponent } from "./components/students/students.component"
+import { StudentListComponent } from "./components/student-list/student-list.component.ts"
 import { UsersRouterComponent } from "./users-router.component.ts"
 import { UsersService, StoriesService, MessagesService, DsinService} from "../../services";
 import { routing } from './users-router.routing.ts';
@@ -28,7 +28,7 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
   ],
   declarations: [
     StudentComponent,
-    StudentsComponent,
+    StudentListComponent,
     UsersRouterComponent
   ],
   providers: [

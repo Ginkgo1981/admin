@@ -4,9 +4,9 @@ import { User } from '../../../../models'
 
 @Component({
   selector: 'students',
-  templateUrl: './students.html'
+  templateUrl: './student-list.html'
 })
-export class StudentsComponent {
+export class StudentListComponent {
 
   constructor(private _service: UsersService) {}
 
