@@ -44,34 +44,29 @@ export class StudentComponent implements OnInit, OnDestroy {
               private _users_service:UsersService,
               private _notificationsService:NotificationsService,
               private _messages_service:MessagesService,
-              private _story_service: StoriesService,
-              private _dsin_service: DsinService
-
-  ) {
+              private _story_service:StoriesService,
+              private _dsin_service:DsinService) {
   }
 
   ngOnInit():void {
     console.log(" this.route.params ==== %o", this.route.params.value.dsin)
     let dsin = this.route.params.value.dsin
-    this.load_student(dsin)
+    this.load_by_dsin(dsin)
     this.load_messages();
   }
 
-  load_student(dsin: String){
+  load_by_dsin(dsin:String) {
     this._dsin_service.get_by_dsin(dsin).then(res => {
-      console.log("==== get_by_dsin === %o", res)
           this.student = res['student']
-      console.log("==== load_student === %o", this.student)
         }
     );
   }
 
-  load_messages(){
+  load_messages() {
     this._messages_service.getMessages('PointMessage').then(res => {
       this.messages = res['data']
     })
   }
-
 
 
   show_message_modal():void {
@@ -89,8 +84,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
 
-
-  menuClicked(e){
+  menuClicked(e) {
 
     console.log("==== e")
   }

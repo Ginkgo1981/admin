@@ -15,12 +15,11 @@ import {DatatableComponent} from '@swimlane/ngx-datatable'
 })
 export class UniversityListComponent implements OnInit {
   universities:Array<University>
-  rows = [];
   temp = [];
   selected = [];
   columns = [
     { prop: 'name' },
-    { name: 'id' },
+    { name: 'dsin' },
     { name: 'address' }
   ];
   @ViewChild(DatatableComponent) table: DatatableComponent;
@@ -32,12 +31,10 @@ export class UniversityListComponent implements OnInit {
   ngOnInit():void {
     this._service.getList().then(res => {
       console.log('==== universities %o', res)
-      let data =  res['data']
+      let data =  res['universities']
       this.temp = [...data];
-      this.rows = data;
       this.universities = data;
       console.log('==== temp %o', this.temp)
-      console.log('==== rowss %o',this.rows)
       console.log('==== universities %o', this.universities)
     })
 
@@ -52,15 +49,14 @@ export class UniversityListComponent implements OnInit {
       return d.name.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
-    // update the rows
-    this.rows = temp;
+    this.universities = temp;
   }
 
 
 
   onSelect({ selected }) {
     console.log('Select Event', selected, this.selected);
-    this.router.navigate(['/pages/universities/', selected[0]['id']]);
+    this.router.navigate(['/pages/universities/', selected[0]['dsin']]);
   }
 
   onActivate(event) {

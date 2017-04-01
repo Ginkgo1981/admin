@@ -8,6 +8,7 @@ import {Major} from "../../../../models/majors";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {UsersService} from "../../../../services/users.service";
 import {User} from "../../../../models/user";
+import {DsinService} from "../../../../services/dsin.service";
 
 @Component({
   selector: 'university',
@@ -20,7 +21,8 @@ export class UniversityComponent implements OnInit {
   constructor(private route:ActivatedRoute,
               private location:Location,
               private _university_service:UniversitiesService,
-              private _users_service: UsersService ) {
+              private _users_service:UsersService,
+              private _dsin_service:DsinService) {
   }
 
   university:University
@@ -30,37 +32,38 @@ export class UniversityComponent implements OnInit {
   temp = [];
   selected = [];
   columns = [
-    { prop: 'name' },
-    { name: 'id' },
-    { name: 'code' }
+    {prop: 'name'},
+    {name: 'id'},
+    {name: 'code'}
   ];
-  @ViewChild(DatatableComponent) table: DatatableComponent;
-
+  @ViewChild(DatatableComponent) table:DatatableComponent;
 
   ngOnInit():void {
-    this.route.params.forEach((params:Params) => {
-      let id = +params['id'];
-      this.load_university(id)
-    })
+    let dsin = this.route.params.value.dsin;
+    this.load_by_dsin(dsin)
   }
 
-  load_university(id:Number) {
-    this._university_service.getUniversity(id).then(
-        res => {
-          this.university = res.data
-          this.rows = [...res.data.majors]
-          this.temp = [...res.data.majors]
-          console.log("===== university: %o", this.university)
+  load_by_dsin(dsin:String) {
+    this._dsin_service.get_by_dsin(dsin).then(res => {
+          console.log("res==== %o", res)
+          this.university = res['university']
         }
-    )
+    );
+  }
+  load_majors_by_university_dsin(dsin: String) {
+
+
   }
 
-  //load_students(){
-  //  this._users_service.get_student_list().then(res => {
-  //        console.log("===== res %o", res)
-  //        this.students = res['data']
+  //load_university(id:Number) {
+  //  this._university_service.getUniversity(id).then(
+  //      res => {
+  //        this.university = res.data
+  //        //this.rows = [...res.data.majors]
+  //        //this.temp = [...res.data.majors]
+  //        //console.log("===== university: %o", this.university)
   //      }
-  //  );
+  //  )
   //}
 
   updateFilter(event) {
@@ -68,7 +71,7 @@ export class UniversityComponent implements OnInit {
     console.log("==== event %o", val)
 
     // filter our data
-    const temp = this.temp.filter(function(d) {
+    const temp = this.temp.filter(function (d) {
       return d.name.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
