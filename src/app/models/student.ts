@@ -6,4 +6,7 @@ export class Student {
   school: String;
   dsin: String;
   user: User;
+  tags: Array<Tag>;
+  sat_score: any;
+  sat_province: string;
 }

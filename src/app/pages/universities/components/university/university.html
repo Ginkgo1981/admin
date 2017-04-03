@@ -30,36 +30,78 @@
                     </div>
                 </div>
             </div>
+            <button type="primary" (click)="openUniverityDrawer()"> 编辑学校信息 </button>
         </ba-card>
-        <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-12 col-xs-12"
-                 title="专业列表" baCardClass="medium-card">
+    </div>
+
+    <!--major list -->
+    <div class="row">
+        <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                 title="专业列表" baCardClass="traffic-panel large-card">
             <input
                     type='text'
                     placeholder='输入专业名称'
-                    (keyup)='updateFilter($event)'
-            />
+                    (keyup)='updateFilter($event)' />
             <ngx-datatable
                     class='material'
                     [columns]="columns"
                     [columnMode]="'force'"
                     [footerHeight]="50"
                     [rowHeight]="'auto'"
-                    [limit]="10"
+                    [limit]="20"
                     [selected]="selected"
                     [selectionType]="'single'"
                     (activate)="onActivate($event)"
                     (select)='onSelect($event)'
-                    [rows]='rows'>
+                    [rows]='majors'>
             </ngx-datatable>
-
         </ba-card>
-
     </div>
+
+    <!--student list -->
     <div class="row">
         <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
                  title="学生列表" baCardClass="traffic-panel large-card">
             <ba-students-list [limit]="'20'"></ba-students-list>
         </ba-card>
     </div>
+
+    <!--university-->
+    <template #editUniversityTmpl>
+        <div class="row">
+            <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                     title="编辑学校信息" baCardClass="traffic-panel large-card">
+               <ba-university-editor
+                       [university]="university"
+                       (updatedSucc)="onUpdateSucc($event)"
+               ></ba-university-editor>
+            </ba-card>
+        </div>
+    </template>
+
+    <!--major-->
+    <template #editMajorTmpl>
+        <div class="row">
+            <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                     title="编辑专业详情" baCardClass="traffic-panel large-card">
+                <ba-major-editor
+                        [major]="major"
+                        (updatedSucc)="onUpdateSucc($event)"
+                ></ba-major-editor>
+                <button type="primary" (click)="closeMajorDrawer()"> 关闭 </button>
+            </ba-card>
+        </div>
+    </template>
+
+    <!--student-->
+    <template #showStudentTmpl>
+        <div class="row">
+            <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                     title="学生详情" baCardClass="traffic-panel large-card">
+
+            </ba-card>
+        </div>
+    </template>
+
 </div>
 

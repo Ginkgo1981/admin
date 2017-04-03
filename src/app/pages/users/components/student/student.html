@@ -1,6 +1,9 @@
 <div *ngIf="student">
     <div class="row">
-        <ba-student-info [student]="student"></ba-student-info>
+        <ba-student-info
+                [student]="student"
+                (tagEvent)="onTagEvent($event)"
+        ></ba-student-info>
     </div>
     <div class="row col-xlg-4 col-lg-4">
         <ngx-toolbar
@@ -21,7 +24,7 @@
                           (sendMessageOut)="receiveChild($event)"
                           #message_component>
         </ba-send-messages>
-        <simple-notifications></simple-notifications>
+        <!--<simple-notifications></simple-notifications>-->
     </div>
 </div>
 

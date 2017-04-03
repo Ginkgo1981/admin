@@ -4,12 +4,14 @@ import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import { UsersService } from '../../../../services/users.service'
 import { MessagesService } from "../../../../services/messages.service";
-import { NotificationsService } from 'angular2-notifications';
-import {StoriesService} from "../../../../services/stories.service";
-import {User} from "../../../../models/user";
-import {Message} from "../../../../models/message";
-import {Student} from "../../../../models/student";
-import {DsinService} from "../../../../services/dsin.service";
+//import { NotificationsService } from 'angular2-notifications';
+import { StoriesService} from "../../../../services/stories.service";
+import { User} from "../../../../models/user";
+import { Message} from "../../../../models/message";
+import { Student} from "../../../../models/student";
+import { DsinService} from "../../../../services/dsin.service";
+import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
+
 
 @Component({
   selector: 'student',
@@ -42,27 +44,44 @@ export class StudentComponent implements OnInit, OnDestroy {
   constructor(private route:ActivatedRoute,
               private location:Location,
               private _users_service:UsersService,
-              private _notificationsService:NotificationsService,
+              private notificationService:NotificationService,
               private _messages_service:MessagesService,
               private _story_service:StoriesService,
               private _dsin_service:DsinService) {
   }
 
   ngOnInit():void {
-    console.log(" this.route.params ==== %o", this.route.params.value.dsin)
     let dsin = this.route.params.value.dsin
     this.load_by_dsin(dsin)
     this.load_messages();
+    //this.load_tags(dsin);
   }
 
   load_by_dsin(dsin:String) {
     this._dsin_service.get_by_dsin(dsin).then(res => {
           this.student = res['student']
+      console.log("======= this.student %o", this.student)
         }
     );
   }
 
-  load_messages() {
+  onTagEvent(event) {
+    console.log("===== onTagEvent ==== %o ", event)
+    if (event === 'add_tag_succ'){
+      this.showNotification('新增标签成功')
+    }else if (event === 'delete_tag_succ'){
+      this.showNotification('删除标签成功')
+    }
+  }
+
+  //load_tags(dsin: String) {
+  //  this._dsin_service.get_tags(dsin).then(res => {
+  //    this.student.tags = res['tags']
+  //  })
+  //
+  //}
+
+  load_messages(dsin: String) {
     this._messages_service.getMessages('PointMessage').then(res => {
       this.messages = res['data']
     })
@@ -73,10 +92,11 @@ export class StudentComponent implements OnInit, OnDestroy {
     this.message_component.showChildModal();
   }
 
+
   receiveChild(e) {
     if (e === "succ") {
       this.load_messages();
-      this._notificationsService.success('信息发送...', '', {timeOut: 2000, maxLength: 10});
+      //this._notificationsService.success('信息发送...', '', {timeOut: 2000, maxLength: 10});
     }
   }
 
@@ -88,5 +108,17 @@ export class StudentComponent implements OnInit, OnDestroy {
 
     console.log("==== e")
   }
+
+
+  showNotification(body:String) {
+    this.notificationService.create({
+      title: '信息更新提示!',
+      body: body,
+      styleType: 'success',
+      timeout: 10000,
+      rateLimit: false
+    })
+  }
+
 
 }

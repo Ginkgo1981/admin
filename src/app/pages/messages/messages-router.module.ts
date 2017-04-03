@@ -30,13 +30,13 @@ import { DrawerService } from '@swimlane/ngx-ui'
     NgxUIModule
   ],
   declarations: [
-      MessagesRouterComponent,
-      NotificationMessagesComponent,
-      PointMessagesComponent,
-      SubscriptionMessagesComponent
+    MessagesRouterComponent,
+    NotificationMessagesComponent,
+    PointMessagesComponent,
+    SubscriptionMessagesComponent
   ],
   providers: [
-      MessagesService,
+    MessagesService,
     DrawerService
   ]
 

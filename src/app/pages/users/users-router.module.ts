@@ -11,8 +11,9 @@ import { UsersService, StoriesService, MessagesService, DsinService} from "../..
 import { routing } from './users-router.routing.ts';
 import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
-import { SimpleNotificationsModule } from 'angular2-notifications';
+//import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NgxUIModule } from '@swimlane/ngx-ui'
+import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,7 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
     SelectModule,
-    SimpleNotificationsModule,
+    //SimpleNotificationsModule,
     MaterialModule,
     NgxUIModule
   ],
@@ -36,8 +37,9 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
     StoriesService,
     MessagesService,
     GlobalDataService,
-    DsinService
-
+    DsinService,
+    DrawerService
+    //NotificationService
   ]
 
 })

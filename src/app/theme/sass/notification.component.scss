@@ -1,0 +1,54 @@
+@import "colors/index";
+
+.ngx-notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 120px;
+  max-width:300px;
+  z-index: 9998;
+}
+
+.ngx-notification {
+  display: block;
+  padding: 1rem;
+  border-radius: 3px;
+  margin-top: .5rem;
+  position: relative;
+  box-shadow: $shadow-15;
+
+  &.notification-closeable {
+    padding-right: 2.5rem;
+  }
+
+  &.ngx-notification-info {
+    background: rgba(0, 0, 0, .8);
+  }
+
+  &.ngx-notification-error {
+    background: $color-red;
+  }
+
+  &.ngx-notification-warning {
+    background: $color-orange;
+  }
+
+  &.ngx-notification-success {
+    background: $color-green;
+  }
+
+  .ngx-notification-title {
+    margin: 0;
+  }
+
+  .ngx-notification-body {
+    font-size: .9rem;
+    margin: 0;
+  }
+
+  .ngx-notification-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

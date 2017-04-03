@@ -16,3 +16,5 @@ export * from './baStudents';
 export * from './baMessages';
 export * from './baSendMessages';
 export * from './baStudentInfo';
+export * from './baUniversityEditor';
+export * from './baMajorEditor'

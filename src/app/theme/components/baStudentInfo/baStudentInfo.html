@@ -3,13 +3,13 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputFirstName">First Name</label>
+                <label for="inputFirstName">姓名</label>
                 <input type="text" class="form-control" value="{{student.user.name}}" id="inputFirstName">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputLastName">cell</label>
+                <label for="inputLastName">手机号</label>
                 <input type="text" class="form-control" id="inputLastName" value="{{student.user.cell}}">
             </div>
         </div>
@@ -17,21 +17,36 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputFirstName">identity_type</label>
-                <input type="email" class="form-control" id="inputEmail" value="{{student.dsin}}">
+                <label for="inputFirstName">省份</label>
+                <input type="email" class="form-control" id="inputEmail" value="{{student.province}}">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label for="inputWebsite">id</label>
-                <input type="text" class="form-control" id="inputWebsite" value="{{student.province}}">
+                <label for="inputWebsite">地市</label>
+                <input type="text" class="form-control" id="inputWebsite" value="{{student.city}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputFirstName">学校</label>
+                <input type="email" class="form-control" id="inputEmail" value="{{student.school}}">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputWebsite">地市</label>
+                <input type="text" class="form-control" id="inputWebsite" value="{{student.user.subscribe_at}}">
             </div>
         </div>
     </div>
 
     <div class="row">
         <tag-input
-                [(ngModel)]='itemsAsObjects'
+                [(ngModel)]='tags'
                 (onAdd)="onTagAdd($event)"
                 (onRemove)="onTagRemove($event)"
                 theme='bootstrap'>

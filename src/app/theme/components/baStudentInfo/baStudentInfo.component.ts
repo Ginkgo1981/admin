@@ -5,6 +5,7 @@ import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
 import {UsersService} from "../../../services/users.service";
 import {Student} from "../../../models/student";
+import {DsinService} from "../../../services/dsin.service";
 
 @Component({
   selector: 'ba-student-info',
@@ -14,36 +15,28 @@ import {Student} from "../../../models/student";
 
 export class BaStudentInfo implements OnInit {
 
-  @Input()student: Student;
+  @Input() student: Student;
+  @Output() tagEvent = new EventEmitter<any>();
 
-  itemsAsObjects = [{value: 0, display: 'Angular'}, {value: 1, display: 'React'}];
-
-
-  constructor(private _service: UsersService){
-    console.log("===== student ==== %o", this.student)
+  tags :Array<any>
+  constructor(private _service: DsinService){
   }
 
   ngOnInit():void {
-
-    console.log("===== student ==== %o", this.student)
+    this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
   }
-
 
   onTagAdd(event){
-
-    console.log("===== onTagAdd ==== %o", event)
-
+    this._service.add_tag(this.student.dsin, event.display).then(res => {
+      this.student.tags.push(res['tag'])
+      this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
+      this.tagEvent.emit("add_tag_succ")
+    })
   }
-
-
   onTagRemove(event){
-
-    console.log("=====onTagRemove ==== %o", event)
-
+    this._service.delete_tag(event.value).then(res => {
+      this.tagEvent.emit("delete_tag_succ")
+    })
   }
-
-
-
-
 
 }

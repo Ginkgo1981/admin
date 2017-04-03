@@ -32,7 +32,9 @@ import {
   BaStudents,
   BaMessages,
   BaSendMessages,
-    BaStudentInfo
+  BaStudentInfo,
+  BaUniversityEditor,
+  BaMajorEditor
 } from './components';
 
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
@@ -79,7 +81,9 @@ const NGA_COMPONENTS = [
   BaStudents,
   BaMessages,
   BaSendMessages,
-  BaStudentInfo
+  BaStudentInfo,
+  BaUniversityEditor,
+  BaMajorEditor
 ];
 
 const NGA_DIRECTIVES = [
