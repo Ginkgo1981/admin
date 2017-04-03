@@ -9,11 +9,11 @@ import {DsinService} from "../../../services/dsin.service";
 
 @Component({
   selector: 'ba-student-info',
-  styleUrls: ['./baStudentInfo.scss'],
-  templateUrl: './baStudentInfo.html'
+  styleUrls: ['./ba-student-basic.scss'],
+  templateUrl: './ba-student-basic.html'
 })
 
-export class BaStudentInfo implements OnInit {
+export class BaStudentBasic implements OnInit {
 
   @Input() student: Student;
   @Output() tagEvent = new EventEmitter<any>();

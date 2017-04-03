@@ -5,32 +5,28 @@ import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
 import {UsersService} from "../../../services/users.service";
 import {Student} from "../../../models/student";
+import {Major} from "../../../models/majors";
 import {DsinService} from "../../../services/dsin.service";
 
 @Component({
-  selector: 'ba-university-editor',
-  styleUrls: ['./baUniversityEditor.scss'],
-  templateUrl: './baUniversityEditor.html'
+  selector: 'ba-major-editor',
+  styleUrls: ['./ba-major-editor.scss'],
+  templateUrl: './ba-major-editor.html'
 })
 
-export class BaUniversityEditor implements OnInit {
+export class BaMajorEditor implements OnInit {
 
-  @Input() university:University
+  @Input()major: Major;
   @Output() updatedSucc = new EventEmitter<any>();
-
   constructor(private _service: DsinService){
   }
-  //
+
   ngOnInit():void {
-    console.log("===== university ==== %o", this.university)
   }
 
-
-  update(evetn) {
-    console.log("==== university %o", this.university)
-    this._service.update_dsin(this.university.dsin, this.university).then(res => {
-      this.updatedSucc.emit('update_university_succ')
+  update(event) {
+    this._service.update_dsin(this.major.dsin, this.major).then(res => {
+      this.updatedSucc.emit('update_major_succ')
     })
   }
-
 }

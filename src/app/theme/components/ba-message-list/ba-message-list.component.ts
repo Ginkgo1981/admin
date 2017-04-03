@@ -5,10 +5,10 @@ import {MessagesService} from "../../../services/messages.service";
 
 @Component({
   selector: 'ba-messages-list',
-  templateUrl: './baMessages.html',
-  //styleUrls: ['./baMessages.scss']
+  templateUrl: './ba-message-list.html',
+  //styleUrls: ['./ba-message-list.scss']
 })
-export class BaMessages implements OnInit {
+export class BaMessageList implements OnInit {
 
   @Input() messages:Array<Message>;
   @Input() message_type: String

@@ -12,9 +12,9 @@ export * from './baFullCalendar';
 export * from './baPictureUploader';
 export * from './baCheckbox';
 export * from './baMultiCheckbox';
-export * from './baStudents';
-export * from './baMessages';
-export * from './baSendMessages';
-export * from './baStudentInfo';
-export * from './baUniversityEditor';
-export * from './baMajorEditor'
+export * from './ba-student-list';
+export * from './ba-message-list';
+export * from './ba-send-messages';
+export * from './ba-student-basic';
+export * from './ba-university-editor';
+export * from './ba-major-editor'

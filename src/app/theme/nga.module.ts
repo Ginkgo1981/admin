@@ -29,10 +29,10 @@ import {
   BaPageTop,
   BaPictureUploader,
   BaSidebar,
-  BaStudents,
-  BaMessages,
+    BaStudentList,
+  BaMessageList,
   BaSendMessages,
-  BaStudentInfo,
+  BaStudentBasic,
   BaUniversityEditor,
   BaMajorEditor
 } from './components';
@@ -78,10 +78,10 @@ const NGA_COMPONENTS = [
   BaPageTop,
   BaPictureUploader,
   BaSidebar,
-  BaStudents,
-  BaMessages,
+  BaStudentList,
+  BaMessageList,
   BaSendMessages,
-  BaStudentInfo,
+  BaStudentBasic,
   BaUniversityEditor,
   BaMajorEditor
 ];

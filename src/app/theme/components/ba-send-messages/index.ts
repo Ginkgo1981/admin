@@ -1,0 +1,1 @@
+export * from './ba-send-messages.component.ts';
