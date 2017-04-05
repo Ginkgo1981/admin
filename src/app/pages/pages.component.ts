@@ -35,3 +35,7 @@ export class Pages {
     this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
   }
 }
+
+
+
+

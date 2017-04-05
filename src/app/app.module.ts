@@ -7,6 +7,7 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { SelectModule } from 'ng-select';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '@angular/material';
+import { NgUploaderModule } from 'ngx-uploader';
 
 
 
@@ -54,7 +55,8 @@ export type StoreType = {
     PagesModule,
     routing,
     SelectModule,
-    MaterialModule
+    MaterialModule,
+    NgUploaderModule
 
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

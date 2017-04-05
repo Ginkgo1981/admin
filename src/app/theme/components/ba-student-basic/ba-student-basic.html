@@ -1,55 +1,162 @@
-<ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-xs-6"
-         title="用户基本信息" baCardClass="traffic-panel medium-card">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputFirstName">姓名</label>
-                <input type="text" class="form-control" value="{{student.user.name}}" id="inputFirstName">
+<div class="row">
+    <!--basic-->
+    <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-xs-6" title="考生基本信息" baCardClass="traffic-panel medium-card">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" class="form-control" value="{{student.user.name}}" id="name">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="cell">手机号</label>
+                    <input type="text" class="form-control" id="cell" value="{{student.user.cell}}">
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputLastName">手机号</label>
-                <input type="text" class="form-control" id="inputLastName" value="{{student.user.cell}}">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="province">省份</label>
+                    <input type="text" class="form-control" id="province" value="{{student.province}}">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="city">地市</label>
+                    <input type="text" class="form-control" id="city" value="{{student.city}}">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputFirstName">省份</label>
-                <input type="email" class="form-control" id="inputEmail" value="{{student.province}}">
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputWebsite">地市</label>
-                <input type="text" class="form-control" id="inputWebsite" value="{{student.city}}">
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputFirstName">学校</label>
-                <input type="email" class="form-control" id="inputEmail" value="{{student.school}}">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="school">学校</label>
+                    <input type="text" class="form-control" id="school" value="{{student.school}}">
+                </div>
             </div>
+            <!--<div class="col-sm-6">-->
+            <!--<div class="form-group">-->
+            <!--<label for="inputWebsite">地市</label>-->
+            <!--<input type="text" class="form-control" id="inputWebsite" value="{{student.user.subscribe_at}}">-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="inputWebsite">地市</label>
-                <input type="text" class="form-control" id="inputWebsite" value="{{student.user.subscribe_at}}">
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <tag-input
-                [(ngModel)]='tags'
-                (onAdd)="onTagAdd($event)"
-                (onRemove)="onTagRemove($event)"
-                theme='bootstrap'>
-        </tag-input>
-    </div>
-</ba-card>
+        <div class="row">
+            <tag-input
+                    [(ngModel)]='tags'
+                    (onAdd)="onTagAdd($event)"
+                    (onRemove)="onTagRemove($event)"
+                    theme='bootstrap'>
+            </tag-input>
+        </div>
+    </ba-card>
+
+
+    <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-xs-6" title="考分信息" baCardClass="traffic-panel medium-card">
+        <div *ngIf="student.sat_score" class="form-horizontal">
+            <div class="row">
+                <!--省份-->
+                <div class="form-group col-sm-6">
+                    <label for="sat_province" class="col-sm-3 form-control-label">省份</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="sat_province" value="{{student.sat_province}}">
+                    </div>
+                </div>
+                <!--科类-->
+                <div class="form-group col-sm-6">
+                    <label for="kl" class="col-sm-3 form-control-label">科类</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="kl" value="{{student.sat_score.kl}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--语文-->
+                <div class="form-group col-sm-6">
+                    <label for="score_chinese" class="col-sm-3">语文</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_chinese"
+                               value="{{student.sat_score.score_chinese}}">
+                    </div>
+                </div>
+                <!--数学-->
+                <div class="form-group col-sm-6">
+                    <label for="score_math" class="col-sm-3">数学</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_math"
+                               value="{{student.sat_score.score_math}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--英语-->
+                <div class="form-group col-sm-6">
+                    <label for="score_english" class="col-sm-3">英语</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_english"
+                               value="{{student.sat_score.score_english}}">
+                    </div>
+                </div>
+                <!--总分-->
+                <div class="form-group col-sm-6">
+                    <label for="score_sum" class="col-sm-3">总分</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_sum" value="{{student.sat_score.score_sum}}">
+                    </div>
+                </div>
+            </div>
+            <!--选测1-->
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="km_1" class="col-sm-3">选1</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="km_1" value="{{student.sat_score.km_1}}">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="score_km_1" class="col-sm-3">等级</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_km_1"
+                               value="{{student.sat_score.score_km_1}}">
+                    </div>
+                </div>
+            </div>
+
+            <!--选测2-->
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="km_2" class="col-sm-3">选2</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="km_2" value="{{student.sat_score.km_2}}">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="score_km_2" class="col-sm-3">等级</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="score_km_2"
+                               value="{{student.sat_score.score_km_2}}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </ba-card>
+
+
+</div>

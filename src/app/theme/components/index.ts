@@ -17,4 +17,6 @@ export * from './ba-message-list';
 export * from './ba-send-messages';
 export * from './ba-student-basic';
 export * from './ba-university-editor';
-export * from './ba-major-editor'
+export * from './ba-major-editor';
+export * from './ba-university-info';
+export * from './ba-images-uploader';

@@ -1,9 +1,9 @@
 <div *ngIf="student">
     <div class="row">
-        <ba-student-info
+        <ba-student-basic
                 [student]="student"
                 (tagEvent)="onTagEvent($event)"
-        ></ba-student-info>
+        ></ba-student-basic>
     </div>
     <div class="row col-xlg-4 col-lg-4">
         <ngx-toolbar
@@ -27,9 +27,3 @@
         <!--<simple-notifications></simple-notifications>-->
     </div>
 </div>
-
-
-
-
-
-

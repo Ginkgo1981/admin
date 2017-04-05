@@ -1,0 +1,6 @@
+<ng-content></ng-content>
+<input type="file"
+       ngFileSelect="ngFileSelect"
+       (onUpload)="handleUpload($event)"
+       (beforeUpload)="uploadStart($event)"
+       [options]="options"/>

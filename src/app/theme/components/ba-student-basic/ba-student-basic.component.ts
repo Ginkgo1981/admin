@@ -8,7 +8,7 @@ import {Student} from "../../../models/student";
 import {DsinService} from "../../../services/dsin.service";
 
 @Component({
-  selector: 'ba-student-info',
+  selector: 'ba-student-basic',
   styleUrls: ['./ba-student-basic.scss'],
   templateUrl: './ba-student-basic.html'
 })

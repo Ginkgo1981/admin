@@ -20,7 +20,7 @@ export class BaUniversityEditor implements OnInit {
 
   constructor(private _service: DsinService){
   }
-  
+
   ngOnInit():void {
     console.log("===== university ==== %o", this.university)
   }

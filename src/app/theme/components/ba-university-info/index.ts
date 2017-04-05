@@ -1,0 +1,1 @@
+export * from './ba-university-info.component'
