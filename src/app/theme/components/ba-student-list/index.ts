@@ -1,1 +1,1 @@
-export * from './ba-student-list.component.ts';
+export * from './ba-student-list.component';

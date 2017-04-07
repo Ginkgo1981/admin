@@ -1,12 +1,12 @@
 import {Component, ViewChild, Input, Output, ElementRef, EventEmitter, OnInit} from '@angular/core';
 import {MessagesService} from "../../../services/messages.service";
-import { ModalDirective } from 'ng2-bootstrap';
+import {ModalDirective } from 'ng2-bootstrap';
 import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
 import {UsersService} from "../../../services/users.service";
 import {Student} from "../../../models/student";
-import {Major} from "../../../models/majors";
 import {DsinService} from "../../../services/dsin.service";
+import {Major} from "../../../models/majors";
 
 @Component({
   selector: 'ba-major-editor',

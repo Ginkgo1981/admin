@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { MaterialRouterComponent } from './material-router.component.ts';
-import { routing } from './material-router.routing.ts';
+import { MaterialRouterComponent } from './material-router.component';
+import { routing } from './material-router.routing';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { GlobalDataService} from '../../services/globle-data.service'

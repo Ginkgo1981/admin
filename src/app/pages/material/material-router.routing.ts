@@ -1,5 +1,5 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { MaterialRouterComponent } from './material-router.component.ts';
+import { MaterialRouterComponent } from './material-router.component';
 import { ModuleWithProviders } from '@angular/core';
 import { StoriesComponent } from "./components/stories/stories.component";
 import { StoryComponent } from "./components/story/story.component";

@@ -1,6 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
-import {MessagesRouterComponent} from "./messages-router.component.ts";
+import {MessagesRouterComponent} from "./messages-router.component";
 import {PointMessagesComponent} from "./components/pointMessages/pointMessages.component";
 import {SubscriptionMessagesComponent} from "./components/subscriptionMessages/subscriptionMessages.component";
 import {NotificationMessagesComponent} from "./components/notificationMessages/notificationMessages.component";

@@ -1,6 +1,6 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
-import {CampaignsRouterComponent} from "./campaigns-router.component.ts";
+import {CampaignsRouterComponent} from "./campaigns-router.component";
 import {CampaignListComponent} from "./components/campaignList/campaignList.component";
 import {CampaignComponent} from "./components/campaign/campaign.component";
 

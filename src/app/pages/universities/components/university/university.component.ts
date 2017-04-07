@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,ViewChild} from '@angular/core'
+import { Component, OnInit, Input,ViewChild, TemplateRef} from '@angular/core'
 import { Router,ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
@@ -30,8 +30,10 @@ export class UniversityComponent implements OnInit {
   @ViewChild('editUniversityTmpl') editUniversityTmpl:TemplateRef<any>;
   @ViewChild('editMajorTmpl') editMajorTmpl:TemplateRef<any>;
   @ViewChild('showStudentTmpl') showStudentTmpl:TemplateRef<any>;
+  @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
 
   universityDrawer:DrawerService;
+  imagesUploaderDrawer:DrawerService;
   majorDrawer:DrawerComponent;
 
   university:University
@@ -79,14 +81,14 @@ export class UniversityComponent implements OnInit {
 
   //major table
   updateFilter(event) {
-    const val = event.target.value;
-    console.log("==== event %o", val)
-    // filter our data
-    const temp = this.temp.filter(function (d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-    });
-    // update the rows
-    this.rows = temp;
+    //const val = event.target.value;
+    //console.log("==== event %o", val)
+    //// filter our data
+    //const temp = this.temp.filter(function (d) {
+    //  return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+    //});
+    //// update the rows
+    //this.rows = temp;
   }
 
   onSelect({ selected }) {
@@ -127,7 +129,12 @@ export class UniversityComponent implements OnInit {
 
 
   //Drawer
-  openUniverityDrawer(temp) {
+  openImageUploaderDrawer() {
+    console.log("======= openImageUploaderDrawer =====")
+    this.imagesUploaderDrawer = this.openDrawer(this.imageUploaderTmpl)
+  }
+
+  openUniverityDrawer() {
     this.universityDrawer = this.openDrawer(this.editUniversityTmpl)
   }
 

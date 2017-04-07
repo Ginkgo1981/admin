@@ -8,6 +8,6 @@ export class University {
   website: String;
   tel: String;
   brief: String;
-  majors: Array<Major>
-
+  majors: Array<Major>;
+  dsin: String;
 }

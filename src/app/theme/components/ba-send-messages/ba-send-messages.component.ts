@@ -3,6 +3,7 @@ import {MessagesService} from "../../../services/messages.service";
 import { ModalDirective } from 'ng2-bootstrap';
 import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
+import {Student} from "../../../models/student";
 
 @Component({
   selector: 'ba-send-messages',
@@ -51,7 +52,7 @@ export class BaSendMessages implements OnInit {
   chooseAttachmentType(attachment_type: String){
     console.log("===== attachment_type: %o", attachment_type)
     this.attachment_type = attachment_type
-    this.options = this.temp_options[this.attachment_type]
+    this.options = this.temp_options[attachment_type]
   }
 
   sendMessage(e):void {

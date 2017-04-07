@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule }  from '@angular/router';
-import { UniversitiesRouterComponent } from './universities-router.component.ts'
-import {UniversityListComponent} from "./components/university-list/university-list.component.ts";
+import { UniversitiesRouterComponent } from './universities-router.component'
+import {UniversityListComponent} from "./components/university-list/university-list.component";
 import {UniversityComponent} from "./components/university/university.component";
 
 // noinspection TypeScriptValidateTypes

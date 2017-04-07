@@ -6,6 +6,7 @@ import {User} from "../../../models/user";
 import {UsersService} from "../../../services/users.service";
 import {Student} from "../../../models/student";
 import {DsinService} from "../../../services/dsin.service";
+import {University} from "../../../models/university";
 
 @Component({
   selector: 'ba-university-editor',

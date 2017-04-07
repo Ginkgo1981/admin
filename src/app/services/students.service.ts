@@ -5,34 +5,14 @@ import {GlobalDataService} from "./globle-data.service";
 
 @Injectable()
 export class UsersService {
-
-
-  base_api = `${GlobalDataService.getCable_api()}/users`;
-
+  users_api = GlobalDataService.users_api();
   constructor(private http:Http) {}
-
   getUsers(identity_type) {
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.get(`${this.base_api}/list/${identity_type}`)
+    return this.http.get(`${this.users_api}/list/${identity_type}`)
         .toPromise()
         .then((response) => {
           return response.json();
         });
   }
-  getUser(id:Number) {
-    return this.http.get(`${this.base_api}/${id}`)
-        .toPromise()
-        .then((response) => {
-          return response.json();
-        });
-  }
-
-  getStudent(id:Number) {
-    return this.http.get(`${this.base_api}/users/${id}`)
-        .toPromise()
-        .then((response) => {
-          return response.json();
-        });
-  }
-
 }

@@ -5,10 +5,10 @@ import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 import { NgaModule } from '../../theme/nga.module';
 import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
-import { StudentListComponent } from "./components/student-list/student-list.component.ts"
-import { UsersRouterComponent } from "./users-router.component.ts"
+import { StudentListComponent } from "./components/student-list/student-list.component"
+import { UsersRouterComponent } from "./users-router.component"
 import { UsersService, StoriesService, MessagesService, DsinService} from "../../services";
-import { routing } from './users-router.routing.ts';
+import { routing } from './users-router.routing';
 import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
 //import { SimpleNotificationsModule } from 'angular2-notifications';

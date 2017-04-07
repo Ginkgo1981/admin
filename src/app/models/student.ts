@@ -1,4 +1,5 @@
 import {User} from "./user";
+import {Tag} from "./tag";
 export class Student {
   id: Number;
   province: String;

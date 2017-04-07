@@ -20,7 +20,7 @@ export class DsinService {
         });
   }
 
-  update_dsin(dsin:String, entity:Any){
+  update_dsin(dsin:String, entity:any){
     let headers = new Headers({'Content-Type': 'application/json', 'token': '123456789'});
     return this.http.post(`${this.dsin_api}/${dsin}`, JSON.stringify({entity:entity}), {headers: headers})
         .toPromise()

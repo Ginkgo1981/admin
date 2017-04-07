@@ -7,4 +7,5 @@ export class Major {
   claim: String;
   course: String;
   tel: String;
+  dsin: String;
 }

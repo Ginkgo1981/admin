@@ -13,12 +13,12 @@ import { UniversitiesService} from "../../services/universities.service";
 import { UsersService} from "../../services/users.service";
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
 
-import { UniversityListComponent} from "./components/university-list/university-list.component.ts";
-import { UniversitiesRouterComponent } from "./universities-router.component.ts"
+import { UniversityListComponent} from "./components/university-list/university-list.component";
+import { UniversitiesRouterComponent } from "./universities-router.component"
 import { UniversityComponent} from "./components/university/university.component";
 import { GlobalDataService } from '../../services/globle-data.service'
 
-import { routing } from './universities-router.routing.ts';
+import { routing } from './universities-router.routing';
 
 @NgModule({
   imports: [

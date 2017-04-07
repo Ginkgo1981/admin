@@ -5,6 +5,7 @@
         <ba-university-info
             [university]="university" >
             <button type="primary" (click)="openUniverityDrawer()"> 编辑学校信息 </button>
+            <button type="primary" (click)="openImageUploaderDrawer()"> 上传学校相册 </button>
         </ba-university-info>
     </div>
 
@@ -40,7 +41,7 @@
         </ba-card>
     </div>
 
-    <!--university-->
+    <!--university editor-->
     <template #editUniversityTmpl>
         <div class="row">
             <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
@@ -52,6 +53,17 @@
             </ba-card>
         </div>
     </template>
+
+    <!-- image uploader -->
+    <template #imageUploaderTmpl>
+        <div class="row">
+            <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                     title="上传学校相册" baCardClass="traffic-panel large-card">
+                <ba-images-uploader> </ba-images-uploader>
+            </ba-card>
+        </div>
+    </template>
+
 
     <!--major-->
     <template #editMajorTmpl>
