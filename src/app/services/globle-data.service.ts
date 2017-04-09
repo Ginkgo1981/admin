@@ -28,4 +28,9 @@ export class GlobalDataService {
     return GlobalDataService.cable_api + '/stories'
   }
 
+  static
+  members_api(){
+    return GlobalDataService.cable_api + '/members'
+  }
+
 }

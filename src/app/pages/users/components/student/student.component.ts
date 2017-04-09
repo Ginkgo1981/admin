@@ -15,8 +15,8 @@ import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
 
 @Component({
   selector: 'student',
-  templateUrl: './student.html',
-  styleUrls: ['./student.scss'],
+  templateUrl: './student.componet.html',
+  styleUrls: ['./student.component.scss'],
 
 })
 export class StudentComponent implements OnInit, OnDestroy {

@@ -8,8 +8,8 @@ import { Message} from "../../../../models/message";
 
 @Component({
   selector: 'subscriptionMessages',
-  templateUrl: './subscriptionMessages.html',
-  styleUrls: ['./subscriptionMessages.scss'],
+  templateUrl: './subscriptionMessages.component.html',
+  styleUrls: ['./subscriptionMessages.componet.scss'],
 })
 export class SubscriptionMessagesComponent implements OnInit {
 

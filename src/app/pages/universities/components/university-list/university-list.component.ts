@@ -9,8 +9,8 @@ import {DatatableComponent} from '@swimlane/ngx-datatable'
 
 @Component({
   selector: 'university-list',
-  templateUrl: './university-list.html',
-  styleUrls: ['./university-list.scss'],
+  templateUrl: './university-list.component.html',
+  styleUrls: ['./university-list.componet.scss'],
 
 })
 export class UniversityListComponent implements OnInit {

@@ -7,8 +7,8 @@ import {Student} from "../../../models/student";
 
 @Component({
   selector: 'ba-send-messages',
-  styleUrls: ['./ba-send-messages.scss'],
-  templateUrl: './ba-send-messages.html'
+  styleUrls: ['./ba-send-messages.component.scss'],
+  templateUrl: './ba-send-messages.component.html'
 })
 export class BaSendMessages implements OnInit {
   @ViewChild('lgModal') lgModal:ModalDirective;

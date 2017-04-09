@@ -8,8 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'story',
-  templateUrl: './story.html',
-  styleUrls: ['./story.scss'],
+  templateUrl: './story.component.html',
+  styleUrls: ['./story.component.scss'],
 
 })
 export class StoryComponent implements OnInit {

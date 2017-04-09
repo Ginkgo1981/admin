@@ -4,7 +4,7 @@ import { User } from '../../../../models'
 
 @Component({
   selector: 'students',
-  templateUrl: './student-list.html'
+  templateUrl: './student-list.component.html'
 })
 export class StudentListComponent {
 

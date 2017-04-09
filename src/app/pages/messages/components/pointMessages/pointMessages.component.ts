@@ -9,8 +9,8 @@ import { FileUploaderOptions, FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'pointMessages',
-  templateUrl: './pointMessages.html',
-  styleUrls: ['./pointMessages.scss'],
+  templateUrl: './pointMessages.component.html',
+  styleUrls: ['./pointMessages.component.scss'],
 
 })
 export class PointMessagesComponent implements OnInit {

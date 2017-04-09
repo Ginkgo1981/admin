@@ -10,8 +10,8 @@ import {Major} from "../../../models/majors";
 
 @Component({
   selector: 'ba-major-editor',
-  styleUrls: ['./ba-major-editor.scss'],
-  templateUrl: './ba-major-editor.html'
+  styleUrls: ['./ba-major-editor.component.scss'],
+  templateUrl: './ba-major-editor.component.html'
 })
 
 export class BaMajorEditor implements OnInit {

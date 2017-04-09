@@ -6,8 +6,8 @@ import {StoriesService} from "../../../../services/stories.service";
 
 @Component({
   selector: 'stories',
-  templateUrl: './stories.html',
-  styleUrls: ['./stories.scss'],
+  templateUrl: './stories.component.html',
+  styleUrls: ['./stories.component.scss'],
 
 })
 export class StoriesComponent implements OnInit {

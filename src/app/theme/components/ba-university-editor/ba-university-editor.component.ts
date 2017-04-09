@@ -10,8 +10,8 @@ import {University} from "../../../models/university";
 
 @Component({
   selector: 'ba-university-editor',
-  styleUrls: ['./ba-university-editor.scss'],
-  templateUrl: './ba-university-editor.html'
+  styleUrls: ['./ba-university-editor.component.scss'],
+  templateUrl: './ba-university-editor.component.html'
 })
 
 export class BaUniversityEditor implements OnInit {

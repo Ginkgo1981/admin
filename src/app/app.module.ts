@@ -8,8 +8,8 @@ import { SelectModule } from 'ng-select';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '@angular/material';
 import { NgUploaderModule } from 'ngx-uploader';
-
-
+import { LoginComponent } from './pages/login/login.component'
+import { MemberService } from './services/member.service'
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -42,7 +42,8 @@ export type StoreType = {
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App
+    App,
+    LoginComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -61,7 +62,8 @@ export type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    MemberService
   ]
 })
 

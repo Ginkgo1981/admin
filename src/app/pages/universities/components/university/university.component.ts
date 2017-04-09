@@ -12,8 +12,8 @@ import { DsinService} from "../../../../services/dsin.service";
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
 @Component({
   selector: 'university',
-  templateUrl: './university.html',
-  styleUrls: ['./university.scss'],
+  templateUrl: './university.component.html',
+  styleUrls: ['./university.component.scss'],
 
 })
 export class UniversityComponent implements OnInit {

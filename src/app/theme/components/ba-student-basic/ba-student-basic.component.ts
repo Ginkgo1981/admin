@@ -9,8 +9,8 @@ import {DsinService} from "../../../services/dsin.service";
 
 @Component({
   selector: 'ba-student-basic',
-  styleUrls: ['./ba-student-basic.scss'],
-  templateUrl: './ba-student-basic.html'
+  styleUrls: ['./ba-student-basic.component.scss'],
+  templateUrl: './ba-student-basic.component.html'
 })
 
 export class BaStudentBasic implements OnInit {

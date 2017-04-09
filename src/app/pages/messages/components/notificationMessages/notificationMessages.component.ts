@@ -8,8 +8,8 @@ import { Message} from "../../../../models/message";
 
 @Component({
   selector: 'notificationMessages',
-  templateUrl: './notificationMessages.html',
-  styleUrls: ['./notificationMessages.scss'],
+  templateUrl: './notificationMessages.component.html',
+  styleUrls: ['./notificationMessages.component.scss'],
 
 })
 export class NotificationMessagesComponent implements OnInit {

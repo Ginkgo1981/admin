@@ -4,7 +4,7 @@ import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {Student} from "../../../models/student";
 @Component({
   selector: 'ba-students-list',
-  templateUrl: './ba-student-list.html'
+  templateUrl: './ba-student-list.component.html'
 })
 export class BaStudentList implements OnInit{
 

@@ -2,12 +2,18 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'dashboard',
-  styleUrls: ['./dashboard.scss'],
-  templateUrl: './dashboard.html'
+  styleUrls: ['./dashboard.component.scss'],
+  templateUrl: './dashboard.component.html'
 })
 export class Dashboard {
 
   constructor() {
+
   }
+
+  ngOnInit() {
+
+  }
+
 
 }
