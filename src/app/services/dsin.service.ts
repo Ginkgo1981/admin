@@ -48,12 +48,42 @@ export class DsinService {
 
   }
 
-  delete_tag(dsin: String) {
+  remove(dsin: String) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': '123456789'});
     return this.http.delete(`${this.dsin_api}/${dsin}`)
         .toPromise()
         .then((response) => {
           return response.json();
         });
+  }
+
+
+  get_uptoken() {
+    return this.http.get(`${this.dsin_api}/uptoken`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+
+  }
+
+  save_photo(dsin: String, photo_key){
+    let headers = new Headers({'Content-Type': 'application/json', 'token': '123456789'});
+    let data = { key: photo_key }
+    return this.http.post(`${this.dsin_api}/${dsin}/save_photo`, JSON.stringify(data), {headers: headers})
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
+
+  get_photos(dsin: String) {
+    return this.http.get(`${this.dsin_api}/${dsin}/photos`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+
   }
 }

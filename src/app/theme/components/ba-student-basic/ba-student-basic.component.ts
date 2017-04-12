@@ -34,7 +34,7 @@ export class BaStudentBasic implements OnInit {
     })
   }
   onTagRemove(event){
-    this._service.delete_tag(event.value).then(res => {
+    this._service.remove(event.value).then(res => {
       this.tagEvent.emit("delete_tag_succ")
     })
   }

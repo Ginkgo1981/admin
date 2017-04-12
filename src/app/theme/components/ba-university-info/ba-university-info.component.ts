@@ -20,6 +20,9 @@ export class BaUniversityInfo implements OnInit {
   //@Output() updatedSucc = new EventEmitter<any>();
 
   constructor(private _service: DsinService){
+
+    console.log("=== BaUniversityInfo constructor  ==== ")
+
   }
 
   ngOnInit():void {
@@ -39,5 +42,15 @@ export class BaUniversityInfo implements OnInit {
   //    this.updatedSucc.emit('update_university_succ')
   //  })
   //}
+
+
+  ngOnInit() {
+
+
+    console.log("=== BaUniversityInfo ngOnInit ======")
+
+  }
+
+
 
 }

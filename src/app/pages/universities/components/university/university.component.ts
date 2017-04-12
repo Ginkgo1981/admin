@@ -159,4 +159,10 @@ export class UniversityComponent implements OnInit {
     });
   }
 
+
+  onImageUploaded(e){
+    console.log("===== onImageUploaded: %o", e)
+    if(e.action === 'end'){
+    }
+  }
 }

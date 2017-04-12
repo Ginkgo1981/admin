@@ -1,0 +1,22 @@
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.album {
+  display: inline-block;
+  padding: 0;
+  margin: 0 5px;
+}
+
+
+.img-close-icon{
+  display:none;
+  position: relative;
+  right: 9px;
+  top: -157px;
+  display: block;
+  background: url("http://oo57og2we.bkt.clouddn.com/1491983632378");
+  width: 30px;
+  height: 30px;
+}

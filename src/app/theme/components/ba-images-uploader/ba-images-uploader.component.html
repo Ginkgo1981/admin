@@ -1,7 +1,37 @@
-<h1> images uploaders </h1>
+<h2> images uploaders </h2>
 <ng-content></ng-content>
+
+<div *ngIf="previewData">
+    <img [src]="previewData">
+</div>
+
+
 <input type="file"
        ngFileSelect="ngFileSelect"
        (onUpload)="handleUpload($event)"
        (beforeUpload)="uploadStart($event)"
+       [events]="startUploadEvent"
+       (onPreviewData)="handlePreviewData($event)"
        [options]="options"/>
+
+
+<div>
+    <button type="button" class="start-upload-button" (click)="startUpload()">开始上传</button>
+</div>
+
+
+<h2>相册</h2>
+<div>
+
+    <div class="album" *ngFor="let photo of photos">
+        <img [src]="photo.img_url">
+        <div class="img-close-icon" (click)="remove(photo)"></div>
+    </div>
+
+</div>
+
+
+
+
+
+
