@@ -10,6 +10,8 @@ import { MaterialModule } from '@angular/material';
 import { NgUploaderModule } from 'ngx-uploader';
 import { LoginComponent } from './pages/login/login.component'
 import { MemberService } from './services/member.service'
+import {DndModule} from 'ng2-dnd';
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -57,8 +59,8 @@ export type StoreType = {
     routing,
     SelectModule,
     MaterialModule,
-    NgUploaderModule
-
+    NgUploaderModule,
+    DndModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

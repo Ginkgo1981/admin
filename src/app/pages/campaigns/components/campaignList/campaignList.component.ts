@@ -11,9 +11,41 @@ import { ModalDirective } from 'ng2-bootstrap';
 })
 export class CampaignListComponent implements OnInit {
 
+  listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
+
   ngOnInit():void {
 
   }
+
+  onDragSuccess(e){
+    console.log("onDragSuccess: %o",e)
+  }
+
+  onDragStart(e){
+
+    console.log("onDragStart: %o",e)
+  }
+
+
+  onDragOver(e){
+
+    console.log("onDragOver: %o",e)
+  }
+
+
+  onDragEnd(e){
+
+    console.log("onDragEnd: %o",e)
+  }
+
+  onDropSuccess(e){
+
+    console.log("onDropSuccess: %o",e)
+  }
+
+
+
+
 
 
 }

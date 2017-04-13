@@ -10,7 +10,7 @@ import {SelectModule} from 'ng-select';
 import {CampaignsRouterComponent} from "./campaigns-router.component";
 import {CampaignListComponent} from "./components/campaignList/campaignList.component";
 import {CampaignComponent} from "./components/campaign/campaign.component";
-
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
   imports: [
@@ -21,7 +21,8 @@ import {CampaignComponent} from "./components/campaign/campaign.component";
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    SelectModule
+    SelectModule,
+    DndModule.forRoot()
   ],
   declarations: [
 
