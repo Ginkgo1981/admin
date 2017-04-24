@@ -45,4 +45,25 @@ export class MessagesService {
           return response.json();
         });
   }
+
+  getReceivedMessagesByDsin(dsin: String){
+    return this.http.get(`${this.messages_api}/${dsin}/received_messages`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+
+  }
+
+  getSendedMessagesByDsin(dsin: String) {
+    return this.http.get(`${this.messages_api}/${dsin}/sended_messages`)
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+
+  }
+
+
+
 }

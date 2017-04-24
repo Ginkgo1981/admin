@@ -53,7 +53,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   ngOnInit():void {
     let dsin = this.route.params.value.dsin
     this.load_by_dsin(dsin)
-    this.load_messages(dsin);
+    this.load_receive_messages(dsin);
     //this.load_tags(dsin);
   }
 
@@ -81,8 +81,8 @@ export class StudentComponent implements OnInit, OnDestroy {
   //
   //}
 
-  load_messages(dsin: String) {
-    this._messages_service.getMessages('PointMessage').then(res => {
+  load_receive_messages(dsin: String) {
+    this._messages_service.getReceivedMessagesByDsin(this.student.dsin).then(res => {
       this.messages = res['data']
     })
   }
