@@ -3,19 +3,22 @@ import { Headers, Http, URLSearchParams } from '@angular/http';
 import {GlobalDataService} from "./globle-data.service";
 import 'rxjs/add/operator/toPromise';
 import {Attachment} from "../models/attachment";
+import {Member} from "../models/member";
+import {MemberService} from "./member.service";
 
 @Injectable()
 export class MessagesService {
 
   messages_api = GlobalDataService.messages_api();
-  constructor(private http:Http ) {
+  constructor(private http:Http,
+  private _member_service: MemberService) {
   }
 
-  sendMessage(sender_id, receiver_id, message_type: String, content:String, attachment: Attachment) {
-    let headers = new Headers({'Content-Type': 'application/json'});
+  sendMessage(dsin, message_type: String, content:String, attachment: Attachment) {
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+
     let data = {
-      sender_id: sender_id,
-      receiver_id: receiver_id,
+      dsin: dsin,
       message_type: message_type,
       content: content,
       attachment_id: attachment.attachment_id,
@@ -29,14 +32,15 @@ export class MessagesService {
         });
   }
 
-  getMessages(type: String) {
-    return this.http.get(`${this.messages_api}/list/${type}`)
+  getMessages(dsin:String) {
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+    let data = dsin ? {dsin: dsin} : {}
+    return this.http.post(`${this.messages_api}/list`,JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
         });
   }
-
 
   getOptions() {
     return this.http.get(`${this.messages_api}/load_options`)

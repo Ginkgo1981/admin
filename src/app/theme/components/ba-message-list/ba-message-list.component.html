@@ -10,18 +10,18 @@
         [limit]="limit"
         (page)='onPage($event)' >
 
-    <ngx-datatable-column name="type">
+    <!-- index -->
+    <ngx-datatable-column name="index">
         <template let-column="column" ngx-datatable-header-template>
-           收信人
+            #序号
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            <div *ngIf="row['receiver_id']">
-                <a [routerLink]="['./', row['receiver_id']]"> 详情</a>
-            </div>
+            {{ row['$$index'] }}
         </template>
     </ngx-datatable-column>
 
 
+    <!-- content -->
     <ngx-datatable-column name="content">
         <template let-column="column" ngx-datatable-header-template>
             信息内容
@@ -31,6 +31,17 @@
         </template>
     </ngx-datatable-column>
 
+    <!-- created_at -->
+    <ngx-datatable-column name="created_at">
+        <template let-column="column" ngx-datatable-header-template>
+            发布时间
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{row['created_at'] | date:'y-M-d hh:mm'}}
+        </template>
+    </ngx-datatable-column>
+
+    <!--attachment-->
     <ngx-datatable-column name="attachment_type">
         <template let-column="column" ngx-datatable-header-template>
             附件

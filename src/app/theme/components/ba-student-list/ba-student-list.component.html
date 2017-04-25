@@ -19,6 +19,55 @@
         </template>
     </ngx-datatable-column>
 
+    <ngx-datatable-column name="nickname">
+        <template let-column="column" ngx-datatable-header-template>
+            微信头像
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            <img class="headimgurl" src="{{ row.user && row.user.headimgurl }}">
+        </template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name="name">
+        <template let-column="column" ngx-datatable-header-template>
+            姓名
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{ row.user && row.user.name }}
+        </template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="nickname">
+        <template let-column="column" ngx-datatable-header-template>
+           微信呢称
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{ row.user && row.user.nickname }}
+        </template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name="province">
+        <template let-column="column" ngx-datatable-header-template>
+            省份
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{ row.user && row.user.province }}
+        </template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name="city">
+        <template let-column="column" ngx-datatable-header-template>
+            城市
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{ row.user && row.user.city }}
+        </template>
+    </ngx-datatable-column>
+
+
     <ngx-datatable-column name="cell">
         <template let-column="column" ngx-datatable-header-template>
             手机号
@@ -28,24 +77,6 @@
         </template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column name="name">
-        <template let-column="column" ngx-datatable-header-template>
-           姓名
-        </template>
-        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{ row.user && row.user.name }}
-        </template>
-    </ngx-datatable-column>
-
-
-    <ngx-datatable-column name="dsin">
-        <template let-column="column" ngx-datatable-header-template>
-            #dsin
-        </template>
-        <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            {{ row.dsin }}
-        </template>
-    </ngx-datatable-column>
 
     <ngx-datatable-column name="detail">
         <template let-column="column" ngx-datatable-header-template>

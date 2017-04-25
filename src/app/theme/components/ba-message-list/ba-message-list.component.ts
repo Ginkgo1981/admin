@@ -9,56 +9,52 @@ import {MessagesService} from "../../../services/messages.service";
   //styleUrls: ['./ba-message-list.component.scss']
 })
 export class BaMessageList implements OnInit {
-
-  @Input() messages:Array<Message>;
-  @Input() message_type: String
-
-  @ViewChild(DatatableComponent) table: DatatableComponent;
-  constructor(private _service:MessagesService) {}
+  @Input() dsin:String;
+  @ViewChild(DatatableComponent) table:DatatableComponent;
+  constructor(private _service:MessagesService) {
+  }
 
   rows = [];
-  count: number = 0;
-  offset: number = 0;
-  limit: number = 10;
+  count:number = 0;
+  offset:number = 0;
+  limit:number = 10;
   selected = [];
 
   ngOnInit():void {
     this.count = 10;
-    console.log("message: %o", this.messages)
     this.page(this.offset, this.limit)
+    console.debug("[ba-message-list] onInit dsin: %o", this.dsin)
   }
 
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
-    //this.router.navigate(['/pages/universities/', selected[0]['id']]);
-  }
-
-  onActivate(event) {
-    console.log('Activate Event', event);
-  }
-
-
-  page(offset=0, limit=10) {
-    this._service.getMessages(this.message_type).then(res => {
-      let results = res.data
-      this.count = 1000;
-      const start = offset * limit;
-      const end = start + limit;
-      const rows = [...this.rows];
-      for (let i = start; i < end; i++) {
-        rows[i] = results[i];
-      }
-      this.rows = rows;
+  page(offset = 0, limit = 10) {
+    this._service.getMessages(this.dsin).then(res => {
+          console.debug("[ba-message-list] getMessages res: %o", res)
+          let results = res.messages
+          this.count = 1000;
+          const start = offset * limit;
+          const end = start + limit;
+          const rows = [...this.rows];
+          for (let i = start; i < end; i++) {
+            rows[i] = results[i];
+          }
+          this.rows = rows;
         }
     )
-    console.log("====offset: %o, limit: %o", offset, limit)
+    console.debug("[ba-messages-list] page offset: %o, limit: %o", this.offset, this.limit)
   }
 
   onPage(event) {
-    console.log('Page Event', event);
+    console.debug("[ba-messages-list] onPage event:", event);
     this.page(event.offset, event.limit);
   }
 
+  onActivate(event) {
+    console.debug("[ba-message-list] onActivate event: %o", event);
+  }
 
+  onSelect({ selected }) {
+    console.log("[ba-message-list] onSelect selected: %o, this.selected: %o", selected, this.selected);
+    //this.router.navigate(['/pages/universities/', selected[0]['id']]);
+  }
 }
 

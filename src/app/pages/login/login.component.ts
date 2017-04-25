@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router'
 import {MemberService} from "../../services/member.service";
+import {Member} from "../../models/member";
 @Component({
   selector: 'login',
   styleUrls: ['./login.component.scss'],
@@ -31,13 +32,18 @@ export class LoginComponent {
     this.route.queryParams.subscribe(p => {
       if (p.code) {
         this.code = p.code;
+        //remove local storage
+        localStorage.removeItem('member');
+        //remove member
+        this._member_service.member = null;
         this._member_service.authorization('', '', this.code, '', '').then(res => {
-          console.log("login_with_code: %o", res)
+          console.debug("[login-component] authorization res: %o", res)
           if (res.member) {
-            this._member_service.member = res.member
+            this._member_service.member = res.member;
+            localStorage.setItem('member',JSON.stringify(res.member));
+            console.debug("[login-component] _member_service member: %o, local storage member: %o", this._member_service.getMember(), JSON.parse(localStorage.getItem('member')))
             //route to dashboard
             this.router.navigate(['/dashboard']);
-            console.log("==== route to dashboard ======")
           } else {
             this.openid = res.openid;
             this.access_token = res.access_token;

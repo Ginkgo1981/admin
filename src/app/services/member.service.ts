@@ -17,13 +17,17 @@ export class MemberService {
   }
 
   isLogin() {
-    this.member ? true : false
+    this.getMember() ? true : false
   }
 
   getMember() {
+    if(!this.member.token){
+      let member = JSON.parse(localStorage.getItem('member'));
+      console.debug('[member-service] local storage member: %o',member);
+      this.member = member;
+    }
     return this.member;
   }
-
 
   authorization(openid:String, access_token:String, code:String, cell:String, sms_code:String) {
     let headers = new Headers({'Content-Type': 'application/json'});

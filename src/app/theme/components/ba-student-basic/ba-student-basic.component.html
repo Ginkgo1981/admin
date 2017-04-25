@@ -1,31 +1,63 @@
 <div class="row">
     <!--basic-->
-    <ba-card class="col-xlg-6 col-xl-6 col-lg-6 col-sm-6 col-xs-6" title="考生基本信息" baCardClass="traffic-panel medium-card">
+    <ba-card class="col-xs-6" title="考生基本信息" baCardClass="traffic-panel medium-card">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="name">姓名</label>
-                    <!--<input type="text" class="form-control" value="{{student.user.name}}" id="name">-->
+                    <img class="headimgurl" src="{{student.user.headimgurl}}">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="cell">手机号</label>
-                    <input type="text" class="form-control" id="cell" value="{{student.user.cell}}">
+                    <label for="cell" class="col-sm-3">手机</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="cell" value="{{student.user.cell}}">
+                    </div>
                 </div>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="province">省份</label>
-                    <input type="text" class="form-control" id="province" value="{{student.province}}">
+                    <label class="col-sm-3" for="name">姓名</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" value="{{student.user.name}}" id="name">
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="city">地市</label>
-                    <input type="text" class="form-control" id="city" value="{{student.city}}">
+                    <label class="col-sm-3" for="cell">呢称</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="nickname" value="{{student.user.nickname}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-3" for="province">省份</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="province" value="{{student.province}}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-3" for="city">地市</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="city" value="{{student.city}}">
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,16 +65,13 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="school">学校</label>
-                    <input type="text" class="form-control" id="school" value="{{student.school}}">
+                    <label class="col-sm-3" for="school">学校</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="school" value="{{student.school}}">
+                    </div>
                 </div>
             </div>
-            <!--<div class="col-sm-6">-->
-            <!--<div class="form-group">-->
-            <!--<label for="inputWebsite">地市</label>-->
-            <!--<input type="text" class="form-control" id="inputWebsite" value="{{student.user.subscribe_at}}">-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
 
         <div class="row">

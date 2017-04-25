@@ -20,8 +20,8 @@ import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
 
 })
 export class StudentComponent implements OnInit, OnDestroy {
-  @ViewChild('message_component') message_component;
-  @ViewChild('university_message') university_message;
+  @ViewChild('ba_send_message_component') ba_send_message_component;
+  @ViewChild('ba_messages_list') ba_messages_list;
 
   student:Student
   messages:Array<Message>;
@@ -30,13 +30,13 @@ export class StudentComponent implements OnInit, OnDestroy {
     {
       label: '下发消息',
       click: () => {
-        this.message_component.showChildModal();
+        this.ba_send_message_component.showChildModal();
       }
     },
     {
       label: '打标签',
       click: () => {
-        this.message_component.showChildModal();
+        this.ba_send_message_component.showChildModal();
       }
     }
   ];
@@ -52,24 +52,24 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
     let dsin = this.route.params.value.dsin
-    this.load_by_dsin(dsin)
-    this.load_receive_messages(dsin);
+    this.get_student(dsin)
+    //this.load_receive_messages(dsin);
     //this.load_tags(dsin);
   }
 
-  load_by_dsin(dsin:String) {
+  get_student(dsin:String) {
     this._dsin_service.get_by_dsin(dsin).then(res => {
-          this.student = res['student']
-      console.log("======= this.student %o", this.student)
+          console.debug("[student-component] get_student dsin: %o, res: %o", dsin, res)
+          this.student = res.student
         }
     );
   }
 
   onTagEvent(event) {
-    console.log("===== onTagEvent ==== %o ", event)
-    if (event === 'add_tag_succ'){
+    console.debug("[student-component] onTagEvent event:%o ", event)
+    if (event === 'add_tag_succ') {
       this.showNotification('新增标签成功')
-    }else if (event === 'delete_tag_succ'){
+    } else if (event === 'delete_tag_succ') {
       this.showNotification('删除标签成功')
     }
   }
@@ -81,31 +81,23 @@ export class StudentComponent implements OnInit, OnDestroy {
   //
   //}
 
-  load_receive_messages(dsin: String) {
-    this._messages_service.getReceivedMessagesByDsin(this.student.dsin).then(res => {
-      this.messages = res['data']
-    })
-  }
-
 
   show_message_modal():void {
-    this.message_component.showChildModal();
+    this.ba_send_message_component.showChildModal();
   }
 
-
   receiveChild(e) {
-    //if (e === "succ") {
-    //  this.load_messages();
-    //  //this._notificationsService.success('信息发送...', '', {timeOut: 2000, maxLength: 10});
-    //}
+    console.debug("[student-component] receiveChild e: %o", e)
+    if (e === "succ") {
+      this.showNotification('信息发送成功');
+      this.ba_messages_list.page();
+    }
   }
 
   ngOnDestroy():void {
   }
 
-
   menuClicked(e) {
-
     console.log("==== e")
   }
 

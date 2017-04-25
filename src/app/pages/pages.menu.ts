@@ -25,29 +25,13 @@ export const PAGES_MENU = [
         },
         children: [
           {
-            path: 'point_messages',
+            path: 'message-list',
             data: {
               menu: {
-                title: '点对点消息',
+                title: '消息列表',
               }
             }
           },
-          {
-            path: 'subscription_messages',
-            data: {
-              menu: {
-                title: '订阅消息',
-              }
-            }
-          },
-          {
-            path: 'notification_messages',
-            data: {
-              menu: {
-                title: '广播消息',
-              }
-            }
-          }
         ]
       } ,
       {

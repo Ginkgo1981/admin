@@ -9,8 +9,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '@angular/material';
 import { NgUploaderModule } from 'ngx-uploader';
 import { LoginComponent } from './pages/login/login.component'
-import { MemberService } from './services/member.service'
-import {DndModule} from 'ng2-dnd';
+import { DndModule } from 'ng2-dnd';
 
 
 /*
@@ -25,6 +24,10 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+
+//service
+import { MemberService } from './services/member.service'
+import { AuthGuard } from './services/auth-guard.service'
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -65,7 +68,8 @@ export type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    MemberService
+    MemberService,
+    AuthGuard
   ]
 })
 

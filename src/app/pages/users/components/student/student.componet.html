@@ -15,14 +15,16 @@
     <div class="row">
         <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
                  title="消息列表" baCardClass="large-card">
-            <ba-messages-list [message_type]="'PointMessage'"></ba-messages-list>
+            <ba-messages-list
+                    [dsin]="student.dsin"
+                    #ba_messages_list
+            ></ba-messages-list>
         </ba-card>
     </div>
     <div>
-        <ba-send-messages [receiver]="student"
-                          [message_type]="'PointMessage'"
+        <ba-send-messages [student]="student"
                           (sendMessageOut)="receiveChild($event)"
-                          #message_component>
+                          #ba_send_message_component>
         </ba-send-messages>
         <!--<simple-notifications></simple-notifications>-->
     </div>

@@ -9,9 +9,8 @@ import { NgxDatatableModule} from '@swimlane/ngx-datatable'
 
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MessagesRouterComponent} from "./messages-router.component";
-import { NotificationMessagesComponent} from "./components/notificationMessages/notificationMessages.component";
-import { PointMessagesComponent} from "./components/pointMessages/pointMessages.component";
-import { SubscriptionMessagesComponent} from "./components/subscriptionMessages/subscriptionMessages.component";
+
+import { MessageListComponent } from './components/message-list/message-list.component'
 import { MessagesService} from "../../services/messages.service";
 import { NgxUIModule } from '@swimlane/ngx-ui'
 import { DrawerService } from '@swimlane/ngx-ui'
@@ -31,9 +30,7 @@ import { DrawerService } from '@swimlane/ngx-ui'
   ],
   declarations: [
     MessagesRouterComponent,
-    NotificationMessagesComponent,
-    PointMessagesComponent,
-    SubscriptionMessagesComponent
+    MessageListComponent,
   ],
   providers: [
     MessagesService,

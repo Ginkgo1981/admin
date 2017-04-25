@@ -4,19 +4,20 @@ import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {Student} from "../../../models/student";
 @Component({
   selector: 'ba-students-list',
-  templateUrl: './ba-student-list.component.html'
+  templateUrl: './ba-student-list.component.html',
+  styleUrls: ['./ba-student-list.component.scss'],
 })
-export class BaStudentList implements OnInit{
+export class BaStudentList implements OnInit {
 
-  @ViewChild(DatatableComponent) table: DatatableComponent;
+  @ViewChild(DatatableComponent) table:DatatableComponent;
 
   students:Array<Student> = [];
-  count: number = 0;
-  offset: number = 0;
-  @Input() limit: number;
+  count:number = 0;
+  offset:number = 0;
+  @Input() limit:number;
   selected = [];
 
-  constructor(private _service: UsersService) {
+  constructor(private _service:UsersService) {
   }
 
   ngOnInit():void {
@@ -25,17 +26,18 @@ export class BaStudentList implements OnInit{
   }
 
   onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
+    console.debug("[ba-student-list] selected %o, this.selected: %o", selected, this.selected);
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
+    console.debug("[ba-student-list] onActivate event: %o", event);
   }
 
-  page(offset=0, limit=10) {
+  page(offset = 0, limit = 10) {
+    console.debug("[ba-student-list] page offset: %o, limit: %o", offset, limit);
     this._service.get_student_list().then(res => {
+          console.debug("[ba-student-list] get_student_list res:", res);
           let results = res.students;
-          console.log("===results %o", results);
           this.count = 1000;
           const start = offset * limit;
           const end = start + limit;
@@ -44,19 +46,14 @@ export class BaStudentList implements OnInit{
             students[i] = results[i];
           }
           this.students = students;
-          console.log("===students %o", this.students);
         }
     )
-    console.log("====offset: %o, limit: %o", offset, limit)
   }
 
   onPage(event) {
-    console.log('Page Event', event);
+    console.debug("[ba-student-list] onPage event: %o", event);
     this.page(event.offset, event.limit);
   }
-
-
-
 
 
 }
