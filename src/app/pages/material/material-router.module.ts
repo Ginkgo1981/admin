@@ -11,7 +11,7 @@ import { StoriesService} from "../../services/stories.service";
 import { StoryComponent} from "./components/story/story.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import {SelectModule} from 'ng-select';
-
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   imports: [
@@ -22,7 +22,8 @@ import {SelectModule} from 'ng-select';
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    SelectModule
+    SelectModule,
+    QuillModule,
   ],
   declarations: [
     StoriesComponent,

@@ -24,8 +24,11 @@
 <div>
 
     <div class="album" *ngFor="let photo of photos">
-        <img [src]="photo.img_url">
-        <div class="img-close-icon" (click)="remove(photo)"></div>
+        <img [class.selected]="photo.selected"
+             [src]="photo.img_url"
+             (click)="toggleImage(photo)">
+        <div class="img-close-icon"
+             (click)="remove(photo)"></div>
     </div>
 
 </div>

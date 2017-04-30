@@ -10,8 +10,16 @@ img {
 }
 
 
+.album {
+  img{
+    &.selected{
+      opacity: 0.5;
+      background-color: #666666;
+    }
+  }
+}
+
 .img-close-icon{
-  display:none;
   position: relative;
   right: 9px;
   top: -157px;

@@ -1,6 +1,10 @@
 @import '../../sass/conf/conf';
 @import '../../components/baMsgCenter/baMsgCenter';
 
+.identity-type{
+  font-size: 8px;
+}
+
 .page-top {
   background-color: $sidebar;
   position: fixed;

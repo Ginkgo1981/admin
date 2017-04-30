@@ -19,17 +19,13 @@ export class StoriesComponent implements OnInit {
   }
 
   ngOnInit():void {
+    this.get_stories();
+  }
+
+  get_stories() {
     this._service.getStories().then(res => {
-      console.log("====== stories component res: %o", res);
-      this.stories = res['data']
+      console.debug("[stories-component] get_stories res: %o", res);
+      this.stories = res.stories;
     })
-
   }
-
-  create_story(e) {
-    console.log('===== create_story ======')
-    this.router.navigate(['/pages/materials/stories/create']);
-  }
-
-
 }

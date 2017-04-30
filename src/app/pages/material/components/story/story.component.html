@@ -1,20 +1,43 @@
 <div class="row">
-    <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+    <ba-card class="col-xs-12"
              title="story" baCardClass="with-scroll large-card">
+
+        <button type="button" (click)="patchValue()"> patch example </button>
+        <button type="button" (click)="openImageUploaderDrawer()"> 打开学校相册 </button>
+        <button type="button" (click)="openMajorsDrawer()"> 打开专业列表 </button>
+
+
         <form [formGroup]="storyForm" (ngSubmit)="createStory($event)">
             <div class="form-group">
-                <input formControlName="title" type="text"  class="form-control" placeholder="title">
+                <input formControlName="title" type="text" class="form-control" placeholder="title">
             </div>
             <div class="form-group">
-                <input formControlName="content" type="text"  class="form-control" placeholder="content">
+                <quill-editor #content formControlName="content"></quill-editor>
             </div>
             <button type="submit" class="btn btn-success">create story</button>
-            <!--<button type="submit">Log in</button>-->
-
         </form>
-
-
-
-
     </ba-card>
 </div>
+
+
+<!-- image uploader tmpl -->
+<template #imageUploaderTmpl>
+    <div class="row">
+        <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                 title="上传学校相册" baCardClass="traffic-panel large-card">
+            <ba-images-uploader
+                    (onStateChanged)="onPhotoSelected($event)"
+                    [dsin]="university.dsin"
+            ></ba-images-uploader>
+        </ba-card>
+    </div>
+</template>
+
+<!-- major tmpl -->
+<template #majorsTmpl>
+    <div class="row">
+        <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+                 title="专业列表" baCardClass="traffic-panel large-card">
+        </ba-card>
+    </div>
+</template>

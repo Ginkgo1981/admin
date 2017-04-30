@@ -10,13 +10,13 @@ import {MemberService} from "./member.service";
 export class MessagesService {
 
   messages_api = GlobalDataService.messages_api();
+
   constructor(private http:Http,
-  private _member_service: MemberService) {
+              private _member_service:MemberService) {
   }
 
-  sendMessage(dsin, message_type: String, content:String, attachment: Attachment) {
+  sendMessage(dsin, message_type:String, content:String, attachment:Attachment) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-
     let data = {
       dsin: dsin,
       message_type: message_type,
@@ -24,7 +24,6 @@ export class MessagesService {
       attachment_id: attachment.attachment_id,
       attachment_type: attachment.attachment_type
     }
-    console.log("send_message: data: %o", data)
     return this.http.post(`${this.messages_api}/send_message`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
@@ -35,7 +34,7 @@ export class MessagesService {
   getMessages(dsin:String) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
     let data = dsin ? {dsin: dsin} : {}
-    return this.http.post(`${this.messages_api}/list`,JSON.stringify(data), {headers: headers})
+    return this.http.post(`${this.messages_api}/list`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
@@ -50,7 +49,7 @@ export class MessagesService {
         });
   }
 
-  getReceivedMessagesByDsin(dsin: String){
+  getReceivedMessagesByDsin(dsin:String) {
     return this.http.get(`${this.messages_api}/${dsin}/received_messages`)
         .toPromise()
         .then((response) => {
@@ -59,7 +58,7 @@ export class MessagesService {
 
   }
 
-  getSendedMessagesByDsin(dsin: String) {
+  getSendedMessagesByDsin(dsin:String) {
     return this.http.get(`${this.messages_api}/${dsin}/sended_messages`)
         .toPromise()
         .then((response) => {
@@ -67,7 +66,6 @@ export class MessagesService {
         });
 
   }
-
 
 
 }

@@ -11,6 +11,7 @@ import {CampaignsRouterComponent} from "./campaigns-router.component";
 import {CampaignListComponent} from "./components/campaignList/campaignList.component";
 import {CampaignComponent} from "./components/campaign/campaign.component";
 import {DndModule} from 'ng2-dnd';
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {DndModule} from 'ng2-dnd';
     ModalModule.forRoot(),
     ReactiveFormsModule,
     SelectModule,
-    DndModule.forRoot()
+    DndModule.forRoot(),
+    QuillModule,
   ],
   declarations: [
 

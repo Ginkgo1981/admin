@@ -9,7 +9,8 @@ import { DatatableComponent} from '@swimlane/ngx-datatable'
 import { UsersService} from "../../../../services/users.service";
 import { User} from "../../../../models/user";
 import { DsinService} from "../../../../services/dsin.service";
-import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
+import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
+import {MemberService} from "../../../../services/member.service";
 @Component({
   selector: 'university',
   templateUrl: './university.component.html',
@@ -24,7 +25,9 @@ export class UniversityComponent implements OnInit {
               private _users_service:UsersService,
               private _dsin_service:DsinService,
               private drawerMngr:DrawerService,
-              private notificationService:NotificationService) {
+              private notificationService:NotificationService,
+              private _member_service: MemberService
+  ) {
   }
 
   @ViewChild('editUniversityTmpl') editUniversityTmpl:TemplateRef<any>;
@@ -52,14 +55,15 @@ export class UniversityComponent implements OnInit {
   @ViewChild(DatatableComponent) table:DatatableComponent;
 
   ngOnInit():void {
-    let dsin = this.route.params.value.dsin;
+    let dsin = this.route.params.value.dsin || this._member_service.getMember().identity.university.dsin;
+    console.debug("[university-component] ngOnInit dsin: %o", dsin)
     this.load_university(dsin);
     this.load_majors(dsin);
   }
 
   load_university(dsin:String) {
     this._dsin_service.get_by_dsin(dsin).then(res => {
-          console.log("res==== %o", res)
+          console.debug("[university-component] load_university dsin: %o, res: %o", dsin,res);
           this.university = res['university']
         }
     );
@@ -69,7 +73,7 @@ export class UniversityComponent implements OnInit {
     this._university_service.getMajorList(dsin).then(
         res => {
           this.majors = res['majors']
-          console.log("res[majors] ===== %o", res['majors'])
+          console.debug("[university-component] getMajorList dsin: %o, res: %o", dsin,res);
           //Object {id: 62564, dsin: "tjWCE3WvvG9Kb6mZe-kkXQ", code: "050212", name: "印度尼西亚语"}
           //this.rows = [...res.data.majors]
           //this.temp = [...res.data.majors]
@@ -92,18 +96,15 @@ export class UniversityComponent implements OnInit {
   }
 
   onSelect({ selected }) {
+    console.debug("[university-component] onSelect selected: o%", selected);
     this.major = selected[0];
     this.openMajorDrawer();
     //this.router.navigate(['/pages/universities/university-list/', selected[0]['id']]);
   }
 
-  onActivate(event) {
-    console.log('Activate Event', event);
-  }
-
-
   //on update callback
   onUpdateSucc(event) {
+    console.debug("[university-component] onUpdateSucc event: %o", event);
     if (event === 'update_university_succ') {
       setTimeout(() => {
         this.drawerMngr.destroy(this.universityDrawer);
@@ -129,8 +130,8 @@ export class UniversityComponent implements OnInit {
 
 
   //Drawer
-  openImageUploaderDrawer() {
-    console.log("======= openImageUploaderDrawer =====")
+  openImageUploaderDrawer(e) {
+    console.debug("[university-component] openImageUploaderDrawer e: %o", e)
     this.imagesUploaderDrawer = this.openDrawer(this.imageUploaderTmpl)
   }
 
@@ -161,7 +162,7 @@ export class UniversityComponent implements OnInit {
 
 
   onImageUploaded(e){
-    console.log("===== onImageUploaded: %o", e)
+    console.debug("[university-component] onImageUploaded: %o", e)
     if(e.action === 'end'){
     }
   }

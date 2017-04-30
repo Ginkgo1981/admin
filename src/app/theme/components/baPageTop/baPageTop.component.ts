@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {GlobalState} from '../../../global.state';
 
 import 'style-loader!./baPageTop.scss';
+import {Member} from "../../../models/member";
 
 @Component({
   selector: 'ba-page-top',
@@ -12,11 +13,16 @@ export class BaPageTop {
 
   public isScrolled:boolean = false;
   public isMenuCollapsed:boolean = false;
+  public member:Member;
 
   constructor(private _state:GlobalState) {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+    this._state.subscribe('member.set', (member) => {
+      console.debug("[ba-page-top] constructor subscribe member: %o", member)
+      this.member = member;
+    })
   }
 
   public toggleMenu() {

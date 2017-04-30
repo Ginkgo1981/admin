@@ -11,6 +11,7 @@ export const routes: Routes = [
     component: UniversitiesRouterComponent,
     children:[
       { path: 'list', component: UniversityListComponent },
+      { path: 'detail', component: UniversityComponent },
       { path: ':dsin', component: UniversityComponent },
     ]
   }

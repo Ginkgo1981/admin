@@ -7,4 +7,6 @@ export class Message {
   attachment_id: String;
   attachment_type: String;
   created_at: Date;
+  student: Student;
+
 }
