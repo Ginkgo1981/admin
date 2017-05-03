@@ -26,12 +26,6 @@ import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 
 
-
-
-
-
-
-
 //service
 import { MemberService } from './services/member.service'
 import { AuthGuard } from './services/auth-guard.service'

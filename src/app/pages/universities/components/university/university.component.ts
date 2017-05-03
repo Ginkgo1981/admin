@@ -43,57 +43,57 @@ export class UniversityComponent implements OnInit {
   major:Major;
 
   students:Array<User>;
-  majors = [];
+  //majors = [];
 
   temp = [];
   selected = [];
-  columns = [
-    {prop: 'name'},
-    {name: 'id'},
-    {name: 'code'}
-  ];
+  //columns = [
+  //  {prop: 'name'},
+  //  {name: 'id'},
+  //  {name: 'code'}
+  //];
   @ViewChild(DatatableComponent) table:DatatableComponent;
 
   ngOnInit():void {
     let dsin = this.route.params.value.dsin || this._member_service.getMember().identity.university.dsin;
-    console.debug("[university-component] ngOnInit dsin: %o", dsin)
+    console.debug("[university-component] ngOnInit dsin: %o", dsin);
     this.load_university(dsin);
-    this.load_majors(dsin);
+    //this.load_majors(dsin);
   }
 
   load_university(dsin:String) {
     this._dsin_service.get_by_dsin(dsin).then(res => {
           console.debug("[university-component] load_university dsin: %o, res: %o", dsin,res);
-          this.university = res['university']
+          this.university = res.university;
         }
     );
   }
 
-  load_majors(dsin:String) {
-    this._university_service.getMajorList(dsin).then(
-        res => {
-          this.majors = res['majors']
-          console.debug("[university-component] getMajorList dsin: %o, res: %o", dsin,res);
-          //Object {id: 62564, dsin: "tjWCE3WvvG9Kb6mZe-kkXQ", code: "050212", name: "印度尼西亚语"}
-          //this.rows = [...res.data.majors]
-          //this.temp = [...res.data.majors]
-          //console.log("===== university: %o", this.university)
-        }
-    )
-  }
+  //load_majors(dsin:String) {
+  //  this._university_service.getMajorList(dsin).then(
+  //      res => {
+  //        this.majors = res['majors']
+  //        console.debug("[university-component] getMajorList dsin: %o, res: %o", dsin,res);
+  //        //Object {id: 62564, dsin: "tjWCE3WvvG9Kb6mZe-kkXQ", code: "050212", name: "印度尼西亚语"}
+  //        //this.rows = [...res.data.majors]
+  //        //this.temp = [...res.data.majors]
+  //        //console.log("===== university: %o", this.university)
+  //      }
+  //  )
+  //}
 
 
-  //major table
-  updateFilter(event) {
-    //const val = event.target.value;
-    //console.log("==== event %o", val)
-    //// filter our data
-    //const temp = this.temp.filter(function (d) {
-    //  return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-    //});
-    //// update the rows
-    //this.rows = temp;
-  }
+  ////major table
+  //updateFilter(event) {
+  //  //const val = event.target.value;
+  //  //console.log("==== event %o", val)
+  //  //// filter our data
+  //  //const temp = this.temp.filter(function (d) {
+  //  //  return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+  //  //});
+  //  //// update the rows
+  //  //this.rows = temp;
+  //}
 
   onSelect({ selected }) {
     console.debug("[university-component] onSelect selected: o%", selected);

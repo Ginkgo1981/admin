@@ -20,3 +20,4 @@ export * from './ba-university-editor';
 export * from './ba-major-editor';
 export * from './ba-university-info';
 export * from './ba-images-uploader';
+export * from './ba-major-list';

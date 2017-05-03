@@ -2,16 +2,17 @@ import {Component, OnInit,ViewChild, Input, Output, ElementRef, EventEmitter} fr
 import {Message} from "../../../models/message";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {MessagesService} from "../../../services/messages.service";
+import {UniversitiesService} from "../../../services/universities.service";
 
 @Component({
-  selector: 'ba-messages-list',
-  templateUrl: './ba-message-list.component.html',
-  //styleUrls: ['./ba-message-list.component.scss']
+  selector: 'ba-majors-list',
+  templateUrl: './ba-major-list.component.html',
+  styleUrls: ['./ba-major-list.component.scss']
 })
-export class BaMessageList implements OnInit {
+export class BaMajorList implements OnInit {
   @Input() dsin:String;
   @ViewChild(DatatableComponent) table:DatatableComponent;
-  constructor(private _service:MessagesService) {
+  constructor(private _service:UniversitiesService) {
   }
 
   rows = [];
@@ -23,13 +24,13 @@ export class BaMessageList implements OnInit {
   ngOnInit():void {
     this.count = 10;
     this.page(this.offset, this.limit)
-    console.debug("[ba-message-list] onInit dsin: %o", this.dsin)
+    console.debug("[ba-major-list] onInit dsin: %o", this.dsin)
   }
 
   page(offset = 0, limit = 10) {
-    this._service.getMessages(this.dsin).then(res => {
-          console.debug("[ba-message-list] getMessages res: %o", res)
-          let results = res.messages
+    this._service.getMajorList(this.dsin).then(res => {
+          console.debug("[ba-major-list] getMajorList res: %o", res)
+          let results = res.majors
           this.count = 1000;
           const start = offset * limit;
           const end = start + limit;
@@ -49,11 +50,11 @@ export class BaMessageList implements OnInit {
   }
 
   onActivate(event) {
-    console.debug("[ba-message-list] onActivate event: %o", event);
+    console.debug("[ba-major-list] onActivate event: %o", event);
   }
 
   onSelect({ selected }) {
-    console.debug("[ba-message-list] onSelect selected: %o, this.selected: %o", selected, this.selected);
+    console.log("[ba-major-list] onSelect selected: %o, this.selected: %o", selected, this.selected);
     //this.router.navigate(['/pages/universities/', selected[0]['id']]);
   }
 }

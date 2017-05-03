@@ -1,12 +1,8 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
-// noinspection TypeScriptValidateTypes
-
 // export function loadChildren(path) { return System.import(path); };
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
-
   //{
   //  path: 'login',
   //  loadChildren: 'app/pages/login/login.module#LoginModule'
@@ -25,8 +21,8 @@ export const routes: Routes = [
       { path: 'users',  loadChildren: 'app/pages/users/users-router.module#UsersRouterModule' },
       { path: 'materials',  loadChildren: 'app/pages/material/material-router.module#MaterialRouterModule' },
       { path: 'universities',  loadChildren: 'app/pages/universities/universities-router.module#UniversitiesRouterModule' },
+      { path: 'majors',  loadChildren:       'app/pages/majors/majors-router.module#MajorsRouterModule' },
       { path: 'campaigns',  loadChildren: 'app/pages/campaigns/campaigns-router.module#CampaignsRouterModule' },
-
     ]
   }
 ];
