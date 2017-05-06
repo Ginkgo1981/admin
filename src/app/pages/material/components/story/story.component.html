@@ -33,11 +33,17 @@
     </div>
 </template>
 
-<!-- major tmpl -->
+<!-- majors tmpl -->
 <template #majorsTmpl>
     <div class="row">
         <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
                  title="专业列表" baCardClass="traffic-panel large-card">
+            <ba-majors-list
+                    [university_dsin]= "university.dsin"
+                    [columns]="major_columns"
+                    (onActivateChanged)="onMajorChoose($event)">
+            </ba-majors-list>
+
         </ba-card>
     </div>
 </template>

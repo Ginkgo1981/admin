@@ -1,8 +1,10 @@
-import {Component, OnInit,ViewChild, Input, Output, ElementRef, EventEmitter} from '@angular/core';
-import {Message} from "../../../models/message";
-import {DatatableComponent} from '@swimlane/ngx-datatable'
-import {MessagesService} from "../../../services/messages.service";
-import {UniversitiesService} from "../../../services/universities.service";
+import { Component, OnInit,ViewChild, Input, Output, ElementRef, EventEmitter} from '@angular/core';
+import { Message} from "../../../models/message";
+import { DatatableComponent} from '@swimlane/ngx-datatable'
+import { MessagesService} from "../../../services/messages.service";
+import { UniversitiesService} from "../../../services/universities.service";
+import { Router,ActivatedRoute, Params} from '@angular/router'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'ba-majors-list',
@@ -10,9 +12,15 @@ import {UniversitiesService} from "../../../services/universities.service";
   styleUrls: ['./ba-major-list.component.scss']
 })
 export class BaMajorList implements OnInit {
-  @Input() dsin:String;
+  @Input() university_dsin:String;
+  @Input() columns: Array<string> = ['id', 'name', 'edit', 'delete', 'choose'];
+
+  @Output() public onActivateChanged = new EventEmitter();
+
   @ViewChild(DatatableComponent) table:DatatableComponent;
-  constructor(private _service:UniversitiesService) {
+  constructor(private _service:UniversitiesService,
+              private router: Router
+  ) {
   }
 
   rows = [];
@@ -21,14 +29,15 @@ export class BaMajorList implements OnInit {
   limit:number = 10;
   selected = [];
 
+
   ngOnInit():void {
     this.count = 10;
     this.page(this.offset, this.limit)
-    console.debug("[ba-major-list] onInit dsin: %o", this.dsin)
+    console.debug("[ba-major-list] onInit dsin: %o, columns: %o", this.university_dsin, this.columns)
   }
 
   page(offset = 0, limit = 10) {
-    this._service.getMajorList(this.dsin).then(res => {
+    this._service.getMajorList(this.university_dsin).then(res => {
           console.debug("[ba-major-list] getMajorList res: %o", res)
           let results = res.majors
           this.count = 1000;
@@ -49,13 +58,24 @@ export class BaMajorList implements OnInit {
     this.page(event.offset, event.limit);
   }
 
-  onActivate(event) {
-    console.debug("[ba-major-list] onActivate event: %o", event);
+  onActivate({row: major, column}) {
+    console.debug("[ba-major-list] onActivate major: %o column: %o",major, column );
+    if(column.name == 'edit'){
+      console.debug("[ba-major-list] onActivate edit dsin: ", major.dsin)
+      this.router.navigate(['/pages/majors/', major.dsin]);
+    }else if(column.name ==='delete'){
+      console.debug("[ba-major-list] onActivate delete dsin: ", major.dsin)
+    }else if(column.name === 'choose'){
+      console.debug("[ba-major-list] onActivate choose")
+    }
+    this.onActivateChanged.emit({
+      action: column.name,
+      data: major
+    })
   }
 
   onSelect({ selected }) {
     console.log("[ba-major-list] onSelect selected: %o, this.selected: %o", selected, this.selected);
-    //this.router.navigate(['/pages/universities/', selected[0]['id']]);
   }
 }
 

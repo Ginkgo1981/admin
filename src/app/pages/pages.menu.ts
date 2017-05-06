@@ -180,6 +180,34 @@ const PAGES_TEACHER_MENU = [
         ]
       } ,
       {
+        path: 'majors',
+        data: {
+          menu: {
+            title: '专业',
+            icon: 'ion-android-home',
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'list',
+            data: {
+              menu: {
+                title: '专业列表',
+              }
+            }
+          },
+          {
+            path: 'create',
+            data: {
+              menu: {
+                title: '新建专业',
+              }
+            }
+          }
+        ]
+      } ,
+      {
         path: 'universities',
         data: {
           menu: {
@@ -216,6 +244,14 @@ const PAGES_TEACHER_MENU = [
             data: {
               menu: {
                 title: '图文列表',
+              }
+            }
+          },
+          {
+            path: 'stories/create',
+            data: {
+              menu: {
+                title: '新建图文',
               }
             }
           }

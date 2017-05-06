@@ -8,10 +8,11 @@
         [count]="count"
         [offset]="offset"
         [limit]="limit"
+        (activate)="onActivate($event)"
         (page)='onPage($event)' >
 
     <!-- index -->
-    <ngx-datatable-column name="index" [maxWidth]="100">
+    <ngx-datatable-column name="index" [maxWidth]="100" *ngIf="columns.includes('id')">
         <template let-column="column" ngx-datatable-header-template>
             #序号
         </template>
@@ -21,7 +22,7 @@
     </ngx-datatable-column>
 
     <!-- name -->
-    <ngx-datatable-column name="name" [maxWidth]="400">
+    <ngx-datatable-column name="name" [maxWidth]="400" *ngIf="columns.includes('name')">
         <template let-column="column" ngx-datatable-header-template>
            专业名称
         </template>
@@ -29,6 +30,42 @@
             {{row.name}}
         </template>
     </ngx-datatable-column>
+
+
+    <!-- edit -->
+    <ngx-datatable-column name="edit" [maxWidth]="200" *ngIf="columns.includes('edit')">
+        <template let-column="column" ngx-datatable-header-template>
+            编辑
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            更新
+        </template>
+    </ngx-datatable-column>
+
+
+    <!-- delete -->
+    <ngx-datatable-column name="delete" [maxWidth]="200" *ngIf="columns.includes('delete')">
+        <template let-column="column" ngx-datatable-header-template>
+            删除
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            删除
+        </template>
+    </ngx-datatable-column>
+
+
+
+    <!-- choose -->
+    <ngx-datatable-column name="choose" [maxWidth]="200" *ngIf="columns.includes('choose')">
+        <template let-column="column" ngx-datatable-header-template>
+            选中
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            选中
+        </template>
+    </ngx-datatable-column>
+
+
 
     <!--&lt;!&ndash;attachment&ndash;&gt;-->
     <!--<ngx-datatable-column name="attachment_type" [maxWidth]="200">-->
@@ -41,6 +78,8 @@
             <!--</div>-->
         <!--</template>-->
     <!--</ngx-datatable-column>-->
+
+
 
 
 </ngx-datatable>

@@ -4,14 +4,19 @@ import { MaterialRouterComponent } from './material-router.component';
 import { routing } from './material-router.routing';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
-import { GlobalDataService} from '../../services/globle-data.service'
 import { DropdownModule, ModalModule } from 'ng2-bootstrap';
-import { StoriesComponent} from "./components/stories/stories.component";
-import { StoriesService} from "../../services/stories.service";
-import { StoryComponent} from "./components/story/story.component";
 import { ReactiveFormsModule } from '@angular/forms';
-import {SelectModule} from 'ng-select';
+import { SelectModule} from 'ng-select';
 import { QuillModule } from 'ngx-quill'
+
+//services
+import { GlobalDataService} from '../../services/globle-data.service'
+import { StoriesService} from "../../services/stories.service";
+import { UniversitiesService} from "../../services/universities.service";
+
+//components
+import { StoriesComponent} from "./components/stories/stories.component";
+import { StoryComponent} from "./components/story/story.component";
 
 @NgModule({
   imports: [
@@ -32,8 +37,8 @@ import { QuillModule } from 'ngx-quill'
   ],
   providers: [
     GlobalDataService,
-    StoriesService
-
+    StoriesService,
+    UniversitiesService
   ]
 
 })

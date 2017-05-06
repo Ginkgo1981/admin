@@ -5,8 +5,9 @@ import { ModalDirective } from 'ng2-bootstrap';
 import { StoriesService} from "../../../../services/stories.service";
 import { FormBuilder, Validators } from '@angular/forms';
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
-import {Member} from "../../../../models/member";
-import {MemberService} from "../../../../services/member.service";
+import { Member} from "../../../../models/member";
+import { MemberService} from "../../../../services/member.service";
+import {Major} from "../../../../models/majors";
 
 @Component({
   selector: 'story',
@@ -23,8 +24,12 @@ export class StoryComponent implements OnInit {
 
   @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
   @ViewChild('majorsTmpl') majorsTmpl:TemplateRef<any>;
+  imagesUploaderDrawer:DrawerService;
+  majorDrawer:DrawerComponent;
 
   university: Member;
+
+  major_columns = ['name', 'choose']
 
   constructor(private fb:FormBuilder,
               private _service:StoriesService,
@@ -32,8 +37,6 @@ export class StoryComponent implements OnInit {
               private drawerMngr:DrawerService,
               private router:Router) {
   }
-
-
 
   ngOnInit():void {
     this.university = this._memberService.getMember().identity.university;
@@ -48,21 +51,16 @@ export class StoryComponent implements OnInit {
     })
   }
 
-
   openImageUploaderDrawer(e) {
     console.debug("[story-component] openImageUploaderDrawer e: %o", e)
     this.imagesUploaderDrawer = this.openDrawer(this.imageUploaderTmpl)
   }
 
-  //open left drawer to show majors
   openMajorsDrawer(e) {
     console.debug("[story-component] openMajorsDrawer e: %o", e)
-    this.majorDrawer = this.openDrawer(this.editMajorTmpl)
+    this.majorDrawer = this.openDrawer(this.majorsTmpl)
   }
 
-  patchValue() {
-    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <img width="300px" src="http://mvimg1.meitudata.com/56385ed7325a06330.jpg"/>`)
-  }
   openDrawer(template) {
     return this.drawerMngr.create({
       direction: 'left',
@@ -81,5 +79,15 @@ export class StoryComponent implements OnInit {
     }
   }
 
+  onMajorChoose(e) {
+    console.debug("[story-component] onMajorChoose e: %o", e)
+    if(e.action === 'choose'){
+      let major: Major = e.data
+      this.storyForm.controls['content']
+          .patchValue(`${this.storyForm.controls['content'].value} <major> ${major.name} -- ${major.dsin} </major>
+
+    `);
+    }
+  }
 
 }
