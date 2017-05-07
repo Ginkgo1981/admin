@@ -34,6 +34,7 @@ export class MajorComponent implements OnInit {
               private _member_service: MemberService,
               private _dsin_service: DsinService,
               private drawerMngr:DrawerService,
+              private notificationService:NotificationService,
               private _service:UniversitiesService) {
   }
 
@@ -59,7 +60,8 @@ export class MajorComponent implements OnInit {
   update_major(e) {
     let major = this.major_form.value;
     this._dsin_service.update_dsin(this.major_dsin, major).then(res => {
-      console.debug("[major-component] update_major dsin: %o, major: %o, res: %o", this.major_dsin, major, res)
+      console.debug("[major-component] update_major dsin: %o, major: %o, res: %o", this.major_dsin, major, res);
+      this.showNotification('专业图文更新成功');
     })
   }
 
@@ -88,6 +90,17 @@ export class MajorComponent implements OnInit {
       this.major_form.controls['content'].patchValue(`${this.major_form.controls['content'].value}
       <img width="300px" src="${e.data}"/>`)
     }
+  }
+
+
+  showNotification(body:String) {
+    this.notificationService.create({
+      title: '信息更新提示!',
+      body: body,
+      styleType: 'success',
+      timeout: 10000,
+      rateLimit: false
+    })
   }
 
 

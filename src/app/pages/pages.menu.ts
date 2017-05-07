@@ -240,7 +240,7 @@ const PAGES_TEACHER_MENU = [
         },
         children: [
           {
-            path: 'stories',
+            path: 'list',
             data: {
               menu: {
                 title: '图文列表',
@@ -248,7 +248,7 @@ const PAGES_TEACHER_MENU = [
             }
           },
           {
-            path: 'stories/create',
+            path: 'create',
             data: {
               menu: {
                 title: '新建图文',

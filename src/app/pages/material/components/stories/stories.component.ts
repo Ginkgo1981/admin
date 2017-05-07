@@ -3,6 +3,7 @@ import { Router,ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import {StoriesService} from "../../../../services/stories.service";
+import {MemberService} from "../../../../services/member.service";
 
 @Component({
   selector: 'stories',
@@ -14,18 +15,26 @@ export class StoriesComponent implements OnInit {
 
   stories:Array<any>
 
-  constructor(private _service:StoriesService,
+  university_dsin: String;
+
+  constructor(
+      private route:ActivatedRoute,
+      private location:Location,
+      private _service:StoriesService,
+      private _member_service: MemberService,
               private router:Router) {
   }
 
   ngOnInit():void {
-    this.get_stories();
+    this.university_dsin = this.route.params.value.dsin || this._member_service.getMember().identity.university.dsin;
   }
 
-  get_stories() {
-    this._service.getStories().then(res => {
-      console.debug("[stories-component] get_stories res: %o", res);
-      this.stories = res.stories;
-    })
+  onStoryActivateChanged(e){
+    console.debug("[stories-component] onActivateChanged e:%o", e);
+    let action = e.action;
+    let story = e.data;
+    if(action === 'edit'){
+      this.router.navigate(['/pages/materials/', story.dsin]);
+    }
   }
 }

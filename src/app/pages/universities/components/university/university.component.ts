@@ -19,7 +19,8 @@ import {MemberService} from "../../../../services/member.service";
 })
 export class UniversityComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,
+  constructor(
+      private route:ActivatedRoute,
               private location:Location,
               private _university_service:UniversitiesService,
               private _users_service:UsersService,
@@ -47,11 +48,6 @@ export class UniversityComponent implements OnInit {
 
   temp = [];
   selected = [];
-  //columns = [
-  //  {prop: 'name'},
-  //  {name: 'id'},
-  //  {name: 'code'}
-  //];
   @ViewChild(DatatableComponent) table:DatatableComponent;
 
   ngOnInit():void {
@@ -69,37 +65,11 @@ export class UniversityComponent implements OnInit {
     );
   }
 
-  //load_majors(dsin:String) {
-  //  this._university_service.getMajorList(dsin).then(
-  //      res => {
-  //        this.majors = res['majors']
-  //        console.debug("[university-component] getMajorList dsin: %o, res: %o", dsin,res);
-  //        //Object {id: 62564, dsin: "tjWCE3WvvG9Kb6mZe-kkXQ", code: "050212", name: "印度尼西亚语"}
-  //        //this.rows = [...res.data.majors]
-  //        //this.temp = [...res.data.majors]
-  //        //console.log("===== university: %o", this.university)
-  //      }
-  //  )
-  //}
-
-
-  ////major table
-  //updateFilter(event) {
-  //  //const val = event.target.value;
-  //  //console.log("==== event %o", val)
-  //  //// filter our data
-  //  //const temp = this.temp.filter(function (d) {
-  //  //  return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-  //  //});
-  //  //// update the rows
-  //  //this.rows = temp;
-  //}
 
   onSelect({ selected }) {
     console.debug("[university-component] onSelect selected: o%", selected);
     this.major = selected[0];
     this.openMajorDrawer();
-    //this.router.navigate(['/pages/universities/university-list/', selected[0]['id']]);
   }
 
   //on update callback

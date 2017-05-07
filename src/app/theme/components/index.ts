@@ -21,3 +21,4 @@ export * from './ba-major-editor';
 export * from './ba-university-info';
 export * from './ba-images-uploader';
 export * from './ba-major-list';
+export * from './ba-story-list';

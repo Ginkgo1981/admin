@@ -1,0 +1,64 @@
+<ngx-datatable
+        [rows]="rows"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="count"
+        [offset]="offset"
+        [limit]="limit"
+        (activate)="onActivate($event)"
+        (page)='onPage($event)' >
+
+    <!-- index -->
+    <ngx-datatable-column name="index" [maxWidth]="100" *ngIf="columns.includes('id')">
+        <template let-column="column" ngx-datatable-header-template>
+            #序号
+        </template>
+        <template let-value="value" let-row="row" ngx-datatable-cell-template>
+            {{ row['$$index'] }}
+        </template>
+    </ngx-datatable-column>
+
+    <!-- name -->
+    <ngx-datatable-column name="title" [maxWidth]="400" *ngIf="columns.includes('title')">
+        <template let-column="column" ngx-datatable-header-template>
+            标题
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{row.title}}
+        </template>
+    </ngx-datatable-column>
+
+    <!-- edit -->
+    <ngx-datatable-column name="edit" [maxWidth]="200" *ngIf="columns.includes('edit')">
+        <template let-column="column" ngx-datatable-header-template>
+            编辑
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            更新
+        </template>
+    </ngx-datatable-column>
+
+    <!-- delete -->
+    <ngx-datatable-column name="delete" [maxWidth]="200" *ngIf="columns.includes('delete')">
+        <template let-column="column" ngx-datatable-header-template>
+            删除
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            删除
+        </template>
+    </ngx-datatable-column>
+
+    <!-- choose -->
+    <ngx-datatable-column name="choose" [maxWidth]="200" *ngIf="columns.includes('choose')">
+        <template let-column="column" ngx-datatable-header-template>
+            选中
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            选中
+        </template>
+    </ngx-datatable-column>
+
+</ngx-datatable>

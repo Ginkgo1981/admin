@@ -10,12 +10,11 @@ export const routes: Routes = [
     path: '',
     component: MaterialRouterComponent,
     children:[
-      { path: 'stories', component: StoriesComponent  },
-      { path: 'stories/:id', component: StoryComponent },
-      { path: 'stories/create', component: StoryComponent },
+      { path: 'list', component: StoriesComponent  },
+      { path: 'create', component: StoryComponent },
+      { path: ':story_dsin', component: StoryComponent },
     ]
   }
 ];
-
 
 export const routing:ModuleWithProviders = RouterModule.forChild(routes);

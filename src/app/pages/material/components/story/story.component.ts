@@ -7,7 +7,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
 import { Member} from "../../../../models/member";
 import { MemberService} from "../../../../services/member.service";
-import {Major} from "../../../../models/majors";
+import { Major} from "../../../../models/majors";
+import { University} from "../../../../models/university";
+import { DsinService} from "../../../../services/dsin.service";
 
 @Component({
   selector: 'story',
@@ -27,28 +29,64 @@ export class StoryComponent implements OnInit {
   imagesUploaderDrawer:DrawerService;
   majorDrawer:DrawerComponent;
 
-  university: Member;
+  university:University;
+
+  story_dsin:String
 
   major_columns = ['name', 'choose']
 
   constructor(private fb:FormBuilder,
+              private route:ActivatedRoute,
               private _service:StoriesService,
-              private _memberService: MemberService,
+              private _dsin_service:DsinService,
+              private _memberService:MemberService,
               private drawerMngr:DrawerService,
+              private notificationService:NotificationService,
               private router:Router) {
   }
 
   ngOnInit():void {
     this.university = this._memberService.getMember().identity.university;
-    console.debug("[story-component] ngOnInit university: %o", this.university);
+    this.story_dsin = this.route.params.value.story_dsin;
+    console.debug("[story-component] ngOnInit story_dsin: %o, university: %o", this.story_dsin, this.university);
+    if (this.story_dsin) { this.get_by_dsin(this.story_dsin); }
   }
 
 
-  createStory(e) {
-    let story = this.storyForm.value;
-    this._service.createStory(story).then(res => {
-      console.debug("[story-component] createStory res: %o", res)
+  get_by_dsin(story_dsin:String){
+    this._dsin_service.get_by_dsin(this.story_dsin).then(res => {
+      console.debug("[story-component] get_by_dsin story_dsin: %o, res: %o", this.story_dsin, res)
+      let story = res.story
+      this.storyForm.controls['title'].setValue(story.title);
+      this.storyForm.controls['content'].setValue(story.content)
     })
+  }
+
+  update_or_create(e) {
+    let story = this.storyForm.value;
+    if(!this.story_dsin){
+      this._service.createStory(story).then(res => {
+        console.debug("[story-component] create res: %o", res)
+        let story = res.story;
+        this.story_dsin = story.dsin;
+        this.showNotification('图文创建成功');
+      })
+    }else {
+
+     this._dsin_service.update_dsin(this.story_dsin, story).then(res => {
+       console.debug("[story-component] update dsin: %o, res: %o", this.story_dsin, res);
+       this.showNotification('图文更新成功');
+     })
+    }
+  }
+
+  delete_story(e){
+    if(this.story_dsin){
+      this._dsin_service.remove(this.story_dsin).then(res => {
+        console.debug("[story-component] delete dsin: %o, res: %o", this.story_dsin, res);
+        this.showNotification('图文删除成功');
+      })
+    }
   }
 
   openImageUploaderDrawer(e) {
@@ -71,9 +109,9 @@ export class StoryComponent implements OnInit {
   }
 
 
-  onPhotoSelected(e){
-    console.debug("[story-component] onPhotoSelected e: %o",e )
-    if(e.action === 'selected'){
+  onPhotoSelected(e) {
+    console.debug("[story-component] onPhotoSelected e: %o", e)
+    if (e.action === 'selected') {
       this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value}
       <img width="300px" src="${e.data}"/>`)
     }
@@ -81,13 +119,24 @@ export class StoryComponent implements OnInit {
 
   onMajorChoose(e) {
     console.debug("[story-component] onMajorChoose e: %o", e)
-    if(e.action === 'choose'){
-      let major: Major = e.data
+    if (e.action === 'choose') {
+      let major:Major = e.data
       this.storyForm.controls['content']
           .patchValue(`${this.storyForm.controls['content'].value} <major> ${major.name} -- ${major.dsin} </major>
 
     `);
     }
+  }
+
+
+  showNotification(body:String) {
+    this.notificationService.create({
+      title: '信息更新提示!',
+      body: body,
+      styleType: 'success',
+      timeout: 10000,
+      rateLimit: false
+    })
   }
 
 }

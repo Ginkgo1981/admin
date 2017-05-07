@@ -2,12 +2,10 @@
     <ba-card class="col-xs-12"
              title="story" baCardClass="with-scroll large-card">
 
-        <button type="button" (click)="patchValue()"> patch example </button>
         <button type="button" (click)="openImageUploaderDrawer()"> 打开学校相册 </button>
         <button type="button" (click)="openMajorsDrawer()"> 打开专业列表 </button>
 
-
-        <form [formGroup]="storyForm" (ngSubmit)="createStory($event)">
+        <form [formGroup]="storyForm" (ngSubmit)="update_or_create($event)">
             <div class="form-group">
                 <input formControlName="title" type="text" class="form-control" placeholder="title">
             </div>
@@ -16,6 +14,13 @@
             </div>
             <button type="submit" class="btn btn-success">create story</button>
         </form>
+
+        <div>
+            <button type="button" class="btn btn-default"
+                    (click)="delete_story($event)"> 删除图文
+            </button>
+        </div>
+
     </ba-card>
 </div>
 

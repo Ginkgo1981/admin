@@ -13,9 +13,9 @@ export class StoriesService {
               private _member_service:MemberService) {
   }
 
-  getStories() {
+  getStories(university_dsin: String) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-    return this.http.get(`${this.story_api}/list`, {headers:headers})
+    return this.http.get(`${this.story_api}/list/${university_dsin}`, {headers:headers})
         .toPromise()
         .then((response) => {
           return response.json();
