@@ -6,15 +6,21 @@ import { NgaModule } from '../../theme/nga.module';
 import { routing } from './messages-router.routing';
 import { SelectModule } from 'ng-select';
 import { NgxDatatableModule} from '@swimlane/ngx-datatable'
-
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { MessagesRouterComponent} from "./messages-router.component";
-
-import { MessageListComponent } from './components/message-list/message-list.component'
-import { MessagesService} from "../../services/messages.service";
 import { NgxUIModule } from '@swimlane/ngx-ui'
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ReactiveFormsModule } from '@angular/forms';
+import { QuillModule } from 'ngx-quill'
+//service
+import { MessagesService} from "../../services/messages.service";
 import { DrawerService } from '@swimlane/ngx-ui'
+import { GlobalDataService} from '../../services/globle-data.service'
+import { StoriesService} from "../../services/stories.service";
+import { UniversitiesService} from "../../services/universities.service";
 
+//component
+import { MessagesRouterComponent} from "./messages-router.component";
+import { MessageListComponent } from './components/message-list/message-list.component'
+import { MessageComponent } from './components/message/message.component'
 @NgModule({
   imports: [
     CommonModule,
@@ -25,16 +31,22 @@ import { DrawerService } from '@swimlane/ngx-ui'
     ModalModule.forRoot(),
     SelectModule,
     SimpleNotificationsModule,
+    ReactiveFormsModule,
     NgxDatatableModule,
-    NgxUIModule
+    NgxUIModule,
+    QuillModule
   ],
   declarations: [
     MessagesRouterComponent,
     MessageListComponent,
+    MessageComponent
   ],
   providers: [
     MessagesService,
-    DrawerService
+    DrawerService,
+    GlobalDataService,
+    StoriesService,
+    UniversitiesService
   ]
 
 })

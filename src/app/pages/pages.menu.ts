@@ -157,6 +157,14 @@ const PAGES_TEACHER_MENU = [
               }
             }
           },
+          {
+            path: 'create',
+            data: {
+              menu: {
+                title: '发送消息',
+              }
+            }
+          }
         ]
       } ,
       {
