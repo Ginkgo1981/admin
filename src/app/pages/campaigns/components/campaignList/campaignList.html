@@ -8,8 +8,7 @@
             <div class="panel-body">
                 <ul class="list-group"
                     dnd-sortable-container
-                    [sortableData]="listOne"
-                >
+                    [sortableData]="listOne" >
                     <li *ngFor="let item of listOne; let i = index"
                         class="list-group-item"
                         [dragData]="item"

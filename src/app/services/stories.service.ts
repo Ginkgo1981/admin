@@ -26,6 +26,7 @@ export class StoriesService {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
     let data = {
       title: story.title,
+      coverage_img_url: story.coverage_img_url,
       content: story.content
     }
     return this.http.post(`${this.story_api}/create_story`, JSON.stringify(data), {headers: headers})
@@ -34,5 +35,4 @@ export class StoriesService {
           return response.json();
         });
   }
-
 }

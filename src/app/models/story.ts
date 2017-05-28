@@ -4,4 +4,7 @@ export class Story {
   content: String;
   description: String;
   user_id:  Number;
+  coverage_img_url: String;
+
+
 }

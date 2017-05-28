@@ -10,12 +10,16 @@ import { NgxUIModule } from '@swimlane/ngx-ui'
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill'
+
+import {DndModule} from 'ng2-dnd';
+
 //service
 import { MessagesService} from "../../services/messages.service";
 import { DrawerService } from '@swimlane/ngx-ui'
 import { GlobalDataService} from '../../services/globle-data.service'
 import { StoriesService} from "../../services/stories.service";
 import { UniversitiesService} from "../../services/universities.service";
+import { UsersService } from '../../services/users.service'
 
 //component
 import { MessagesRouterComponent} from "./messages-router.component";
@@ -29,6 +33,7 @@ import { MessageComponent } from './components/message/message.component'
     FormsModule,
     DropdownModule.forRoot(),
     ModalModule.forRoot(),
+    DndModule.forRoot(),
     SelectModule,
     SimpleNotificationsModule,
     ReactiveFormsModule,
@@ -46,7 +51,8 @@ import { MessageComponent } from './components/message/message.component'
     DrawerService,
     GlobalDataService,
     StoriesService,
-    UniversitiesService
+    UniversitiesService,
+    UsersService
   ]
 
 })

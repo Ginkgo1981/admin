@@ -8,18 +8,19 @@
         [count]="count"
         [offset]="offset"
         [limit]="limit"
+        (activate)="onActivate($event)"
         (page)='onPage($event)' >
 
-    <ngx-datatable-column name="index">
+    <ngx-datatable-column *ngIf="columns.includes('id')">
         <template let-column="column" ngx-datatable-header-template>
             #序号
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            {{ row['$$index'] }}
+            {{ row.selected ? 'selected' : '' }} # {{ row['$$index'] }}
         </template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column name="nickname">
+    <ngx-datatable-column name="headimgurl" *ngIf="columns.includes('headimgurl')">
         <template let-column="column" ngx-datatable-header-template>
             微信头像
         </template>
@@ -29,7 +30,7 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="name">
+    <ngx-datatable-column name="name" *ngIf="columns.includes('name')">
         <template let-column="column" ngx-datatable-header-template>
             姓名
         </template>
@@ -38,7 +39,7 @@
         </template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column name="nickname">
+    <ngx-datatable-column name="nickname" *ngIf="columns.includes('nickname')">
         <template let-column="column" ngx-datatable-header-template>
            微信呢称
         </template>
@@ -48,7 +49,7 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="province">
+    <ngx-datatable-column name="province" *ngIf="columns.includes('province')">
         <template let-column="column" ngx-datatable-header-template>
             省份
         </template>
@@ -58,7 +59,7 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="city">
+    <ngx-datatable-column name="city" *ngIf="columns.includes('city')">
         <template let-column="column" ngx-datatable-header-template>
             城市
         </template>
@@ -68,7 +69,7 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="cell">
+    <ngx-datatable-column name="cell" *ngIf="columns.includes('cell')">
         <template let-column="column" ngx-datatable-header-template>
             手机号
         </template>
@@ -78,7 +79,7 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="detail">
+    <ngx-datatable-column name="detail" *ngIf="columns.includes('detail')">
         <template let-column="column" ngx-datatable-header-template>
             详情
         </template>
@@ -88,7 +89,6 @@
             </div>
         </template>
     </ngx-datatable-column>
-
 </ngx-datatable>
 
 

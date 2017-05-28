@@ -15,21 +15,21 @@ export class MessagesService {
               private _member_service:MemberService) {
   }
 
-  sendMessage(dsin, message_type:String, content:String, attachment:Attachment) {
+
+  batch_send_messages(content:String, student_dsins: Array<any>, attachment_dsins:Array<any>) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
     let data = {
-      dsin: dsin,
-      message_type: message_type,
       content: content,
-      attachment_id: attachment.attachment_id,
-      attachment_type: attachment.attachment_type
+      student_dsins: student_dsins,
+      attachment_dsins: attachment_dsins
     }
-    return this.http.post(`${this.messages_api}/send_message`, JSON.stringify(data), {headers: headers})
+    return this.http.post(`${this.messages_api}/batch_send_messages`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
         });
   }
+
 
   getMessages(dsin:String) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});

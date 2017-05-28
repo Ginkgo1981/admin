@@ -130,7 +130,7 @@ export class BaImagesUploader implements OnInit {
     this._dsin_service.save_photo(this.dsin, photo_key).then(res => {
       console.debug("[ba-images-uploader] save res: %o", res)
       this.photos = res.photos.map(photo => {
-        photo.img_url = `http://oo57og2we.bkt.clouddn.com/${photo.key}`
+        photo.img_url = `http://images.gaokao2017.cn/${photo.key}`
         return photo
       })
     })

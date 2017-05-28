@@ -26,14 +26,15 @@ export class StoryComponent implements OnInit {
 
   @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
   @ViewChild('majorsTmpl') majorsTmpl:TemplateRef<any>;
+
+  //drawer
   imagesUploaderDrawer:DrawerService;
   majorDrawer:DrawerComponent;
 
   university:University;
-
   story_dsin:String
-
   major_columns = ['name', 'choose']
+  coverage_img_url: String;
 
   constructor(private fb:FormBuilder,
               private route:ActivatedRoute,
@@ -64,6 +65,7 @@ export class StoryComponent implements OnInit {
 
   update_or_create(e) {
     let story = this.storyForm.value;
+    story.coverage_img_url = this.coverage_img_url;
     if(!this.story_dsin){
       this._service.createStory(story).then(res => {
         console.debug("[story-component] create res: %o", res)
@@ -100,43 +102,25 @@ export class StoryComponent implements OnInit {
   }
 
   openDrawer(template) {
-    return this.drawerMngr.create({
-      direction: 'left',
-      template,
-      size: 40,
-      context: ''
-    });
+    return this.drawerMngr.create({ direction: 'left', template, size: 40, context: '' });
   }
-
 
   onPhotoSelected(e) {
     console.debug("[story-component] onPhotoSelected e: %o", e)
-    if (e.action === 'selected') {
-      this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value}
-      <img width="300px" src="${e.data}"/>`)
+    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <img width="300px" src="${e.data}"/>`)
+    if(!this.coverage_img_url){
+      this.coverage_img_url = e.data;
     }
   }
 
   onMajorChoose(e) {
     console.debug("[story-component] onMajorChoose e: %o", e)
-    if (e.action === 'choose') {
-      let major:Major = e.data
-      this.storyForm.controls['content']
-          .patchValue(`${this.storyForm.controls['content'].value} <major> ${major.name} -- ${major.dsin} </major>
-
-    `);
-    }
+    let major:Major = e.data
+    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <major> ${major.name} -- ${major.dsin} </major> `);
   }
 
-
   showNotification(body:String) {
-    this.notificationService.create({
-      title: '信息更新提示!',
-      body: body,
-      styleType: 'success',
-      timeout: 10000,
-      rateLimit: false
-    })
+    this.notificationService.create({ title: '信息更新提示!', body: body, styleType: 'success', timeout: 10000, rateLimit: false })
   }
 
 }
