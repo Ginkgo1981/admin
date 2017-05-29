@@ -4,7 +4,7 @@ import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import { StoriesService} from "../../../../services/stories.service";
 import { FormBuilder, Validators } from '@angular/forms';
-import { DrawerService, OverlayService, NotificationService } from '@swimlane/ngx-ui';
+import { DrawerService,DrawerComponent, OverlayService, NotificationService } from '@swimlane/ngx-ui';
 import { Member} from "../../../../models/member";
 import { MemberService} from "../../../../services/member.service";
 import { Major} from "../../../../models/majors";
@@ -22,10 +22,10 @@ import { MessagesService} from "../../../../services/messages.service";
 })
 export class MessageComponent implements OnInit {
 
-  @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
-  @ViewChild('majorsTmpl') majorsTmpl:TemplateRef<any>;
-  @ViewChild('studentsTmpl') studentsTmpl:TemplateRef<any>;
-  @ViewChild('storiesTmpl') storiesTmpl:TemplateRef<any>;
+  @ViewChild('imageUploaderTmpl') imageUploaderTmpl;
+  @ViewChild('majorsTmpl') majorsTmpl;
+  @ViewChild('studentsTmpl') studentsTmpl;
+  @ViewChild('storiesTmpl') storiesTmpl;
 
   //drawer
   imagesUploaderDrawer:DrawerService;
@@ -37,7 +37,7 @@ export class MessageComponent implements OnInit {
 
 
   selected_students = [];
-  attachments: Array<Story> = [];
+  attachments =  [];
   content: String = '';
 
   constructor(private fb:FormBuilder,

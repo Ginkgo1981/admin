@@ -10,7 +10,6 @@ import { DropdownModule, ModalModule } from 'ng2-bootstrap';
 import { NgaModule } from '../../theme/nga.module';
 import { NgxDatatableModule} from '@swimlane/ngx-datatable'
 import { NgxUIModule } from '@swimlane/ngx-ui'
-import { ReactiveFormsModule } from '@angular/forms';
 //service
 import { UniversitiesService} from "../../services/universities.service";
 import { UsersService} from "../../services/users.service";

@@ -10,6 +10,7 @@ import { MaterialModule } from '@angular/material';
 import { NgUploaderModule } from 'ngx-uploader';
 import { LoginComponent } from './pages/login/login.component'
 import { DndModule } from 'ng2-dnd';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 /*
@@ -53,6 +54,7 @@ export type StoreType = {
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot(),
     HttpModule,
     RouterModule,

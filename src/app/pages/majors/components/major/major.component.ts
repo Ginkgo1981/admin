@@ -21,12 +21,13 @@ export class MajorComponent implements OnInit {
 
   major_dsin: String;
   university_dsin:String;
+  imagesUploaderDrawer:DrawerService;
 
   public major_form = this.fb.group({
     name: ["", Validators.required],
     content: ["", Validators.required]
   });
-  @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
+  @ViewChild('imageUploaderTmpl') imageUploaderTmpl;
   constructor(
               private fb:FormBuilder,
               private router:Router,
@@ -39,8 +40,8 @@ export class MajorComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.major_dsin = this.route.params.value.major_dsin;
-    this.university_dsin = this.route.params.value.university_dsin;
+    this.major_dsin = this.route.params['value']['major_dsin'];
+    this.university_dsin = this.route.params['value']['university_dsin'];
     if(!this.university_dsin){
       this.university_dsin = this._member_service.getMember().identity.university.dsin;
     }

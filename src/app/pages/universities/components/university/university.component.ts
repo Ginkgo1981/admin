@@ -9,7 +9,7 @@ import { DatatableComponent} from '@swimlane/ngx-datatable'
 import { UsersService} from "../../../../services/users.service";
 import { User} from "../../../../models/user";
 import { DsinService} from "../../../../services/dsin.service";
-import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
+import { DrawerComponent, DrawerService, NotificationService } from '@swimlane/ngx-ui';
 import {MemberService} from "../../../../services/member.service";
 @Component({
   selector: 'university',
@@ -51,7 +51,7 @@ export class UniversityComponent implements OnInit {
   @ViewChild(DatatableComponent) table:DatatableComponent;
 
   ngOnInit():void {
-    let dsin = this.route.params.value.dsin || this._member_service.getMember().identity.university.dsin;
+    let dsin = this.route.params['value']['dsin'] || this._member_service.getMember().identity.university.dsin;
     console.debug("[university-component] ngOnInit dsin: %o", dsin);
     this.load_university(dsin);
     //this.load_majors(dsin);

@@ -51,7 +51,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit():void {
-    let dsin = this.route.params.value.dsin
+    let dsin = this.route.params['value']['dsin'];
     this.get_student(dsin)
     //this.load_receive_messages(dsin);
     //this.load_tags(dsin);

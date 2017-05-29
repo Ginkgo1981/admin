@@ -25,16 +25,9 @@ export class BaUniversityInfo implements OnInit {
 
   }
 
-  ngOnInit():void {
-
-  }
-
-
   ngOnChanges(){
     console.log("==== BaUniversityInfo ngOnChanges: %o", this.university)
-
   }
-
 
   //update(evetn) {
   //  console.log("==== university %o", this.university)
@@ -43,14 +36,8 @@ export class BaUniversityInfo implements OnInit {
   //  })
   //}
 
-
   ngOnInit() {
-
-
     console.log("=== BaUniversityInfo ngOnInit ======")
-
   }
-
-
 
 }

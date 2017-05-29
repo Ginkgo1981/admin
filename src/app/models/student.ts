@@ -10,4 +10,5 @@ export class Student {
   tags: Array<Tag>;
   sat_score: any;
   sat_province: string;
+  selected: boolean;
 }

@@ -8,4 +8,5 @@ export class Major {
   course: String;
   tel: String;
   dsin: String;
+  title: String;
 }

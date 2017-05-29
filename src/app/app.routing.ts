@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { LoginComponent } from "./pages/login/login.component";
-import {RegisterComponent} from "./pages/register/register.component";
+//import {RegisterComponent} from "./pages/register/register.component";
 
 export const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },

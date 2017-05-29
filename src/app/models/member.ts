@@ -1,3 +1,4 @@
+import {Teacher} from "./teacher";
 export class Member {
   id: Number;
   cell: String;

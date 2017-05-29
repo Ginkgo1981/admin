@@ -28,7 +28,7 @@ export class BaSendMessages implements OnInit {
 
   ngOnInit():void {
     this.sender_id = 86;
-    this.load_options();
+    //this.load_options();
   }
 
   ngx_change(event) {
@@ -48,20 +48,20 @@ export class BaSendMessages implements OnInit {
     this.lgModal.show();
   }
 
-  chooseAttachmentType(attachment_type:String) {
-    console.debug("[ba-send-messages] chooseAttachmentType attachment_type: %o", attachment_type)
-    this.attachment_type = attachment_type
-    this.options = this.temp_options[attachment_type]
-  }
+  //chooseAttachmentType(attachment_type:String) {
+  //  console.debug("[ba-send-messages] chooseAttachmentType attachment_type: %o", attachment_type)
+  //  this.attachment_type = attachment_type
+  //  this.options = this.temp_options[attachment_type]
+  //}
 
-  sendMessage(e):void {
-    this.attachment = new Attachment(this.attachment_id, this.attachment_type)
-    console.debug("[ba-send-message] sendMessage dsin: %o, message_type: %o, content: %o, attachment: %o", this.student.dsin, this.message_type, this.content, this.attachment)
-    this._message_service.sendMessage(this.student.dsin, this.message_type, this.content, this.attachment).then(res => {
-          console.debug("[ba-send-message] sendMessage res: %o", res)
-          this.lgModal.hide();
-          this.sendMessageOut.emit("succ");
-        }
-    )
-  }
+  //sendMessage(e):void {
+  //  this.attachment = new Attachment(this.attachment_id, this.attachment_type)
+  //  console.debug("[ba-send-message] sendMessage dsin: %o, message_type: %o, content: %o, attachment: %o", this.student.dsin, this.message_type, this.content, this.attachment)
+  //  this._message_service.sendMessage(this.student.dsin, this.message_type, this.content, this.attachment).then(res => {
+  //        console.debug("[ba-send-message] sendMessage res: %o", res)
+  //        this.lgModal.hide();
+  //        this.sendMessageOut.emit("succ");
+  //      }
+  //  )
+  //}
 }

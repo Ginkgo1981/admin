@@ -4,7 +4,6 @@ import {GlobalDataService} from "./globle-data.service";
 import 'rxjs/add/operator/toPromise';
 import {Attachment} from "../models/attachment";
 import {Member} from "../models/member";
-import {Member} from "../models/member";
 
 @Injectable()
 export class MemberService {

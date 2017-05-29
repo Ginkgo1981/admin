@@ -5,6 +5,5 @@ export class Story {
   description: String;
   user_id:  Number;
   coverage_img_url: String;
-
-
+  dsin: String;
 }

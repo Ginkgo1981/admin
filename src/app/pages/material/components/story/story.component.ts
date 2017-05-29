@@ -4,7 +4,7 @@ import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
 import { StoriesService} from "../../../../services/stories.service";
 import { FormBuilder, Validators } from '@angular/forms';
-import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
+import { DrawerComponent,DrawerService, NotificationService } from '@swimlane/ngx-ui';
 import { Member} from "../../../../models/member";
 import { MemberService} from "../../../../services/member.service";
 import { Major} from "../../../../models/majors";
@@ -24,8 +24,8 @@ export class StoryComponent implements OnInit {
     content: ["", Validators.required]
   });
 
-  @ViewChild('imageUploaderTmpl') imageUploaderTmpl:TemplateRef<any>;
-  @ViewChild('majorsTmpl') majorsTmpl:TemplateRef<any>;
+  @ViewChild('imageUploaderTmpl') imageUploaderTmpl;
+  @ViewChild('majorsTmpl') majorsTmpl;
 
   //drawer
   imagesUploaderDrawer:DrawerService;
@@ -48,7 +48,7 @@ export class StoryComponent implements OnInit {
 
   ngOnInit():void {
     this.university = this._memberService.getMember().identity.university;
-    this.story_dsin = this.route.params.value.story_dsin;
+    this.story_dsin = this.route.params['value']['story_dsin'];
     console.debug("[story-component] ngOnInit story_dsin: %o, university: %o", this.story_dsin, this.university);
     if (this.story_dsin) { this.get_by_dsin(this.story_dsin); }
   }

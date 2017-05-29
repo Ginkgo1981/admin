@@ -1,3 +1,4 @@
+import {Student} from "./student";
 export class Message {
   id: Number;
   user_id: Number;
