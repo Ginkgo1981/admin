@@ -12,6 +12,7 @@ export class Dashboard {
   }
 
   ngOnInit() {
+    console.debug("[dashboard-component] ngOnInit")
 
   }
 

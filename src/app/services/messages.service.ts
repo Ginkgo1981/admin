@@ -41,13 +41,13 @@ export class MessagesService {
         });
   }
 
-  getOptions() {
-    return this.http.get(`${this.messages_api}/load_options`)
-        .toPromise()
-        .then((response) => {
-          return response.json();
-        });
-  }
+  //getOptions() {
+  //  return this.http.get(`${this.messages_api}/load_options`)
+  //      .toPromise()
+  //      .then((response) => {
+  //        return response.json();
+  //      });
+  //}
 
   getReceivedMessagesByDsin(dsin:String) {
     return this.http.get(`${this.messages_api}/${dsin}/received_messages`)

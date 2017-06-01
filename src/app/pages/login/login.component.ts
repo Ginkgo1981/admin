@@ -48,7 +48,7 @@ export class LoginComponent {
             this.openid = res.openid;
             this.access_token = res.access_token;
             this.login = false;
-            console.log(" ===== openid: %o, access_token: %o", this.openid, this.access_token)
+            console.debug("[login-component] authorization openid: %o, access_token: %o", this.openid, this.access_token)
           }
         })
       } else {
@@ -66,7 +66,7 @@ export class LoginComponent {
   send_sms_code(e) {
     if (this.cell) {
       this._member_service.get_sms_code(this.cell).then(res => {
-        console.log("===== res: %o", res)
+        console.debug("[login-component] get_sms_code cell: %o, res: %o", this.cell, res)
         if (res.code == 0) {
           this.btn_send_sms_text = '验证码已发';
         }
@@ -75,11 +75,11 @@ export class LoginComponent {
   }
 
   register(e) {
-    console.log("openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
+    console.debug("[login-component] register openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
     if (this.code && this.cell && this.sms_code) {
       this._member_service.authorization(this.openid, this.access_token, this.code, this.cell, this.sms_code).then(res => {
+        console.debug("[login-component] register res: %o", res);
         this.router.navigate(['/dashboard']);
-        console.log("res: %o", res)
       })
     }
   }

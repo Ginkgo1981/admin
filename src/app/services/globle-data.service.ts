@@ -1,7 +1,7 @@
 export class GlobalDataService {
 
   static
-  cable_api = 'http://api.gaokao2017.cn'
+  cable_api = 'https://api.gaokao2017.cn'
 
   static
   users_api() {
