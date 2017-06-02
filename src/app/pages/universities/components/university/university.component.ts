@@ -6,7 +6,7 @@ import { UniversitiesService } from "../../../../services/universities.service";
 import { University} from "../../../../models/university";
 import { Major} from "../../../../models/majors";
 import { DatatableComponent} from '@swimlane/ngx-datatable'
-import { UsersService} from "../../../../services/users.service";
+import { StudentsService} from "../../../../services/students.service.ts";
 import { User} from "../../../../models/user";
 import { DsinService} from "../../../../services/dsin.service";
 import { DrawerComponent, DrawerService, NotificationService } from '@swimlane/ngx-ui';
@@ -23,7 +23,7 @@ export class UniversityComponent implements OnInit {
       private route:ActivatedRoute,
               private location:Location,
               private _university_service:UniversitiesService,
-              private _users_service:UsersService,
+              private _users_service:StudentsService,
               private _dsin_service:DsinService,
               private drawerMngr:DrawerService,
               private notificationService:NotificationService,

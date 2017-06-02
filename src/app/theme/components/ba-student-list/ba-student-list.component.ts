@@ -1,5 +1,5 @@
 import {Component, ViewChild, Input, Output, ElementRef, EventEmitter,OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {UsersService} from "../../../services/users.service";
+import {StudentsService} from "../../../services/students.service";
 import {DatatableComponent} from '@swimlane/ngx-datatable'
 import {Student} from "../../../models/student";
 @Component({
@@ -15,24 +15,24 @@ export class BaStudentList implements OnInit {
   count:number = 0;
   offset:number = 0;
   @Input() limit:number = 30;
-  @Input() university_dsin:String;
+  @Input() dsin:String;
   @Input() columns:Array<string> = ['id', 'name', 'nickname', 'province', 'city', 'edit', 'cell', 'detail', 'choose'];
   @Output() public onChanged = new EventEmitter();
   @Input() selected = [];
 
 
-  constructor(private _service:UsersService) {
+  constructor(private _service:StudentsService) {
   }
 
   ngOnInit():void {
     this.count = 10;
-    console.debug("[ba-student-list] ngOnInit university_dsin:%o, selected: %o, columns: %o", this.university_dsin, this.selected, this.columns);
+    console.debug("[ba-student-list] ngOnInit dsin:%o, selected: %o, columns: %o", this.dsin, this.selected, this.columns);
     this.page(this.offset, this.limit)
   }
 
   page(offset = 0, limit = 10) {
     console.debug("[ba-student-list] page offset: %o, limit: %o", offset, limit);
-    this._service.get_student_list().then(res => {
+    this._service.get_student_list(this.dsin).then(res => {
           console.debug("[ba-student-list] get_student_list res:", res);
           let results = res.students;
           this.count = 1000;
@@ -42,7 +42,7 @@ export class BaStudentList implements OnInit {
           for (let i = start; i < end; i++) {
             students[i] = results[i];
           }
-          this.students = students
+          this.students = students;
           this.students.forEach(student => {
             this.selected.forEach(s => {
               if (s.dsin == student.dsin) {

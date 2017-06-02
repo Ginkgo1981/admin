@@ -19,7 +19,7 @@ import { DrawerService } from '@swimlane/ngx-ui'
 import { GlobalDataService} from '../../services/globle-data.service'
 import { StoriesService} from "../../services/stories.service";
 import { UniversitiesService} from "../../services/universities.service";
-import { UsersService } from '../../services/users.service'
+import { StudentsService } from '../../services/students.service.ts'
 
 //component
 import { MessagesRouterComponent} from "./messages-router.component";
@@ -52,7 +52,7 @@ import { MessageComponent } from './components/message/message.component'
     GlobalDataService,
     StoriesService,
     UniversitiesService,
-    UsersService
+    StudentsService
   ]
 
 })

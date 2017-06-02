@@ -1,0 +1,57 @@
+<ngx-datatable
+        [rows]="rows"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="count"
+        [offset]="offset"
+        (activate)="onActivate($event)"
+        [limit]="limit" >
+
+    <!-- index -->
+    <ngx-datatable-column name="index" [maxWidth]="100">
+        <template let-column="column" ngx-datatable-header-template>
+            #序号
+        </template>
+        <template let-value="value" let-row="row" ngx-datatable-cell-template>
+            {{ row['$$index'] }}
+        </template>
+    </ngx-datatable-column>
+
+    <!-- name -->
+    <ngx-datatable-column name="title" [maxWidth]="400">
+        <template let-column="column" ngx-datatable-header-template>
+            campaign
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{row.name}}
+        </template>
+    </ngx-datatable-column>
+
+
+    <!-- dsin -->
+    <ngx-datatable-column name="title" [maxWidth]="400">
+        <template let-column="column" ngx-datatable-header-template>
+            campaign
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            {{row.dsin}}
+        </template>
+    </ngx-datatable-column>
+
+
+    <!-- choose -->
+    <ngx-datatable-column name="choose" [maxWidth]="200">
+        <template let-column="column" ngx-datatable-header-template>
+            选中
+        </template>
+        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
+            选中
+        </template>
+    </ngx-datatable-column>
+
+</ngx-datatable>
+
+

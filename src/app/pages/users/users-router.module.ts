@@ -7,7 +7,7 @@ import { GlobalDataService } from '../../services/globle-data.service'
 import { StudentComponent } from "./components/student/student.component"
 import { StudentListComponent } from "./components/student-list/student-list.component"
 import { UsersRouterComponent } from "./users-router.component"
-import { UsersService, StoriesService, MessagesService, DsinService} from "../../services";
+import { StudentsService, StoriesService, MessagesService, DsinService} from "../../services";
 import { routing } from './users-router.routing';
 import { SelectModule} from 'ng-select';
 import { MaterialModule } from '@angular/material';
@@ -33,7 +33,7 @@ import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
     UsersRouterComponent
   ],
   providers: [
-    UsersService,
+    StudentsService,
     StoriesService,
     MessagesService,
     GlobalDataService,

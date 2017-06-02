@@ -10,7 +10,7 @@ import { NgxDatatableModule} from '@swimlane/ngx-datatable'
 import { NgxUIModule } from '@swimlane/ngx-ui'
 
 import { UniversitiesService} from "../../services/universities.service";
-import { UsersService} from "../../services/users.service";
+import { StudentsService} from "../../services/students.service.ts";
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
 
 import { UniversityListComponent} from "./components/university-list/university-list.component";
@@ -40,7 +40,7 @@ import { routing } from './universities-router.routing';
   ],
   providers: [
     UniversitiesService,
-    UsersService,
+    StudentsService,
     DrawerService,
     NotificationService
   ]

@@ -2,17 +2,19 @@ import { Component, OnInit, Input,ViewChild,ViewChildren, OnDestroy} from '@angu
 import { ActivatedRoute, Params} from '@angular/router'
 import { Location } from '@angular/common'
 import { ModalDirective } from 'ng2-bootstrap';
-import { UsersService } from '../../../../services/users.service'
-import { MessagesService } from "../../../../services/messages.service";
+import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
 //import { NotificationsService } from 'angular2-notifications';
+
+//services
+import { StudentsService } from '../../../../services/students.service'
+import { MessagesService } from "../../../../services/messages.service";
 import { StoriesService} from "../../../../services/stories.service";
+import { DsinService} from "../../../../services/dsin.service";
+
+//models
 import { User} from "../../../../models/user";
 import { Message} from "../../../../models/message";
 import { Student} from "../../../../models/student";
-import { DsinService} from "../../../../services/dsin.service";
-import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
-
-
 @Component({
   selector: 'student',
   templateUrl: './student.componet.html',
@@ -43,7 +45,7 @@ export class StudentComponent implements OnInit, OnDestroy {
 
   constructor(private route:ActivatedRoute,
               private location:Location,
-              private _users_service:UsersService,
+              private _users_service:StudentsService,
               private notificationService:NotificationService,
               private _messages_service:MessagesService,
               private _story_service:StoriesService,

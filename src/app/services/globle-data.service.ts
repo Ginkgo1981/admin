@@ -4,8 +4,8 @@ export class GlobalDataService {
   cable_api = 'https://api.gaokao2017.cn'
 
   static
-  users_api() {
-    return GlobalDataService.cable_api + '/users'
+  students_api() {
+    return GlobalDataService.cable_api + '/students'
   }
 
   static
@@ -23,6 +23,10 @@ export class GlobalDataService {
     return GlobalDataService.cable_api + '/messages'
   }
 
+  static
+  campaigns_api() {
+    return GlobalDataService.cable_api + '/campaigns'
+  }
   static
   stories_api() {
     return GlobalDataService.cable_api + '/stories'
