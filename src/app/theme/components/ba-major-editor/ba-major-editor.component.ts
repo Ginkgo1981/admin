@@ -3,7 +3,7 @@ import {MessagesService} from "../../../services/messages.service";
 import {ModalDirective } from 'ng2-bootstrap';
 import {Attachment} from "../../../models/attachment";
 import {User} from "../../../models/user";
-import {StudentsService} from "../../../services/students.service.ts";
+import {StudentsService} from "../../../services/students.service";
 import {Student} from "../../../models/student";
 import {DsinService} from "../../../services/dsin.service";
 import {Major} from "../../../models/majors";

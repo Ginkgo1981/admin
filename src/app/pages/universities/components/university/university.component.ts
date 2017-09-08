@@ -6,7 +6,7 @@ import { UniversitiesService } from "../../../../services/universities.service";
 import { University} from "../../../../models/university";
 import { Major} from "../../../../models/majors";
 import { DatatableComponent} from '@swimlane/ngx-datatable'
-import { StudentsService} from "../../../../services/students.service.ts";
+import { StudentsService} from "../../../../services/students.service";
 import { User} from "../../../../models/user";
 import { DsinService} from "../../../../services/dsin.service";
 import { DrawerComponent, DrawerService, NotificationService } from '@swimlane/ngx-ui';

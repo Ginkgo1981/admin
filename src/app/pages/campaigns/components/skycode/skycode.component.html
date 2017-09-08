@@ -1,9 +1,8 @@
-<!--major list -->
 <div class="row" *ngIf="skycode">
     <ba-card class="col-xs-6" title="skycode" baCardClass="traffic-panel medium-card">
         <div class="info">
            <div class="name"> {{ skycode.name }}</div>
-            <qr-code [value]="skycode.dsin" [size]="150"></qr-code>
+            <qr-code [value]="qrcode" [size]="150"></qr-code>
         </div>
     </ba-card>
 

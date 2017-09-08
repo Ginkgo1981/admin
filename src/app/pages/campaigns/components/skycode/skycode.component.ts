@@ -17,7 +17,8 @@ import {DsinService} from "../../../../services/dsin.service";
 export class SkycodeComponent implements OnInit {
 
   skycode: any;
-  skycode_dsin:String;
+  skycode_dsin: string;
+  qrcode: string
   constructor(private _campaign_service: CampaignsService,
               private router:Router,
               private route:ActivatedRoute,
@@ -27,6 +28,7 @@ export class SkycodeComponent implements OnInit {
 
   ngOnInit():void {
     this.skycode_dsin = this.route.params['value']['skycode_dsin'];
+    this.qrcode = "https://www.gaokao2017.cn/skycode/" + this.skycode_dsin
     console.debug("[skycode-component] onInit skycode_dsin: %o", this.skycode_dsin);
     this.get_skycode();
   }

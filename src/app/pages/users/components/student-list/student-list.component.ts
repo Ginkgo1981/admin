@@ -10,7 +10,7 @@ import { MemberService} from "../../../../services/member.service";
 })
 export class StudentListComponent implements OnInit  {
 
-  university_dsin = ""
+  //university_dsin = ""
 
 
   constructor(
@@ -21,10 +21,16 @@ export class StudentListComponent implements OnInit  {
   }
 
 
-
-
   ngOnInit():void {
-    this.university_dsin = this.route.params['value']['university_dsin'] || this._member_service.getMember().identity.university.dsin;
-    console.debug("[student-list-component] ngOnInit university_dsin: %o", this.university_dsin);
+
+    debugger;
+
   }
+
+
+  //ngOnInit():void {
+  //  this.university_dsin = this.route.params['value']['university_dsin'] || this._member_service.getMember().identity.university.dsin;
+  //  console.debug("[student-list-component] ngOnInit university_dsin: %o", this.university_dsin);
+  //}
+
 }

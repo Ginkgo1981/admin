@@ -21,7 +21,7 @@ import {GlobalState} from "../global.state";
     <footer class="al-footer clearfix">
       <div class="al-footer-right"><i class="ion-heart"></i></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; 高考 2017 {{ member.identity_type }}</div>
+        <div class="al-copy">&copy;  天马简历 {{ member.identity_type }}</div>
         <ul class="al-share clearfix">
         </ul>
       </div>
@@ -41,11 +41,13 @@ export class Pages {
   ngOnInit() {
     this.member = this._member_service.getMember();
     console.debug("[pages-component] ngOnInit member:%o", this.member);
-    if (this.member.identity_type === 'Teacher') {
-      this._menuService.updateMenuByRoutes(<Routes>PAGES_TEACHER_MENU);
-    } else if (this.member.identity_type === 'Staff') {
-      this._menuService.updateMenuByRoutes(<Routes>PAGES_STAFF_MENU);
-    }
+    debugger;
+    //if (this.member.st === 'Teacher') {
+    //  this._menuService.updateMenuByRoutes(<Routes>PAGES_TEACHER_MENU);
+    //} else if (this.member.identity_type === 'Staff') {
+    //  this._menuService.updateMenuByRoutes(<Routes>PAGES_STAFF_MENU);
+    //}
+    this._menuService.updateMenuByRoutes(<Routes>PAGES_STAFF_MENU);
 
     this._state.notifyDataChanged('member.set', this.member);
   }

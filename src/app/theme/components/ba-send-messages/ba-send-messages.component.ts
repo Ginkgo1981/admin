@@ -36,13 +36,13 @@ export class BaSendMessages implements OnInit {
     this.attachment_id = event[0]
   }
 
-  load_options() {
-    this._message_service.getOptions().then(res => {
-          console.debug("[ba-send-message] load_options res: %o", res)
-          this.temp_options = res.data;
-        }
-    )
-  }
+  //load_options() {
+  //  this._message_service.getOptions().then(res => {
+  //        console.debug("[ba-send-message] load_options res: %o", res)
+  //        this.temp_options = res.data;
+  //      }
+  //  )
+  //}
 
   showChildModal() {
     this.lgModal.show();

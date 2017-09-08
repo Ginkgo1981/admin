@@ -15,7 +15,7 @@ export class BaStudentList implements OnInit {
   count:number = 0;
   offset:number = 0;
   @Input() limit:number = 30;
-  @Input() dsin:String;
+  @Input() dsin:string;
   @Input() columns:Array<string> = ['id', 'name', 'nickname', 'province', 'city', 'edit', 'cell', 'detail', 'choose'];
   @Output() public onChanged = new EventEmitter();
   @Input() selected = [];

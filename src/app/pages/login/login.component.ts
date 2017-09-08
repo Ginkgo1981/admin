@@ -38,6 +38,7 @@ export class LoginComponent {
         this._member_service.member = null;
         this._member_service.authorization('', '', this.code, '', '').then(res => {
           console.debug("[login-component] authorization res: %o", res)
+          debugger;
           if (res.member) {
             this._member_service.member = res.member;
             localStorage.setItem('member',JSON.stringify(res.member));

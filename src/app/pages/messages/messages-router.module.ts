@@ -19,7 +19,7 @@ import { DrawerService } from '@swimlane/ngx-ui'
 import { GlobalDataService} from '../../services/globle-data.service'
 import { StoriesService} from "../../services/stories.service";
 import { UniversitiesService} from "../../services/universities.service";
-import { StudentsService } from '../../services/students.service.ts'
+import { StudentsService } from '../../services/students.service'
 
 //component
 import { MessagesRouterComponent} from "./messages-router.component";
