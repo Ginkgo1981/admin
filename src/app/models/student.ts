@@ -1,14 +1,15 @@
-import {User} from "./user";
-import {Tag} from "./tag";
 export class Student {
-  id: Number;
+  id: String;
+  cell: String;
+  nickname: String;
   province: String;
   city: String;
-  school: String;
-  dsin: String;
-  user: User;
-  tags: Array<Tag>;
-  sat_score: any;
-  sat_province: string;
+  headimgurl: String;
+  name: String;
+  type: String;
+  university: String;
+  major: String;
+  industry_tags: Array<String>;
+  skill_tags: Array<String>;
   selected: boolean;
 }

@@ -87,10 +87,18 @@ const PAGES_STAFF_MENU = [
         },
         children: [
           {
-            path: 'stories',
+            path: 'list',
             data: {
               menu: {
                 title: '图文列表',
+              }
+            }
+          },
+          {
+            path: 'create',
+            data: {
+              menu: {
+                title: '新建图文',
               }
             }
           }

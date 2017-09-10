@@ -12,7 +12,7 @@ export const routes: Routes = [
     children:[
       { path: 'list', component: StoriesComponent  },
       { path: 'create', component: StoryComponent },
-      { path: ':story_dsin', component: StoryComponent },
+      { path: ':id', component: StoryComponent },
     ]
   }
 ];

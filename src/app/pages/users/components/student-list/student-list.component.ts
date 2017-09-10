@@ -10,9 +10,6 @@ import { MemberService} from "../../../../services/member.service";
 })
 export class StudentListComponent implements OnInit  {
 
-  //university_dsin = ""
-
-
   constructor(
       private route:ActivatedRoute,
       private location:Location,
@@ -22,9 +19,6 @@ export class StudentListComponent implements OnInit  {
 
 
   ngOnInit():void {
-
-    debugger;
-
   }
 
 

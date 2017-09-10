@@ -14,6 +14,11 @@ export class GlobalDataService {
   }
 
   static
+  photos_api() {
+    return GlobalDataService.cable_api + '/photos'
+  }
+
+  static
   universities_api() {
     return GlobalDataService.cable_api + '/universities'
   }

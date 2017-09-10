@@ -13,9 +13,36 @@ export class StoriesService {
               private _member_service:MemberService) {
   }
 
-  getStories(university_dsin: String) {
+  getStories() {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-    return this.http.get(`${this.story_api}/list/${university_dsin}`, {headers:headers})
+    return this.http.get(`${this.story_api}/list/`, {headers:headers})
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
+  getStory(id:string) {
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+    return this.http.get(`${this.story_api}/get_story/${id}`, {headers:headers})
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
+  updateStory(id: string, story: Story) {
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+    return this.http.post(`${this.story_api}/update_story/${id}`, JSON.stringify({story:story}), {headers: headers})
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+  }
+
+  deleteStory(id: string){
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+    return this.http.post(`${this.story_api}/delete_story/${id}`,{},  {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
@@ -24,12 +51,7 @@ export class StoriesService {
 
   createStory(story:Story) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-    let data = {
-      title: story.title,
-      coverage_img_url: story.coverage_img_url,
-      content: story.content
-    }
-    return this.http.post(`${this.story_api}/create_story`, JSON.stringify(data), {headers: headers})
+    return this.http.post(`${this.story_api}/create_story`, JSON.stringify({story: story}), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();

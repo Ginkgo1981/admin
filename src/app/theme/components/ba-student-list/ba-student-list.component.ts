@@ -16,7 +16,7 @@ export class BaStudentList implements OnInit {
   offset:number = 0;
   @Input() limit:number = 30;
   @Input() dsin:string;
-  @Input() columns:Array<string> = ['id', 'name', 'nickname', 'province', 'city', 'edit', 'cell', 'detail', 'choose'];
+  @Input() columns:Array<string> = ['id', 'name','headimgurl', 'nickname', 'province', 'city', 'edit', 'cell', 'detail', 'choose'];
   @Output() public onChanged = new EventEmitter();
   @Input() selected = [];
 
@@ -43,14 +43,14 @@ export class BaStudentList implements OnInit {
             students[i] = results[i];
           }
           this.students = students;
-          this.students.forEach(student => {
-            this.selected.forEach(s => {
-              if (s.dsin == student.dsin) {
-                student.selected = true
-              }
-            })
-            return student;
-          });
+          //this.students.forEach(student => {
+          //  this.selected.forEach(s => {
+          //    if (s.dsin == student.dsin) {
+          //      student.selected = true
+          //    }
+          //  })
+          //  return student;
+          //});
           console.debug("[ba-student-list] page this.students: %o", this.students)
         }
     )

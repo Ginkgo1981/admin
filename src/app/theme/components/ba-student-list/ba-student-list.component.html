@@ -25,7 +25,7 @@
             微信头像
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            <img class="headimgurl" src="{{ row.user && row.user.headimgurl }}">
+            <img class="headimgurl" src="{{ row.headimgurl }}">
         </template>
     </ngx-datatable-column>
 
@@ -35,7 +35,7 @@
             姓名
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{ row.user && row.user.name }}
+            {{ row.name }}
         </template>
     </ngx-datatable-column>
 
@@ -44,7 +44,7 @@
            微信呢称
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{ row.user && row.user.nickname }}
+            {{ row.nickname }}
         </template>
     </ngx-datatable-column>
 
@@ -54,7 +54,7 @@
             省份
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{ row.user && row.user.province }}
+            {{ row.province }}
         </template>
     </ngx-datatable-column>
 
@@ -64,7 +64,7 @@
             城市
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{ row.user && row.user.city }}
+            {{ row.city }}
         </template>
     </ngx-datatable-column>
 
@@ -74,7 +74,7 @@
             手机号
         </template>
         <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{row.user && row.user.cell}}
+            {{ row.cell}}
         </template>
     </ngx-datatable-column>
 
@@ -84,8 +84,8 @@
             详情
         </template>
         <template let-value="value" let-row="row" ngx-datatable-cell-template>
-            <div *ngIf="row.dsin">
-                <a [routerLink]="['./', row.dsin]"> 详情</a>
+            <div *ngIf="row.id">
+                <a [routerLink]="['./', row.id]"> 详情</a>
             </div>
         </template>
     </ngx-datatable-column>

@@ -23,20 +23,24 @@ export class BaStudentBasic implements OnInit {
   }
 
   ngOnInit():void {
-    this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
+
+    console.debug("[ba-student-basic] ngOnInit student: %o", this.student)
+    //this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
   }
 
   onTagAdd(event){
-    this._service.add_tag(this.student.dsin, event.display).then(res => {
-      this.student.tags.push(res['tag'])
-      this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
-      this.tagEvent.emit("add_tag_succ")
-    })
+    //this._service.add_tag(this.student.dsin, event.display).then(res => {
+    //  this.student.tags.push(res['tag'])
+    //  this.tags = this.student.tags.map(tag => ({value: tag.dsin, display:tag.name}))
+    //  this.tagEvent.emit("add_tag_succ")
+    //}
+    //
+    //)
   }
   onTagRemove(event){
-    this._service.remove(event.value).then(res => {
-      this.tagEvent.emit("delete_tag_succ")
-    })
+    //this._service.remove(event.value).then(res => {
+    //  this.tagEvent.emit("delete_tag_succ")
+    //})
   }
 
 }

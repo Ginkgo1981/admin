@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { BaMenuService } from '../theme/services/baMenu/baMenu.service';
-import { PAGES_STAFF_MENU, PAGES_TEACHER_MENU } from './pages.menu';
+import { PAGES_STAFF_MENU } from './pages.menu';
 import { MemberService } from "../services/member.service";
 import { Member } from "../models/member";
 import {GlobalState} from "../global.state";
@@ -41,7 +41,6 @@ export class Pages {
   ngOnInit() {
     this.member = this._member_service.getMember();
     console.debug("[pages-component] ngOnInit member:%o", this.member);
-    debugger;
     //if (this.member.st === 'Teacher') {
     //  this._menuService.updateMenuByRoutes(<Routes>PAGES_TEACHER_MENU);
     //} else if (this.member.identity_type === 'Staff') {

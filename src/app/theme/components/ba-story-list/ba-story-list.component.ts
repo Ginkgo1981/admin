@@ -13,7 +13,7 @@ import { StoriesService} from "../../../services/stories.service";
   styleUrls: ['./ba-story-list.component.scss']
 })
 export class BaStoryList implements OnInit {
-  @Input() university_dsin:String;
+  //@Input() university_dsin:String;
   @Input() columns: Array<string> = ['id', 'title', 'edit', 'delete', 'choose'];
   @Output() onActivateChanged = new EventEmitter();
   @ViewChild(DatatableComponent) table:DatatableComponent;
@@ -32,12 +32,12 @@ export class BaStoryList implements OnInit {
   ngOnInit():void {
     this.count = 10;
     this.page(this.offset, this.limit)
-    console.debug("[ba-story-list] onInit dsin: %o, columns: %o", this.university_dsin, this.columns)
+    //console.debug("[ba-story-list] onInit dsin: %o, columns: %o", this.university_dsin, this.columns)
   }
 
   page(offset = 0, limit = 10) {
-    this._story_service.getStories(this.university_dsin).then(res => {
-          console.debug("[ba-story-list] getStories university_dsin: %o, res: %o", this.university_dsin, res)
+    this._story_service.getStories().then(res => {
+          //console.debug("[ba-story-list] getStories university_dsin: %o, res: %o", this.university_dsin, res)
           let results = res.stories
           this.count = 1000;
           const start = offset * limit;

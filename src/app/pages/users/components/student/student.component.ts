@@ -9,7 +9,7 @@ import { DrawerService, NotificationService } from '@swimlane/ngx-ui';
 import { StudentsService } from '../../../../services/students.service'
 import { MessagesService } from "../../../../services/messages.service";
 import { StoriesService} from "../../../../services/stories.service";
-import { DsinService} from "../../../../services/dsin.service";
+//import { DsinService} from "../../../../services/dsin.service";
 
 //models
 import { User} from "../../../../models/user";
@@ -49,22 +49,26 @@ export class StudentComponent implements OnInit, OnDestroy {
               private notificationService:NotificationService,
               private _messages_service:MessagesService,
               private _story_service:StoriesService,
-              private _dsin_service:DsinService) {
+              private _student_service: StudentsService
+
+  ) {
   }
 
   ngOnInit():void {
-    let dsin = this.route.params['value']['dsin'];
-    this.get_student(dsin)
+    let id = this.route.params['value']['id'];
+    console.debug("id: %o", id);
+    this.getStudent(id);
+    //this.get_student(id)
     //this.load_receive_messages(dsin);
     //this.load_tags(dsin);
   }
 
-  get_student(dsin:String) {
-    this._dsin_service.get_by_dsin(dsin).then(res => {
-          console.debug("[student-component] get_student dsin: %o, res: %o", dsin, res)
-          this.student = res.student
-        }
-    );
+  getStudent(id:string) {
+    this._student_service.getStudent(id).then(res => {
+      console.debug("[student-component] getStudent id: %o, res: %o", id, res);
+      this.student = res.data;
+    })
+
   }
 
   onTagEvent(event) {

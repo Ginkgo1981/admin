@@ -25,21 +25,18 @@ export class StoryComponent implements OnInit {
   });
 
   @ViewChild('imageUploaderTmpl') imageUploaderTmpl;
-  @ViewChild('majorsTmpl') majorsTmpl;
-
+  //@ViewChild('majorsTmpl') majorsTmpl;
   //drawer
   imagesUploaderDrawer:DrawerService;
   majorDrawer:DrawerComponent;
 
-  university:University;
-  story_dsin:String
+  id:String
   major_columns = ['name', 'choose']
   coverage_img_url: String;
 
   constructor(private fb:FormBuilder,
               private route:ActivatedRoute,
-              private _service:StoriesService,
-              private _dsin_service:DsinService,
+              private _storiesService:StoriesService,
               private _memberService:MemberService,
               private drawerMngr:DrawerService,
               private notificationService:NotificationService,
@@ -47,58 +44,54 @@ export class StoryComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.university = this._memberService.getMember().identity.university;
-    this.story_dsin = this.route.params['value']['story_dsin'];
-    console.debug("[story-component] ngOnInit story_dsin: %o, university: %o", this.story_dsin, this.university);
-    if (this.story_dsin) { this.get_by_dsin(this.story_dsin); }
+    //this.university = this._memberService.getMember().identity.university;
+    this.id = this.route.params['value']['id'];
+    console.debug("[story-component] ngOnInit id: %o", this.id);
+    if(this.id){
+      this.getStory(this.id.toString());
+    }
   }
 
 
-  get_by_dsin(story_dsin:String){
-    this._dsin_service.get_by_dsin(this.story_dsin).then(res => {
-      console.debug("[story-component] get_by_dsin story_dsin: %o, res: %o", this.story_dsin, res)
-      let story = res.story
+  getStory(id:string){
+    this._storiesService.getStory(id).then(res => {
+      console.debug("[story-component] getStory id: %o, res: %o", id, res)
+      let story = res.data
       this.storyForm.controls['title'].setValue(story.title);
       this.storyForm.controls['content'].setValue(story.content)
     })
   }
 
-  update_or_create(e) {
-    let story = this.storyForm.value;
-    story.coverage_img_url = this.coverage_img_url;
-    if(!this.story_dsin){
-      this._service.createStory(story).then(res => {
-        console.debug("[story-component] create res: %o", res)
-        let story = res.story;
-        this.story_dsin = story.dsin;
-        this.showNotification('图文创建成功');
-      })
-    }else {
-
-     this._dsin_service.update_dsin(this.story_dsin, story).then(res => {
-       console.debug("[story-component] update dsin: %o, res: %o", this.story_dsin, res);
-       this.showNotification('图文更新成功');
-     })
-    }
-  }
-
-  delete_story(e){
-    if(this.story_dsin){
-      this._dsin_service.remove(this.story_dsin).then(res => {
-        console.debug("[story-component] delete dsin: %o, res: %o", this.story_dsin, res);
-        this.showNotification('图文删除成功');
+  onUpdateOrCreate(e) {
+    let story = this.storyForm.value
+    console.debug("[story-component] story %o", story);
+    if(this.id){
+      //update
+      this._storiesService.updateStory(this.id, story).then(res => {
+        console.debug("[story-component] updateStory res: %o", res);
+        this.showNotification("更新成功");
+      });
+    } else {
+      this._storiesService.createStory(story).then(res => {
+        console.debug("[story-component] createStory res: %o", res)
+        this.showNotification("创建成功");
       })
     }
   }
 
-  openImageUploaderDrawer(e) {
+  onDelete(e){
+    if(this.id){
+      this._storiesService.deleteStory(this.id).then(res => {
+        console.debug("[story-component] onDelete res: %o", res);
+        this.showNotification("删除成功");
+      });
+    }
+
+  }
+
+  onOpenImageUploaderDrawer(e) {
     console.debug("[story-component] openImageUploaderDrawer e: %o", e)
     this.imagesUploaderDrawer = this.openDrawer(this.imageUploaderTmpl)
-  }
-
-  openMajorsDrawer(e) {
-    console.debug("[story-component] openMajorsDrawer e: %o", e)
-    this.majorDrawer = this.openDrawer(this.majorsTmpl)
   }
 
   openDrawer(template) {
@@ -111,12 +104,6 @@ export class StoryComponent implements OnInit {
     if(!this.coverage_img_url){
       this.coverage_img_url = e.data;
     }
-  }
-
-  onMajorChoose(e) {
-    console.debug("[story-component] onMajorChoose e: %o", e)
-    let major:Major = e.data
-    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <major> ${major.name} -- ${major.dsin} </major> `);
   }
 
   showNotification(body:String) {

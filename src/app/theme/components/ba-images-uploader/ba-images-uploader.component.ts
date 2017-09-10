@@ -5,8 +5,9 @@ import { Attachment} from "../../../models/attachment";
 import { User} from "../../../models/user";
 import { StudentsService} from "../../../services/students.service";
 import { Student} from "../../../models/student";
-import { DsinService} from "../../../services/dsin.service";
+//import { DsinService} from "../../../services/dsin.service";
 import { NgUploaderOptions, UploadedFile, UploadRejected } from 'ngx-uploader';
+import {PhotosService} from "../../../services/photos.service";
 
 @Component({
   selector: 'ba-images-uploader',
@@ -21,7 +22,7 @@ export class BaImagesUploader implements OnInit {
   previewData: any;
   photos: Array<any>
 
-  @Input() dsin;
+  @Input() id;
   @Output() public onStateChanged = new EventEmitter();
 
 
@@ -31,12 +32,13 @@ export class BaImagesUploader implements OnInit {
 
 
   constructor(@Inject(NgZone) private zone:NgZone,
-              private _dsin_service:DsinService) {
+              private photosService:PhotosService
+  ) {
   }
 
 
   startUpload() {
-    this._dsin_service.get_uptoken().then(res => {
+    this.photosService.get_uptoken().then(res => {
       console.debug("[ba-images-uploader] get_uptoken res: %o", res)
       return res.uptoken
     }).then(uptoken => {
@@ -58,7 +60,7 @@ export class BaImagesUploader implements OnInit {
           console.debug("[ba-images-uploader] handleUpload data: %o", data)
           this.response = JSON.parse(data.response);
           //save
-          this.save(this.dsin, this.response.key);
+          this.save(this.response.key);
 
           this.onStateChanged.emit({
             action: 'end',
@@ -84,8 +86,10 @@ export class BaImagesUploader implements OnInit {
     this.previewData = data;
   }
 
-
   ngOnInit() {
+
+    console.debug("[ba-image-uploader] ngOnInit")
+
     this.options = new NgUploaderOptions({
       url: this.qiniuApi,
       fieldName: this.fieldName,
@@ -98,7 +102,8 @@ export class BaImagesUploader implements OnInit {
       data: {}
     });
 
-    this._dsin_service.get_photos(this.dsin).then(res =>{
+
+    this.photosService.get_photos().then(res =>{
       console.debug("[ba-images-uploaders] get_photos res: %o", res)
       this.photos = res.photos.map(photo => {
         photo.img_url = `http://oo57og2we.bkt.clouddn.com/${photo.key}`
@@ -118,16 +123,16 @@ export class BaImagesUploader implements OnInit {
 
   remove(photo){
     this.photos = this.photos.filter(p => {
-          return photo.dsin == p.dsin ? false : true
+          return photo.id == p.id ? false : true
         })
-    this._dsin_service.remove(photo.dsin).then(res => {
-      console.debug("[ba-images-uploaders] remove photo: %o res: %o", photo, res)
-
-    })
+    //this.photosService.remove(photo.dsin).then(res => {
+    //  console.debug("[ba-images-uploaders] remove photo: %o res: %o", photo, res)
+    //
+    //})
   }
 
-  save(dsin, photo_key){
-    this._dsin_service.save_photo(this.dsin, photo_key).then(res => {
+  save(photo_key){
+    this.photosService.save_photo(photo_key).then(res => {
       console.debug("[ba-images-uploader] save res: %o", res)
       this.photos = res.photos.map(photo => {
         photo.img_url = `http://images.gaokao2017.cn/${photo.key}`

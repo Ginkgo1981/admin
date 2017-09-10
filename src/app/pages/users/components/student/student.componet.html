@@ -1,3 +1,5 @@
+<div> {{ student | json }}</div>
+
 <div *ngIf="student">
     <div class="row">
         <ba-student-basic
@@ -12,20 +14,20 @@
         </ngx-toolbar>
         <!--<button class="btn btn-primary" (click)="show_message_modal()">发送消息</button>-->
     </div>
-    <div class="row">
-        <ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
-                 title="消息列表" baCardClass="large-card">
-            <ba-messages-list
-                    [dsin]="student.dsin"
-                    #ba_messages_list
-            ></ba-messages-list>
-        </ba-card>
-    </div>
-    <div>
-        <ba-send-messages [student]="student"
-                          (sendMessageOut)="receiveChild($event)"
-                          #ba_send_message_component>
-        </ba-send-messages>
-        <!--<simple-notifications></simple-notifications>-->
-    </div>
+    <!--<div class="row">-->
+        <!--<ba-card class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"-->
+                 <!--title="消息列表" baCardClass="large-card">-->
+            <!--<ba-messages-list-->
+                    <!--[dsin]="student.dsin"-->
+                    <!--#ba_messages_list-->
+            <!--&gt;</ba-messages-list>-->
+        <!--</ba-card>-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--<ba-send-messages [student]="student"-->
+                          <!--(sendMessageOut)="receiveChild($event)"-->
+                          <!--#ba_send_message_component>-->
+        <!--</ba-send-messages>-->
+        <!--&lt;!&ndash;<simple-notifications></simple-notifications>&ndash;&gt;-->
+    <!--</div>-->
 </div>

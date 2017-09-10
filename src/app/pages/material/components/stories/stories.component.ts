@@ -26,7 +26,7 @@ export class StoriesComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.university_dsin = this.route.params['value']['dsin'] || this._member_service.getMember().identity.university.dsin;
+    //this.university_dsin = this.route.params['value']['dsin'] || this._member_service.getMember().identity.university.dsin;
   }
 
   onStoryActivateChanged(e){
@@ -34,7 +34,7 @@ export class StoriesComponent implements OnInit {
     let action = e.action;
     let story = e.data;
     if(action === 'edit'){
-      this.router.navigate(['/pages/materials/', story.dsin]);
+      this.router.navigate(['/pages/materials/', story.id]);
     }
   }
 }

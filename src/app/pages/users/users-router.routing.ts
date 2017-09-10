@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: UsersRouterComponent,
     children:[
       { path: 'students', component: StudentListComponent },
-      { path: 'students/:dsin', component: StudentComponent },
+      { path: 'students/:id', component: StudentComponent },
     ]
   }
 ];
