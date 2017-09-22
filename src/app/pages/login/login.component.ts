@@ -24,13 +24,21 @@ export class LoginComponent {
   login:Boolean = true
 
   constructor(private route:ActivatedRoute,
-              private router: Router,
+              private router:Router,
               private _member_service:MemberService) {
   }
 
   ngOnInit() {
     this.route.queryParams.subscribe(p => {
-      if (p.code) {
+      if (!p.code) {
+        this.wxLogin = new WxLogin({
+          id: "login_container",
+          appid: "wx7e0701ab21a46321",
+          scope: "snsapi_login",
+          redirect_uri: "http://www.gaokao2017.cn/wechat_callback",
+          state: ""
+        });
+      } else {
         this.code = p.code;
         //remove local storage
         localStorage.removeItem('member');
@@ -38,10 +46,9 @@ export class LoginComponent {
         this._member_service.member = null;
         this._member_service.authorization('', '', this.code, '', '').then(res => {
           console.debug("[login-component] authorization res: %o", res)
-          debugger;
           if (res.member) {
             this._member_service.member = res.member;
-            localStorage.setItem('member',JSON.stringify(res.member));
+            localStorage.setItem('member', JSON.stringify(res.member));
             console.debug("[login-component] _member_service member: %o, local storage member: %o", this._member_service.getMember(), JSON.parse(localStorage.getItem('member')))
             //route to dashboard
             this.router.navigate(['/dashboard']);
@@ -52,14 +59,6 @@ export class LoginComponent {
             console.debug("[login-component] authorization openid: %o, access_token: %o", this.openid, this.access_token)
           }
         })
-      } else {
-        this.wxLogin = new WxLogin({
-          id: "login_container",
-          appid: "wx7e0701ab21a46321",
-          scope: "snsapi_login",
-          redirect_uri: "http://www.gaokao2017.cn/wechat_callback",
-          state: ""
-        });
       }
     });
   }
@@ -75,11 +74,15 @@ export class LoginComponent {
     }
   }
 
-  register(e) {
-    console.debug("[login-component] register openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
+  onRegister(e) {
+    console.debug("[login-component] onRegister openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
     if (this.code && this.cell && this.sms_code) {
       this._member_service.authorization(this.openid, this.access_token, this.code, this.cell, this.sms_code).then(res => {
-        console.debug("[login-component] register res: %o", res);
+        console.debug("[login-component] onRegister res: %o", res);
+        if (res.member) {
+          this._member_service.member = res.member;
+          localStorage.setItem('member', JSON.stringify(res.member));
+        }
         this.router.navigate(['/dashboard']);
       })
     }

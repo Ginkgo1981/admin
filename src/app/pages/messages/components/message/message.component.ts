@@ -23,14 +23,15 @@ import { MessagesService} from "../../../../services/messages.service";
 export class MessageComponent implements OnInit {
 
   @ViewChild('imageUploaderTmpl') imageUploaderTmpl;
-  @ViewChild('majorsTmpl') majorsTmpl;
-  @ViewChild('studentsTmpl') studentsTmpl;
+  //@ViewChild('majorsTmpl') majorsTmpl;
+  //@ViewChild('studentsTmpl') studentsTmpl;
   @ViewChild('storiesTmpl') storiesTmpl;
 
   //drawer
   imagesUploaderDrawer:DrawerService;
-  majorDrawer:DrawerComponent;
-  studentsDrawer: DrawerComponent;
+  //majorDrawer:DrawerComponent;
+  //studentsDrawer: DrawerComponent;
+  storiesDrawer: DrawerComponent;
 
   //model
   university:University;
@@ -52,19 +53,19 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit():void {
-    this.university = this._memberService.getMember().identity.university;
+    //this.university = this._memberService.getMember().identity.university;
     //this.message_dsin = this.route.params.value.message_dsin;
     console.debug("[message-component] ngOnInit university: %o", this.university);
   }
 
-  batch_send_messages(e) {
-    let student_dsins = this.selected_students.map(s => s.dsin);
-    let attachment_dsins = this.attachments.map(s => s.dsin);
+  onSendNotificationMessage(e) {
+    //let student_dsins = this.selected_students.map(s => s.dsin);
+    let attachment_ids = this.attachments.map(s => {return {id: s.id, type: s.type}});
     let content = this.content;
-    console.debug("[message-component] batch_send_messages student_dsins: %o attachment_dsins: %o, content:%o", student_dsins, attachment_dsins, content);
-    this._messageService.batch_send_messages(content, student_dsins,attachment_dsins).then(res => {
+    console.debug("[message-component] sendNotificationMessage  attachment_ids: %o, content:%o", attachment_ids, content);
+    this._messageService.sendNotificationMessage(content, attachment_ids).then(res => {
       this.showNotification('学校基本信息更新成功');
-      console.debug("[message-component] batch_send_messages res: %o", res);
+      console.debug("[message-component] sendNotificationMessage res: %o", res);
     });
   }
 
@@ -73,20 +74,20 @@ export class MessageComponent implements OnInit {
     this.imagesUploaderDrawer = this.openDrawer(this.imageUploaderTmpl);
   }
 
-  openMajorsDrawer(e) {
-    console.debug("[message-component] openMajorsDrawer e: %o", e);
-    this.majorDrawer = this.openDrawer(this.majorsTmpl);
-  }
+  //openMajorsDrawer(e) {
+  //  console.debug("[message-component] openMajorsDrawer e: %o", e);
+  //  this.majorDrawer = this.openDrawer(this.majorsTmpl);
+  //}
 
-  openStudentDrawer(e) {
-    console.debug("[message-component] openStudentDrawer e: %o", e);
-    this.studentsDrawer = this.openDrawer(this.studentsTmpl);
-  }
+  //openStudentDrawer(e) {
+  //  console.debug("[message-component] openStudentDrawer e: %o", e);
+  //  this.studentsDrawer = this.openDrawer(this.studentsTmpl);
+  //}
 
 
   openStoriesDrawer(e) {
     console.debug("[message-component] openStroiesDrawer e: %o", e);
-    this.studentsDrawer = this.openDrawer(this.storiesTmpl);
+    this.storiesDrawer = this.openDrawer(this.storiesTmpl);
   }
 
   openDrawer(template) {
@@ -99,17 +100,17 @@ export class MessageComponent implements OnInit {
     this.attachments.push(photo);
   }
 
-  onMajorChoose(e) {
-    console.debug("[message-component] onMajorChoose e: %o", e)
-    let major:Major = e.data;
-    this.attachments.push(major);
-  }
+  //onMajorChoose(e) {
+  //  console.debug("[message-component] onMajorChoose e: %o", e)
+  //  let major:Major = e.data;
+  //  this.attachments.push(major);
+  //}
 
-  onStudentSelected(e){
-    console.debug("[message-component] onStudentSelected e: %o", e)
-    let student = e.data;
-    this.selected_students.push(student);
-  }
+  //onStudentSelected(e){
+  //  console.debug("[message-component] onStudentSelected e: %o", e)
+  //  let student = e.data;
+  //  this.selected_students.push(student);
+  //}
 
   onStoriesSelected(e){
     console.debug("[message-component] onStoriesSelected e: %o", e)

@@ -11,13 +11,13 @@ import {MessagesService} from "../../../services/messages.service";
 export class BaMessageList implements OnInit {
   @Input() dsin:String;
   @ViewChild(DatatableComponent) table:DatatableComponent;
-  constructor(private _service:MessagesService) {
+  constructor(private _messagesService:MessagesService) {
   }
 
   rows = [];
   count:number = 0;
   offset:number = 0;
-  limit:number = 10;
+  limit:number = 10
   selected = [];
 
   ngOnInit():void {
@@ -27,7 +27,7 @@ export class BaMessageList implements OnInit {
   }
 
   page(offset = 0, limit = 10) {
-    this._service.getMessages(this.dsin).then(res => {
+    this._messagesService.getMessages().then(res => {
           console.debug("[ba-message-list] getMessages res: %o", res)
           let results = res.messages
           this.count = 1000;

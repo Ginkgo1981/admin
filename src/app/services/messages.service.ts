@@ -16,14 +16,14 @@ export class MessagesService {
   }
 
 
-  batch_send_messages(content:String, student_dsins: Array<any>, attachment_dsins:Array<any>) {
+  sendNotificationMessage(content:String,  attachment_ids:Array<any>) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
     let data = {
       content: content,
-      student_dsins: student_dsins,
-      attachment_dsins: attachment_dsins
+      attachment_ids: attachment_ids
     }
-    return this.http.post(`${this.messages_api}/batch_send_messages`, JSON.stringify(data), {headers: headers})
+    console.debug("[message-service] sendNotificationMessage data:%o", data);
+    return this.http.post(`${this.messages_api}/send_notification_message`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();
@@ -31,10 +31,10 @@ export class MessagesService {
   }
 
 
-  getMessages(dsin:String) {
+  getMessages() {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-    let data = dsin ? {dsin: dsin} : {}
-    return this.http.post(`${this.messages_api}/list`, JSON.stringify(data), {headers: headers})
+    let data = {};
+    return this.http.post(`${this.messages_api}/notification_message_list`, JSON.stringify(data), {headers: headers})
         .toPromise()
         .then((response) => {
           return response.json();

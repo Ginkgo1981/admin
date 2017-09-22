@@ -13,7 +13,6 @@ import { QuillModule } from 'ngx-quill'
 import { GlobalDataService} from '../../services/globle-data.service'
 import { StoriesService} from "../../services/stories.service";
 import { UniversitiesService} from "../../services/universities.service";
-import { PhotosService } from '../../services/photos.service'
 
 //components
 import { StoriesComponent} from "./components/stories/stories.component";
@@ -39,8 +38,7 @@ import { StoryComponent} from "./components/story/story.component";
   providers: [
     GlobalDataService,
     StoriesService,
-    UniversitiesService,
-    PhotosService
+    UniversitiesService
   ]
 
 })

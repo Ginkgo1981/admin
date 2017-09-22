@@ -19,9 +19,14 @@ export class MessageListComponent implements OnInit {
 
 
   constructor(private _service:MessagesService) {
+
+
+
   }
 
-  ngOnInit():void {}
+  ngOnInit():void {
+    console.debug("[message-list-component] ngOnInit")
+  }
 
   showChildModal(e) {
     this.send_message_component.showChildModal();

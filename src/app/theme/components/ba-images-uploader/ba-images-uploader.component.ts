@@ -106,7 +106,7 @@ export class BaImagesUploader implements OnInit {
     this.photosService.get_photos().then(res =>{
       console.debug("[ba-images-uploaders] get_photos res: %o", res)
       this.photos = res.photos.map(photo => {
-        photo.img_url = `http://oo57og2we.bkt.clouddn.com/${photo.key}`
+        photo.img_url = `https://images.gaokao2017.cn/${photo.key}`
         return photo
       })
     })
@@ -117,7 +117,7 @@ export class BaImagesUploader implements OnInit {
     photo.selected = !photo.selected
     this.onStateChanged.emit({
       action: 'selected',
-      data: photo.img_url
+      data: photo
     })
   }
 

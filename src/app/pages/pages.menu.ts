@@ -18,7 +18,7 @@ const PAGES_STAFF_MENU = [
         path: 'messages',
         data: {
           menu: {
-            title: '消息',
+            title: '通知类消息',
             icon: 'ion-android-home',
             order: 0
           }
@@ -32,6 +32,14 @@ const PAGES_STAFF_MENU = [
               }
             }
           },
+          {
+            path: 'create',
+            data: {
+              menu: {
+                title: '发送消息',
+              }
+            }
+          }
         ]
       } ,
       {
@@ -72,6 +80,7 @@ const PAGES_STAFF_MENU = [
               }
             }
           }
+
         ]
       } ,
       {

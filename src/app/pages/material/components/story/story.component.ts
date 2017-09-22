@@ -30,9 +30,9 @@ export class StoryComponent implements OnInit {
   imagesUploaderDrawer:DrawerService;
   majorDrawer:DrawerComponent;
 
-  id:String
+  id: string
   major_columns = ['name', 'choose']
-  coverage_img_url: String;
+  coverage_img_url: string;
 
   constructor(private fb:FormBuilder,
               private route:ActivatedRoute,
@@ -64,6 +64,7 @@ export class StoryComponent implements OnInit {
 
   onUpdateOrCreate(e) {
     let story = this.storyForm.value
+    story.coverage_img_url = this.coverage_img_url;
     console.debug("[story-component] story %o", story);
     if(this.id){
       //update
@@ -100,9 +101,10 @@ export class StoryComponent implements OnInit {
 
   onPhotoSelected(e) {
     console.debug("[story-component] onPhotoSelected e: %o", e)
-    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <img width="300px" src="${e.data}"/>`)
+    this.storyForm.controls['content'].patchValue(`${this.storyForm.controls['content'].value} <img width="300px" src="${e.data.img_url}"/>`)
     if(!this.coverage_img_url){
-      this.coverage_img_url = e.data;
+      console.debug("[story-component] set-converage-image-url: %o", e.data.img_url);
+      this.coverage_img_url = e.data.img_url;
     }
   }
 

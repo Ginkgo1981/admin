@@ -21,24 +21,24 @@
     </ngx-datatable-column>
 
     <!-- student -->
-    <ngx-datatable-column name="student-name" [maxWidth]="200">
-        <template let-column="column" ngx-datatable-header-template>
-           学生
-        </template>
-        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{row.student.nickname}}
-        </template>
-    </ngx-datatable-column>
+    <!--<ngx-datatable-column name="student-name" [maxWidth]="200">-->
+        <!--<template let-column="column" ngx-datatable-header-template>-->
+           <!--学生-->
+        <!--</template>-->
+        <!--<template let-value="value" let-row="row"  ngx-datatable-cell-template>-->
+            <!--{{row.student.nickname}}-->
+        <!--</template>-->
+    <!--</ngx-datatable-column>-->
 
     <!-- university -->
-    <ngx-datatable-column name="student-name" [maxWidth]="200">
-        <template let-column="column" ngx-datatable-header-template>
-           高校
-        </template>
-        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            {{row.university.name}}
-        </template>
-    </ngx-datatable-column>
+    <!--<ngx-datatable-column name="student-name" [maxWidth]="200">-->
+        <!--<template let-column="column" ngx-datatable-header-template>-->
+           <!--高校-->
+        <!--</template>-->
+        <!--<template let-value="value" let-row="row"  ngx-datatable-cell-template>-->
+            <!--{{row.university.name}}-->
+        <!--</template>-->
+    <!--</ngx-datatable-column>-->
 
     <!-- content -->
     <ngx-datatable-column name="content">
@@ -61,16 +61,16 @@
     </ngx-datatable-column>
 
     <!--attachment-->
-    <ngx-datatable-column name="attachment_type" [maxWidth]="200">
-        <template let-column="column" ngx-datatable-header-template>
-            附件
-        </template>
-        <template let-value="value" let-row="row"  ngx-datatable-cell-template>
-            <div *ngIf="row['attachment_id'] ">
-                <a [routerLink]="['./', row['attachment_id']]"> {{row['attachment_type']}}</a>
-            </div>
-        </template>
-    </ngx-datatable-column>
+    <!--<ngx-datatable-column name="attachment_type" [maxWidth]="200">-->
+        <!--<template let-column="column" ngx-datatable-header-template>-->
+            <!--附件-->
+        <!--</template>-->
+        <!--<template let-value="value" let-row="row"  ngx-datatable-cell-template>-->
+            <!--<div *ngIf="row['attachment_id'] ">-->
+                <!--<a [routerLink]="['./', row['attachment_id']]"> {{row['attachment_type']}}</a>-->
+            <!--</div>-->
+        <!--</template>-->
+    <!--</ngx-datatable-column>-->
 
 
 </ngx-datatable>
