@@ -63,10 +63,10 @@ const PAGES_STAFF_MENU = [
         ]
       } ,
       {
-        path: 'universities',
+        path: 'jobs',
         data: {
           menu: {
-            title: '高校',
+            title: '职位',
             icon: 'ion-android-home',
             order: 0
           }
@@ -76,7 +76,7 @@ const PAGES_STAFF_MENU = [
             path: 'list',
             data: {
               menu: {
-                title: '高校列表',
+                title: '职位列表',
               }
             }
           }
