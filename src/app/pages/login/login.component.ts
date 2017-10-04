@@ -53,38 +53,39 @@ export class LoginComponent {
             //route to dashboard
             this.router.navigate(['/dashboard']);
           } else {
-            this.openid = res.openid;
-            this.access_token = res.access_token;
-            this.login = false;
-            console.debug("[login-component] authorization openid: %o, access_token: %o", this.openid, this.access_token)
+            debugger;
+            //this.openid = res.openid;
+            //this.access_token = res.access_token;
+            //this.login = false;
+            //console.debug("[login-component] authorization openid: %o, access_token: %o", this.openid, this.access_token)
           }
         })
       }
     });
   }
 
-  send_sms_code(e) {
-    if (this.cell) {
-      this._member_service.get_sms_code(this.cell).then(res => {
-        console.debug("[login-component] get_sms_code cell: %o, res: %o", this.cell, res)
-        if (res.code == 0) {
-          this.btn_send_sms_text = '验证码已发';
-        }
-      })
-    }
-  }
+  //send_sms_code(e) {
+  //  if (this.cell) {
+  //    this._member_service.get_sms_code(this.cell).then(res => {
+  //      console.debug("[login-component] get_sms_code cell: %o, res: %o", this.cell, res)
+  //      if (res.code == 0) {
+  //        this.btn_send_sms_text = '验证码已发';
+  //      }
+  //    })
+  //  }
+  //}
 
-  onRegister(e) {
-    console.debug("[login-component] onRegister openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
-    if (this.code && this.cell && this.sms_code) {
-      this._member_service.authorization(this.openid, this.access_token, this.code, this.cell, this.sms_code).then(res => {
-        console.debug("[login-component] onRegister res: %o", res);
-        if (res.member) {
-          this._member_service.member = res.member;
-          localStorage.setItem('member', JSON.stringify(res.member));
-        }
-        this.router.navigate(['/dashboard']);
-      })
-    }
-  }
+  //onRegister(e) {
+  //  console.debug("[login-component] onRegister openid: %o,access_token: %o, cell: %o, sms_code: %o, name: %o", this.openid, this.access_token, this.cell, this.sms_code, this.name)
+  //  if (this.code && this.cell && this.sms_code) {
+  //    this._member_service.authorization(this.openid, this.access_token, this.code, this.cell, this.sms_code).then(res => {
+  //      console.debug("[login-component] onRegister res: %o", res);
+  //      if (res.member) {
+  //        this._member_service.member = res.member;
+  //        localStorage.setItem('member', JSON.stringify(res.member));
+  //      }
+  //      this.router.navigate(['/dashboard']);
+  //    })
+  //  }
+  //}
 }
