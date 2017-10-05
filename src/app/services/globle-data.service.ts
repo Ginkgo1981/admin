@@ -36,6 +36,10 @@ export class GlobalDataService {
   stories_api() {
     return GlobalDataService.cable_api + '/stories'
   }
+  static
+  jobs_api() {
+    return GlobalDataService.cable_api + '/jobs'
+  }
 
   static
   members_api(){

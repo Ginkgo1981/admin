@@ -11,7 +11,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { NgxDatatableModule} from '@swimlane/ngx-datatable'
 import { NgxUIModule } from '@swimlane/ngx-ui'
 //service
-import { UniversitiesService} from "../../services/universities.service";
+import { JobsService } from "../../services/jobs.service";
 import { StudentsService} from "../../services/students.service";
 import { DrawerService, NotificationService } from '@swimlane/ngx-ui'
 
@@ -43,7 +43,7 @@ import { routing } from './jobs-router.routing.ts';
     JobComponent
   ],
   providers: [
-    UniversitiesService,
+    JobsService,
     StudentsService,
     DrawerService,
     NotificationService
