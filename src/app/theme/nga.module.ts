@@ -36,6 +36,7 @@ import {
   BaSendMessages,
   BaStudentBasic,
   BaUniversityEditor,
+  BaJobEditor,
   BaMajorEditor,
   BaUniversityInfo,
   BaImagesUploader
@@ -53,7 +54,8 @@ import {
 import {
   BaAppPicturePipe,
   BaKameleonPicturePipe,
-  BaProfilePicturePipe
+  BaProfilePicturePipe,
+    BaExistingPipe
 } from './pipes';
 
 import {
@@ -90,6 +92,7 @@ const NGA_COMPONENTS = [
   BaSendMessages,
   BaStudentBasic,
   BaUniversityEditor,
+  BaJobEditor,
   BaMajorEditor,
   BaUniversityInfo,
   BaImagesUploader
@@ -106,7 +109,8 @@ const NGA_DIRECTIVES = [
 const NGA_PIPES = [
   BaAppPicturePipe,
   BaKameleonPicturePipe,
-  BaProfilePicturePipe
+  BaProfilePicturePipe,
+  BaExistingPipe
 ];
 
 const NGA_SERVICES = [

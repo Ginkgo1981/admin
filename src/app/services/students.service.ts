@@ -18,7 +18,6 @@ export class StudentsService {
     return this.http.get(`${this.api}/users/students`, {headers: headers})
         .toPromise()
         .then((response) => {
-          debugger;
           return response.json();
         });
   }

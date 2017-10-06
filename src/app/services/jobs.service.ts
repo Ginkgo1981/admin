@@ -13,13 +13,24 @@ export class JobsService {
               private _member_service:MemberService) {
   }
 
-  getJobs() {
+  getJobs(offset) {
     let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
-    return this.http.get(`${this.jobs_api}/list/`, {headers:headers})
+    return this.http.get(`${this.jobs_api}/list/${offset}`, {headers:headers})
         .toPromise()
         .then((response) => {
           return response.json();
         });
+  }
+
+  update(job){
+
+    let headers = new Headers({'Content-Type': 'application/json', 'token': this._member_service.getMember().token});
+    return this.http.post(`${this.jobs_api}/update/${job.id}`,JSON.stringify(job),  {headers:headers})
+        .toPromise()
+        .then((response) => {
+          return response.json();
+        });
+
   }
   //
   //getStory(id:string) {
